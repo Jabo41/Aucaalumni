@@ -1,0 +1,108 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Mulish');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+
+
+/* navbar */
+.nav-bar ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    /* transition: 0.5s; */
+}
+
+/*  upcoming events  */
+
+.rounded-xl{
+    border-radius: 1.8rem !important;
+}
+.slick-prev:before {
+    content:  url(./prev.svg);
+}
+.slick-next:before {
+    content:  url(./next.svg);
+}
+.events .card-text{
+    font-size: 0.8rem !important;
+}
+.events .slick-dots li button:before {
+    opacity: 1 ;
+    color: #f8f9fa ;
+}
+.events .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: transparent !important;
+    width: 30px;
+    background: white;
+    height: 6px !important;
+    border-radius: 4px !important;
+    margin-top: 7px !important;
+}
+
+.events .slick-dots {
+    bottom: -60px !important;
+}
+.img-event-left{
+    height: 500px; bottom:-180px;left:-50px;transform: rotate(-60deg);
+    z-index: 9;
+}
+.img-event-right{
+    height: 520px;width: 300px; bottom:0px;right:0px;object-fit: cover;transform: rotate(15deg);
+    z-index: 0 !important;
+}
+.slick-next{
+    z-index: 10 !important;
+}
+
+/* latest news  */
+.bg-primary{
+    background-color: $blue !important;
+}
+a{
+    color: $blue;
+}
+
+/*--------------------------------------------------------------
+# navbar
+--------------------------------------------------------------*/
+
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height:2px;
+    background: #005CBB;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-link .active{
+    color: $blue !important;
+}
+
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+
+/*.nav-links ul li::after{*/
+/*    display: inline;*/
+/*    font-size: 1em;*/
+/*    background: #005CBB;*/
+/*    padding: 10px 30px;*/
+/*    text-decoration: none;*/
+/*    color: #9E9E9E;*/
+/*    margin-top: 10px;*/
+/*    text-transform: uppercase;*/
+/*    letter-spacing: 2px;*/
+/*    transition: 0.2s;*/
+/*}*/

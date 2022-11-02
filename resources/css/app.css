@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+    @apply tw-text-white;
+}
+
+.nav-link .active {
+    @apply tw-text-white tw-font-bold;
+}
+
+.nav-link:hover {
+    @apply tw-text-white;
+}
