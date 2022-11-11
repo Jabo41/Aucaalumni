@@ -14,9 +14,9 @@ class ProgramsController extends Controller
 
     public function store(Request $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/programs/'), $photo);
+        $dir = 'public/programs/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $program = new Program();
         $program->title=$request->title;
@@ -28,9 +28,9 @@ class ProgramsController extends Controller
 
     public function update(Request $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/latest_news/'), $photo);
+        $dir = 'public/programs/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $program = Program::FindOrFail($request->input('ProgramId'));
         $program->title=$request->title;

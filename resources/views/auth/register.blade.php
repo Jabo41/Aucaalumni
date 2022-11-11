@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body>
+{{--{{$errors}}--}}
 <div class="row me-0">
     <div class="col-md-6 px-0">
         <div class="md:tw-min-h-screen py-5 d-flex justify-content-center align-items-center flex-column tw-space-y-3"
@@ -33,7 +34,7 @@
     <div class="col-md-6  px-0">
         <div class="card bg-white shadow-none rounded-0 tw-border-none h-100 w-100">
             <div class="card-body   xl:tw-px-20 tw-px-10">
-                <form action="{{ route("register") }}" method="post" autocomplete="off">
+                <form action="{{ route('register') }}" method="post" autocomplete="off">
                     @csrf
                     <div class="xl:tw-w-2/3">
                         <h5 class="mt-5 mb-3 fw-bolder tw-leading-loose tw-tracking-wider">
@@ -41,39 +42,84 @@
                             Alumni
                         </h5>
                         <div class="mb-2 d-flex justify-content-between align-items-center">
-                            <input type="search" class="bg-light tw-text-left tw-rounded-lg form-control border-0" id="search_student" name="search_student_id"
+                            <input type="search" class="bg-light tw-text-left tw-rounded-lg form-control border-0"
+                                   id="search_student" name="student_id"
                                    placeholder="Enter student ID Number"/>
-                            <button class="btn tw-bg-[#BB7000]  tw-rounded-lg text-white px-3 m-2 d-inline-flex align-items-center">
+                            <button type="button" id="btnSearch"
+                                    class="btn tw-bg-[#BB7000]  tw-rounded-lg text-white px-3 m-2 d-inline-flex align-items-center">
                                 <span class="me-1 sm">Verify</span>
-                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.1875 11L12 6L7.1875 1M12 6L1 6L12 6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.1875 11L12 6L7.1875 1M12 6L1 6L12 6Z" stroke="white" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 " name="first_name"
-                                   placeholder="First Name"/>
+                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('first_name') is-invalid @enderror"
+                                   name="first_name" id="first_name"
+                                   placeholder="First Name" value="{{ old('first_name') }}"  autocomplete="first_name" autofocus/>
+
+                            @error('first_name')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 " name="last_name" placeholder="Last Name"/>
+                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('last_name') is-invalid @enderror" id="last_name"
+                                   name="last_name" placeholder="Last Name" value="{{ old('last_name') }}"  autocomplete="last_name" autofocus/>
+
+                            @error('last_name')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 " name="phone_number"
-                                   placeholder="Phone Number"/>
+                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('phone_number') is-invalid @enderror"
+                                   name="phone_number"
+                                   placeholder="Phone Number" value="{{ old('phone_number') }}"  autocomplete="phone_number" autofocus/>
+
+                            @error('phone_number')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 " name="email" placeholder="Username or email"/>
+                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('email') is-invalid @enderror"
+                                   name="email" placeholder="Username or email" value="{{ old('email') }}"  autocomplete="email">
+
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+
                         </div>
 
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-6">
-                            <input type="password" class="bg-light tw-text-left form-control border-0 " placeholder="Password"
+                            <input type="password" class="bg-light tw-text-left form-control border-0 @error('password') is-invalid @enderror"
+                                   placeholder="Password"
                                    name="password"/>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+
                         </div>
                         <div class="col-md-6">
-                            <input type="password" class="bg-light tw-text-left tw-rounded-lg form-control border-0" name="password_confirmation"
-                                   placeholder="Confirm Password"/>
+{{--                            <label for="password-confirm"></label>--}}
+                            <input  type="password" class="bg-light tw-text-left tw-rounded-lg form-control border-0"
+                                   name="password_confirmation" id="password-confirm"
+                                   placeholder="Confirm Password"  autocomplete="new-password"/>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -115,36 +161,54 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-    <script>
-        $( function() {
-            var availableTags = [
-                "ActionScript",
-                "AppleScript",
-                "Asp",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-            ];
-            $( "#search_student" ).autocomplete({
-                source: availableTags
-            });
-        } );
+<script>
+
+    $(function () {
+        $('#btnSearch').on('click', function (e) {
+            let value = $('#search_student').val();
+            $.ajax({
+                url: '/api/get-student?id_number=' + value,
+                method: 'GET',
+                success: function (response) {
+                    console.log(response);
+                    $('#first_name').val(response.first_name);
+                    $('#last_name').val(response.last_name);
+                }, error: function () {
+                    alert('Unable to find Student with that given ID number');
+                }
+            })
+        });
+    })
+    // $( function() {
+    //     var availableTags = [
+    //         "ActionScript",
+    //         "AppleScript",
+    //         "Asp",
+    //         "BASIC",
+    //         "C",
+    //         "C++",
+    //         "Clojure",
+    //         "COBOL",
+    //         "ColdFusion",
+    //         "Erlang",
+    //         "Fortran",
+    //         "Groovy",
+    //         "Haskell",
+    //         "Java",
+    //         "JavaScript",
+    //         "Lisp",
+    //         "Perl",
+    //         "PHP",
+    //         "Python",
+    //         "Ruby",
+    //         "Scala",
+    //         "Scheme"
+    //     ];
+
+    //     $( "#search_student" ).autocomplete({
+    //         source: availableTags
+    //     });
+    // } );
 
     {{--    <script>--}}
     {{--        var availableTags = [];--}}
@@ -160,7 +224,7 @@
     {{--    });--}}
 
     {{--</script>--}}
-    </script>
+</script>
 
 </body>
 </html>

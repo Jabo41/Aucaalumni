@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateSocialActivities;
 use App\Models\UpComingEvent;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,12 @@ class UpComingEventController extends Controller
         return view('backend.upcoming_events.create',compact('events'));
     }
 
-    public function store(Request $request){
+    public function store(ValidateSocialActivities $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/up_coming_events/'), $photo);
+        $request->validated();
+        $dir = 'public/up_coming_event/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $event = new UpComingEvent();
         $event->date=$request->date;
@@ -26,11 +28,12 @@ class UpComingEventController extends Controller
         return redirect()->back()->with('success','Event created successfully');
     }
 
-    public function update(Request $request){
+    public function update(ValidateSocialActivities $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/up_coming_events/'), $photo);
+        $request->validated();
+        $dir = 'public/up_coming_event/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $event = UpComingEvent::FindOrFail($request->input('EventId'));
         $event->photo=$photo;

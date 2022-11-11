@@ -4,8 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Opportunity extends Model
 {
     use HasFactory;
+
+    protected $appends = ['opportunities_url'];
+
+    public function getopportunitiesUrlAttribute(){
+        return Storage::url('public/opportunities/photos' .$this->photo);
+    }
+
 }

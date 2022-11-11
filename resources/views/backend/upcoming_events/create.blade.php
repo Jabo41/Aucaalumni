@@ -76,7 +76,9 @@
                             @foreach($events as $key=>$event)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td><img src="{{asset('backend/assets/img/up_coming_events/'.$event->photo)}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
+                                    <td>
+                                        <img src="{{$event->up_coming_event_url}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail">
+                                    </td>
                                     <td>{{$event->date}}</td>
                                     <td>{{$event->description}}</td>
                                     <td>

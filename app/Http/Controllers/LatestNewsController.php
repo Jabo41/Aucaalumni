@@ -14,9 +14,9 @@ class LatestNewsController extends Controller
 
     public function store(Request $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/latest_news/'), $photo);
+        $dir = 'public/latest_news/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $new = new LatestNew();
         $new->date=$request->date;
@@ -29,9 +29,9 @@ class LatestNewsController extends Controller
 
     public function update(Request $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/latest_news/'), $photo);
+        $dir = 'public/latest_news/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $new = LatestNew::FindOrFail($request->input('NewsId'));
         $new->date=$request->date;

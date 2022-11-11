@@ -76,7 +76,7 @@
                             @foreach($programs as $key=>$item)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td><img src="{{asset('backend/assets/img/programs/'.$item->photo)}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
+                                    <td><img src="{{$item->programs_url}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
                                     <td>{{$item->title}}</td>
                                     <td>{{$item->description}}</td>
                                     <td>
@@ -162,7 +162,7 @@
     <div class="modal fade" id="modalUpdate" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdrop" aria-hidden="true">
         <div class="modal-dialog">
-            <form action="{{route('latest.news.update')}}" method="post" id="submissionFormEdit" class="submissionForm" enctype="multipart/form-data">
+            <form action="{{route('programs.update')}}" method="post" id="submissionFormEdit" class="submissionForm" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" value="0"  id="ProgramId" name="ProgramId">
                 <div class="modal-content">
