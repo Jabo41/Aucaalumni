@@ -21,7 +21,7 @@ class isStaff
             if (Auth::user() && Auth::user()->is_staff==1){
                 return $next($request);
             }else
-            return redirect('/home');
+            return redirect('/registration-process/personal-information');
         }
     }
 }
