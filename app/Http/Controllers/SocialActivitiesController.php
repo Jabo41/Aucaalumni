@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateSocialActivities;
 use App\Models\SocialActivity;
 use Illuminate\Http\Request;
 
@@ -12,26 +13,30 @@ class SocialActivitiesController extends Controller
         return view('backend.social_activities.create',compact('activities'));
     }
 
-    public function store(Request $request){
+    public function store(ValidateSocialActivities $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/social_activities/'), $photo);
+        $request->validated();
+        $dir = 'public/social_activities/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $activity = new SocialActivity();
         $activity->title=$request->title;
         $activity->date=$request->date;
         $activity->description=$request->description;
         $activity->photo=$photo;
+
+//        dd($request->all());
         $activity->save();
         return redirect()->back()->with('success','Activity created successfully');
     }
 
-    public function update(Request $request){
+    public function update(ValidateSocialActivities $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/latest_news/'), $photo);
+        $request->validated();
+        $dir = 'public/social_activities/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $activity = SocialActivity::FindOrFail($request->input('ActivityId'));
         $activity->title=$request->title;

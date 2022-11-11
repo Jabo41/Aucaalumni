@@ -12,6 +12,7 @@
                         <span><i class="bi bi-plus text-white"></i></span>
                         <em  class="text-white ms-2">Add a Certificate</em>
                     </div>
+                    <input type="file" class="file d-none col-5" name="photo" id="photo" placeholder="Add your Photo"/>
                 </div>
 
                 <div class="col-lg-3">
@@ -63,6 +64,7 @@
                         <span><i class="bi bi-plus text-white"></i></span>
                         <em  class="text-white ms-2">Add a Certificate</em>
                     </div>
+                    <input type="file" class="file d-none col-5" name="photo" id="photo" placeholder="Add your Photo"/>
                 </div>
 
                 <div class="col-lg-3">
@@ -144,6 +146,7 @@
 @section('scripts')
     <script>
         document.querySelector('#filePhoto').addEventListener('click',function(e){
+            document.querySelector('#photo').click();
             document.querySelector('#photo').click();
         });
     </script>

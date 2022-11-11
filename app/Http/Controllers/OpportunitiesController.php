@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateOpportunities;
 use App\Models\Opportunity;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,12 @@ class OpportunitiesController extends Controller
         return view('backend.opportunities.create',compact('opportunities'));
     }
 
-    public function store(Request $request){
+    public function store(ValidateOpportunities $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/opportunities/'), $photo);
+        $request->validated();
+        $dir = 'public/opportunities/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $opportunity = new Opportunity();
         $opportunity->title=$request->title;
@@ -27,11 +29,12 @@ class OpportunitiesController extends Controller
         return redirect()->back()->with('success','Opportunity created successfully');
     }
 
-    public function update(Request $request){
+    public function update(ValidateOpportunities $request){
 
-        $photo = time() . '.' . $request->file('photo')->extension();
-
-        $request->photo->move(public_path('backend/assets/img/opportunities/'), $photo);
+        $request->validated();
+        $dir = 'public/opportunities/photos';
+        $path = $request->file('photo')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $opportunity = Opportunity::FindOrFail($request->input('OpportunityId'));
         $opportunity->title=$request->title;

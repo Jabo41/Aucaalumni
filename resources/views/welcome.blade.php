@@ -158,7 +158,7 @@
 
                 <div class="card rounded-xl mx-2 mx-md-2 mx-lg-3 mx-xl-5">
                     <div class="card-body p-2">
-                        <img src="{{asset('backend/assets/img/up_coming_events/'.$event->photo)}}" class="img-fluid rounded-xl w-100" alt="" />
+                        <img src="{{$event->up_coming_event_url}}" class="img-fluid rounded-xl w-100" alt="" />
                         <div class="card-text">
                             <p class="px-3 my-2 mb-0 font-weight-bold  tw-tracking-wide">
                                 {{$event->description}}
@@ -213,7 +213,7 @@
                         <i class="bi bi-eye"></i>
                         2,830
                     </p>
-                    <img src="{{asset('backend/assets/img/latest_news/'.$item->photo)}}" class="img-fluid position-absolute shadow d-none d-lg-block" style="width: 150px;height:250px;object-fit: cover;object-position: top;top: -70px;right: 20px;" alt="">
+                    <img src="{{$item->latest_news_url}}" class="img-fluid position-absolute shadow d-none d-lg-block" style="width: 150px;height:250px;object-fit: cover;object-position: top;top: -70px;right: 20px;" alt="">
                 </div>
 
                 @endforeach
@@ -243,7 +243,7 @@
                 <div class="card border-0 rounded-0 me-5">
                     <div class="d-flex align-items-center  justify-content-center" style="background-image:
                      linear-gradient(180deg, rgba(8, 1, 46, 0.5) 0%, rgba(103, 97, 179, 0.5) 100%) ,
-                    url('{{asset('backend/assets/img/programs/'.$item->photo)}}');  height: 200px;object-fit: cover;background-size: cover;">
+                    url('{{$item->programs_url}}');  height: 200px;object-fit: cover;background-size: cover;">
                         <h4 class="text-white text-uppercase">{{$item->title}}</h4>
                     </div>
                     <div class="card-body px-0 ">
@@ -287,7 +287,7 @@
                 <div class="card mb-5 border-0">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img class="tw-w-full" src="{{asset('backend/assets/img/social_activities/'.$item->photo)}}" alt="Home coming">
+                            <img class="tw-w-full" src="{{$item->social_activities_url}}" alt="Home coming">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body py-md-0 px-0 mx-md-4 border-bottom tw-border-[#005CBB] tw-border-2 tw-h-full">
@@ -335,7 +335,7 @@
                     <div class="container">
                         <div class="row no-gutters ">
                             <div class="col-md-4">
-                                <img class="tw-w-full" src="{{asset('backend/assets/img/opportunities/'.$item->photo)}}" alt="Home coming">
+                                <img class="tw-w-full" src="{{$item->opportunities_url}}" alt="Home coming">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body py-md-0 px-0 mx-md-4  tw-h-full">

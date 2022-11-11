@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'student_id' => ['required', 'integer', 'max:255'],
+            'student_id' => ['required', 'integer'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],
@@ -82,6 +83,12 @@ class RegisterController extends Controller
 
     public function filter()
     {
-//        $filter = User::select('first_name', 'last_name', 'phone_number', 'email')->where('student_id', 'LIKE', "$search_student_id")->get();
+        $s= Student::query()->where('id_number', '=', request('id_number'))->first();
+        if($s){
+            return response()->json($s);
+        }
+        return  response()->json('Error, Unable to find Student with that given ID number',404);
     }
+
+
 }

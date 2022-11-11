@@ -77,7 +77,7 @@
                             @foreach($activities as $key=>$item)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td><img src="{{asset('backend/assets/img/social_activities/'.$item->photo)}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
+                                    <td><img src="{{$item->social_activities_url}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
                                     <td>{{$item->title}}</td>
                                     <td>{{$item->date}}</td>
                                     <td>{{$item->description}}</td>

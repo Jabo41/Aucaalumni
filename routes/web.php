@@ -20,13 +20,17 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/work_exp',[App\Http\Controllers\HomeController::class, 'work'])->name('work_exp');
-Route::get('/certification',[App\Http\Controllers\HomeController::class, 'certificate'])->name('certification');
-Route::get('student-list',[App\Http\Controllers\Auth\RegisterController::class,'filter'])->name('student.list.filter');
 
-Route::group(['middleware'=>'isNotStaff'],function (){
 
+Route::get('/profile',[App\Http\Controllers\AlumniProfileController::class,'profile'])->name('alumni.profile');
+
+Route::group(['prefix' => 'registration-process'],function (){
+
+    Route::get('/personal-information', [App\Http\Controllers\HomeController::class, 'index'])->name('personal.information');
+    Route::post('/personal-information/store',[App\Http\Controllers\PersonalInformationController::class,'store'])->name('personal.information.store');
+    Route::get('/work-experience',[App\Http\Controllers\HomeController::class, 'work'])->name('work.experience');
+    Route::get('/certification',[App\Http\Controllers\HomeController::class, 'certificate'])->name('certification');
+    Route::get('student-list',[App\Http\Controllers\Auth\RegisterController::class,'filter'])->name('student.list.filter');
 });
 
 
@@ -72,5 +76,11 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
     Route::post('/user/store',[App\Http\Controllers\UserController::class,'store'])->name("user.store");
     Route::post('/user/update',[App\Http\Controllers\UserController::class,'update'])->name("user.update");
     Route::get('/user/{id}',[App\Http\Controllers\UserController::class,'destroy'])->name("user.delete");
+
+    //Student
+    Route::get('/students',[App\Http\Controllers\StudentController::class,'index'])->name("students");
+    Route::post('/student/store',[App\Http\Controllers\StudentController::class,'store'])->name("student.store");
+    Route::post('/student/update',[App\Http\Controllers\StudentController::class,'update'])->name("student.update");
+    Route::get('/student/{id}',[App\Http\Controllers\StudentController::class,'destroy'])->name("student.delete");
 });
 

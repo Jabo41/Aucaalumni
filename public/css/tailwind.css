@@ -155,14 +155,17 @@
 .tw-h-10 {
     height: 2.5rem !important
 }
-.tw-h-14 {
-    height: 3.5rem !important
+.tw-h-16 {
+    height: 4rem !important
 }
 .tw-h-4 {
     height: 1rem !important
 }
 .tw-h-\[10px\] {
     height: 10px !important
+}
+.tw-h-14 {
+    height: 3.5rem !important
 }
 .tw-min-h-screen {
     min-height: 100vh !important
@@ -251,13 +254,13 @@
 .tw-bg-transparent {
     background-color: transparent !important
 }
-.tw-bg-\[\#BB7000\] {
-    --tw-bg-opacity: 1 !important;
-    background-color: rgb(187 112 0 / var(--tw-bg-opacity)) !important
-}
 .tw-bg-\[\#1866B6\] {
     --tw-bg-opacity: 1 !important;
     background-color: rgb(24 102 182 / var(--tw-bg-opacity)) !important
+}
+.tw-bg-\[\#BB7000\] {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(187 112 0 / var(--tw-bg-opacity)) !important
 }
 .tw-object-contain {
     -o-object-fit: contain !important;
