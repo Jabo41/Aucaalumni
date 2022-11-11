@@ -12,6 +12,8 @@
                         <span><i class="bi bi-plus text-white"></i></span>
                         <em  class="text-white ms-2">Add a Certificate</em>
                     </div>
+                    <input type="file" class="file d-none col-5" name="photo" id="photo" placeholder="Add your Photo"/>
+
                 </div>
 
                 <div class="col-lg-3">
