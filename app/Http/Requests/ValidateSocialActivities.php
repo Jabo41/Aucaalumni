@@ -25,7 +25,6 @@ class ValidateSocialActivities extends FormRequest
     {
         return [
             'photo'=>'required',
-            'title'=>'required',
             'date'=>'required',
             'description'=>'required',
         ];
