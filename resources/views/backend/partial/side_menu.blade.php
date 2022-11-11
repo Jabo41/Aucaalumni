@@ -94,6 +94,19 @@
             </li>
 
             <li class="menu-section">
+                <h4 class="menu-text">Students</h4>
+                <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+            </li>
+            <li class="menu-item menu-item-submenu "
+                {{--                                <li class="menu-item menu-item-submenu {{ strpos(Request::fullUrl(), '/admin/settings/') ? 'menu-item-open' : '' }}"--}}
+                aria-haspopup="true" data-menu-toggle="hover">
+                <a href="{{route('students')}}" class="menu-link menu-toggle">
+                    <i class="menu-icon fas fa-book-reader"></i>
+                    <span class="menu-text">Auca Alumni Students</span>
+                </a>
+            </li>
+
+            <li class="menu-section">
                 <h4 class="menu-text">Staff Users</h4>
                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
             </li>
