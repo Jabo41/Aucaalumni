@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidatePersonalInformation;
 use App\Models\PersonalInformation;
 use Illuminate\Http\Request;
 
 class PersonalInformationController extends Controller
 {
-    public function store(Request $request){
+    public function store(ValidatePersonalInformation $request){
 
         $dir = 'public/latest_news/photos';
         $path = $request->file('photo')->store($dir);

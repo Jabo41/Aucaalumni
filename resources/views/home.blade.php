@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <form action="{{route('personal.information.store')}}" method="post" id="submissionForm" class="submissionForm" enctype="multipart/form-data">
+            @csrf
             <div class="row pt-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="d-flex flex-row">
@@ -18,74 +19,80 @@
                                 </svg>
                                 <em class="text-muted ms-2">Add your Photo</em>
                             </div>
-                            <input type="file" class="file d-none col-5" name="photo" id="photo" placeholder="Add your Photo"/>
+                            <div class="col-sm-10 mb-4">
+                                <input type="file" class="file d-none col-5" name="photo" id="photo" placeholder="Add your Photo"/>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
+                    <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">b.</label>
-
-                        <input type="text" class="bg-light tw-text-left form-control border-0 mb-4" name="phone_number"
-                               placeholder="Phone Number"/>
-
-
+                        <div class="col-sm-10 mb-4">
+                            <input type="text" class="bg-light tw-text-left form-control border-0" name="phone_number"
+                                   placeholder="Phone Number"/>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
+                    <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">c.</label>
-
-                        <input type="text" class="bg-light tw-text-left form-control border-0 mb-4" name="email"
-                               placeholder="Email"/>
-
-
+                        <div class="col-sm-10 mb-4">
+                            <input type="text" class="bg-light tw-text-left form-control border-0" name="email"
+                                   placeholder="Email"/>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
+                    <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">d.</label>
-
-                        <input type="text" class="bg-light tw-text-left form-control border-0 mb-4" name="faculty"
-                               placeholder="Faculty"/>
-
-
+                        <div class="col-sm-10 mb-4">
+                            <input type="text" class="bg-light tw-text-left form-control border-0 " name="faculty"
+                                   placeholder="Faculty"/>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8  ">
+                    <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">e.</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 mb-4">
                             <span class="">Bio</span>
-                            {{--                        <input type="text" class="bg-light tw-text-left form-control border-0 mb-4"--}}
-                            {{--                               name="current_employer"--}}
-                            {{--                               placeholder="Faculty"/>--}}
-
                             <textarea class="bg-light tw-text-left form-control" name="bio"></textarea>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="d-flex flex-row col-8">
+                    <div class="col-9 row">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">f.</label>
-                        <input type="text" class="bg-light tw-text-left form-control border-0 mb-4" name="current_employer"
-                               placeholder="Current Employer"/>
+                        <div class="col-sm-10 mb-4">
+                            <input type="text" class="bg-light tw-text-left form-control border-0" name="current_employer"
+                                   placeholder="Current Employer"/>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
+                    <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
-                        <select class="form-select text-muted bg-light border-0 mb-4" name="self_employed">
-                            <option>self employed</option>
-                        </select>
+                        <div class="col-sm-10 mb-4">
+                            <select class="form-select text-muted bg-light border-0" name="self_employed">
+                                <option>self employed</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">h.</label>
-                        <select class="form-select text-muted form-control bg-light border-0 mb-4" name="profession">
-                            <option>Profession</option>
-                        </select>
+                    <div class="d-flex flex-row col-9">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
+                        <div class="col-sm-10 mb-4">
+                            <select class="form-select text-muted bg-light border-0" name="self_employed">
+                                <option>Profession</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">i.</label>
-                        <select class="form-select text-muted form-control bg-light border-0 mb-4" name="latest_education_level">
-                            <option>Latest education level</option>
-                        </select>
+                    <div class="d-flex flex-row col-9">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
+                        <div class="col-sm-10 mb-4">
+                            <select class="form-select text-muted bg-light border-0" name="self_employed">
+                                <option>Latest Education</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row col-8">
+                    <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">j.</label>
-                        <input type="text" class="bg-light tw-text-left form-control border-0 mb-4" name="address"
-                               placeholder="Location, Address, Street Number"/>
+                        <div class="col-sm-10 mb-4">
+                            <input type="text" class="bg-light tw-text-left form-control border-0" name="address"
+                                   placeholder="Location, Address, Street Number"/>
+                        </div>
                     </div>
                     <div class="d-flex text-center col-8 flex-column mt-2">
 
@@ -101,6 +108,7 @@
 
 @section('scripts')
     <!-- Laravel Javascript Validation -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest(\App\Http\Requests\ValidatePersonalInformation::class,'.submissionForm') !!}
 
