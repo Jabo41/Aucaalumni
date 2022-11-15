@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{route('personal.information.store')}}" method="post" id="submissionForm" class="submissionForm" enctype="multipart/form-data">
+        <form action="{{route('registration.personal.information.store')}}" method="post" id="submissionForm" class="submissionForm" enctype="multipart/form-data">
             @csrf
             <div class="row pt-5 justify-content-center">
                 <div class="col-lg-6">
@@ -67,23 +67,31 @@
                         <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
                         <div class="col-sm-10 mb-4">
                             <select class="form-select text-muted bg-light border-0" name="self_employed">
-                                <option>self employed</option>
+                                <option>Self employed</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
                             </select>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
                         <div class="col-sm-10 mb-4">
-                            <select class="form-select text-muted bg-light border-0" name="self_employed">
+                            <select class="form-select text-muted bg-light border-0" name="profession_id">
                                 <option>Profession</option>
+                                @foreach(App\Models\Profession::all() as $profession)
+                                    <option value="{{$profession->id}}">{{$profession->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
                         <div class="col-sm-10 mb-4">
-                            <select class="form-select text-muted bg-light border-0" name="self_employed">
+                            <select class="form-select text-muted bg-light border-0" name="latest_education_level">
                                 <option>Latest Education</option>
+                                <option value="bachelor’s_degree">Bachelor’s Degree (Bcs)</option>
+                                <option value="masters_degree">Masters Degree</option>
+                                <option value="phd">PhD</option>
                             </select>
                         </div>
                     </div>

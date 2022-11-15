@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class PersonalInformationController extends Controller
 {
-    public function store(ValidatePersonalInformation $request){
+    public function store(Request $request){
 
-        $dir = 'public/latest_news/photos';
+        $dir = 'public/personal_information/photos';
         $path = $request->file('photo')->store($dir);
         $photo= str_replace($dir,'',$path);
 
@@ -22,9 +22,10 @@ class PersonalInformationController extends Controller
         $information->bio=$request->bio;
         $information->current_employer=$request->current_employer;
         $information->self_employed=$request->self_employed;
-        $information->profession=$request->profession;
+        $information->profession_id=$request->profession_id;
         $information->latest_education_level=$request->latest_education_level;
         $information->address=$request->address;
+//        dd($request->all());
         $information->save();
         return redirect('/registration-process/work-experience');
     }
