@@ -24,7 +24,7 @@ Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->nam
 
 Route::get('/profile',[App\Http\Controllers\AlumniProfileController::class,'profile'])->name('alumni.profile');
 
-Route::group(['prefix' => 'registration-process'],function (){
+Route::prefix('registration-process')->name('registration.')->group(function () {
 
     Route::get('/personal-information', [App\Http\Controllers\HomeController::class, 'index'])->name('personal.information');
     Route::post('/personal-information/store',[App\Http\Controllers\PersonalInformationController::class,'store'])->name('personal.information.store');
@@ -42,16 +42,16 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
 
 
 //Upcoming Events
-    Route::get('/up_coming_events',[App\Http\Controllers\UpComingEventController::class,'index'])->name("up.coming.events");
-    Route::post('/up_coming_event/store',[App\Http\Controllers\UpComingEventController::class,'store'])->name("up.coming.event.store");
-    Route::post('/up_coming_event/update',[App\Http\Controllers\UpComingEventController::class,'update'])->name("up.coming.event.update");
-    Route::get('/up_coming_event/{id}',[App\Http\Controllers\UpComingEventController::class,'destroy'])->name("up.coming.event.delete");
+    Route::get('/up-coming-events',[App\Http\Controllers\UpComingEventController::class,'index'])->name("up.coming.events");
+    Route::post('/up-coming-event/store',[App\Http\Controllers\UpComingEventController::class,'store'])->name("up.coming.event.store");
+    Route::post('/up-coming-event/update',[App\Http\Controllers\UpComingEventController::class,'update'])->name("up.coming.event.update");
+    Route::get('/up-coming-event/{id}',[App\Http\Controllers\UpComingEventController::class,'destroy'])->name("up.coming.event.delete");
 
 //Latest News
-    Route::get('/latest_news',[App\Http\Controllers\LatestNewsController::class,'index'])->name("latest.news");
-    Route::post('/latest_new/store',[App\Http\Controllers\LatestNewsController::class,'store'])->name("latest.news.store");
-    Route::post('/latest_new/update',[App\Http\Controllers\LatestNewsController::class,'update'])->name("latest.news.update");
-    Route::get('/latest_new/{id}',[App\Http\Controllers\LatestNewsController::class,'destroy'])->name("latest.news.delete");
+    Route::get('/latest-news',[App\Http\Controllers\LatestNewsController::class,'index'])->name("latest.news");
+    Route::post('/latest-new/store',[App\Http\Controllers\LatestNewsController::class,'store'])->name("latest.news.store");
+    Route::post('/latest-new/update',[App\Http\Controllers\LatestNewsController::class,'update'])->name("latest.news.update");
+    Route::get('/latest-new/{id}',[App\Http\Controllers\LatestNewsController::class,'destroy'])->name("latest.news.delete");
 
 //Program
     Route::get('/programs',[App\Http\Controllers\ProgramsController::class,'index'])->name("programs");
@@ -60,10 +60,10 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
     Route::get('/program/{id}',[App\Http\Controllers\ProgramsController::class,'destroy'])->name("program.delete");
 
 //Social Activities
-    Route::get('/social_activities',[App\Http\Controllers\SocialActivitiesController::class,'index'])->name("social.activities");
-    Route::post('/social_activity/store',[App\Http\Controllers\SocialActivitiesController::class,'store'])->name("social.activity.store");
-    Route::post('/social_activity/update',[App\Http\Controllers\SocialActivitiesController::class,'update'])->name("social.activity.update");
-    Route::get('/social_activity/{id}',[App\Http\Controllers\SocialActivitiesController::class,'destroy'])->name("social.activity.delete");
+    Route::get('/social-activities',[App\Http\Controllers\SocialActivitiesController::class,'index'])->name("social.activities");
+    Route::post('/social-activity/store',[App\Http\Controllers\SocialActivitiesController::class,'store'])->name("social.activity.store");
+    Route::post('/social-activity/update',[App\Http\Controllers\SocialActivitiesController::class,'update'])->name("social.activity.update");
+    Route::get('/social-activity/{id}',[App\Http\Controllers\SocialActivitiesController::class,'destroy'])->name("social.activity.delete");
 
 //Opportunities
     Route::get('/opportunities',[App\Http\Controllers\OpportunitiesController::class,'index'])->name("opportunities");
@@ -82,5 +82,11 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
     Route::post('/student/store',[App\Http\Controllers\StudentController::class,'store'])->name("student.store");
     Route::post('/student/update',[App\Http\Controllers\StudentController::class,'update'])->name("student.update");
     Route::get('/student/{id}',[App\Http\Controllers\StudentController::class,'destroy'])->name("student.delete");
+
+    //Profession
+    Route::get('/professions',[App\Http\Controllers\ProfessionController::class,'index'])->name("professions");
+    Route::post('/profession/store',[App\Http\Controllers\ProfessionController::class,'store'])->name("profession.store");
+    Route::post('/profession/update',[App\Http\Controllers\ProfessionController::class,'update'])->name("profession.update");
+    Route::get('/profession/{id}',[App\Http\Controllers\ProfessionController::class,'destroy'])->name("profession.delete");
 });
 
