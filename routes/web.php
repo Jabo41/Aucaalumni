@@ -47,7 +47,7 @@ Route::prefix('registration-process')->name('registration.')->group(function () 
     //profile
     Route::get('/profile',[App\Http\Controllers\AlumniProfileController::class,'profile'])->name('alumni.profile');
     Route::get('/profile/edit/{id}',[App\Http\Controllers\AlumniProfileController::class,'edit'])->name('profile.edit');
-
+    Route::put('/profile/update/{id}',[App\Http\Controllers\AlumniProfileController::class,'update'])->name('profile.update');
 });
 
 

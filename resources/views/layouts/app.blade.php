@@ -202,9 +202,12 @@
 <div class="d-flex min-vh-100">
     <div class="l-navbar h-100 nav-show" id="nav-bar">
         <nav class="nav">
-            <div><a href="#" class="nav_logo border-bottom border-white py-4 d-flex justify-content-center"> <img
-                        src="{{asset('assets/auca/imgs/logo.svg')}}"> </a>
-                <div class="nav_list">  </a>
+            <div>
+                <a href="#" class="nav_logo border-bottom border-white py-4 d-flex justify-content-center">
+                    <img
+                        src="{{asset('assets/auca/imgs/logo.svg')}}"/>
+                </a>
+                <div class="nav_list">
                     <a href="{{route('registration.personal.information')}}" class="nav_link"> <img
                             src="{{asset('assets/auca/imgs/p_info.svg')}}"> <span
                             class="nav_name">Personal information</span> </a>
@@ -218,7 +221,7 @@
         </nav>
     </div>
     <div class="w-100 h-100">
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <nav class="navbar navbar-expand-md navbar-light bg-transparent">
             <div class="container">
                 <div class="navbar-brand">
                     <header class="header bg-white" id="header">
@@ -233,7 +236,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0 me-5 pe-5">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                aria-expanded="false">
@@ -261,7 +264,8 @@
 </div>
 
 
-<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+<script type='text/javascript'
+        src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
 
 <script type='text/javascript'>
     document.addEventListener("DOMContentLoaded", function (event) {
