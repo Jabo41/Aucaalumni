@@ -5,7 +5,7 @@
 
         @include('partials.frontend._alerts')
 
-        <h5 class="fw-bold mt-5">First Work Name here</h5>
+        <h5 class="fw-bold mt-5">Fill  Work Name here</h5>
 
         <button type="button" class="btn btn btn-outline-primary fw-bold text-[#1866B6] col-3 border-3"
                 data-bs-toggle="modal" data-bs-target="#exampleModal"><span><i class="bi bi-plus"></i></span>
