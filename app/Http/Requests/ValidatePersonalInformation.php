@@ -34,6 +34,8 @@ class ValidatePersonalInformation extends FormRequest
             'profession'=>'required',
             'latest_education_level'=>'required',
             'address'=>'required',
+            'full_names'=>'required',
+            'dob'=>'required',
         ];
     }
 }

@@ -15,6 +15,11 @@ class CreateWorkExperiencesTable extends Migration
     {
         Schema::create('work_experiences', function (Blueprint $table) {
             $table->id();
+            $table->string('company');
+            $table->string('employer');
+            $table->string('period');
+            $table->string('job_title');
+            $table->text('job_description');
             $table->timestamps();
         });
     }

@@ -1,0 +1,9 @@
+.rotated {
+    transform: rotate(90deg); /* Equal to rotateZ(45deg) */
+}
+.bg-primary{
+    background-color: #005CBB !important;
+}
+.text-primary{
+    color: #005CBB !important;
+}

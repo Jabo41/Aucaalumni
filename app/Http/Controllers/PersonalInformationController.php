@@ -25,8 +25,12 @@ class PersonalInformationController extends Controller
         $information->profession_id=$request->profession_id;
         $information->latest_education_level=$request->latest_education_level;
         $information->address=$request->address;
+        $information->full_names=$request->full_names;
+        $information->dob=$request->dob;
+        $information->user_id=auth()->id();
 //        dd($request->all());
         $information->save();
         return redirect('/registration-process/work-experience');
     }
+
 }

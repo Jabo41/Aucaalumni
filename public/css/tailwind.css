@@ -90,20 +90,11 @@
     --tw-backdrop-saturate:  ;
     --tw-backdrop-sepia:  
 }
-.tw-absolute {
-    position: absolute !important
-}
 .-tw-top-\[20px\] {
     top: -20px !important
 }
 .tw-bottom-0 {
     bottom: 0px !important
-}
-.-tw-right-\[50px\] {
-    right: -50px !important
-}
-.-tw-top-\[16px\] {
-    top: -16px !important
 }
 .tw-z-10 {
     z-index: 10 !important
@@ -124,9 +115,6 @@
 }
 .tw-mt-20 {
     margin-top: 5rem !important
-}
-.tw-mr-2 {
-    margin-right: 0.5rem !important
 }
 .tw-block {
     display: block !important
@@ -155,20 +143,11 @@
 .tw-h-10 {
     height: 2.5rem !important
 }
-.tw-h-16 {
-    height: 4rem !important
+.tw-h-32 {
+    height: 8rem !important
 }
 .tw-h-4 {
     height: 1rem !important
-}
-.tw-h-\[10px\] {
-    height: 10px !important
-}
-.tw-h-14 {
-    height: 3.5rem !important
-}
-.tw-min-h-screen {
-    min-height: 100vh !important
 }
 .tw-w-full {
     width: 100% !important
@@ -179,8 +158,8 @@
 .tw-w-10 {
     width: 2.5rem !important
 }
-.tw-w-4 {
-    width: 1rem !important
+.tw-w-32 {
+    width: 8rem !important
 }
 .tw-cursor-pointer {
     cursor: pointer !important
@@ -254,17 +233,23 @@
 .tw-bg-transparent {
     background-color: transparent !important
 }
-.tw-bg-\[\#1866B6\] {
-    --tw-bg-opacity: 1 !important;
-    background-color: rgb(24 102 182 / var(--tw-bg-opacity)) !important
-}
 .tw-bg-\[\#BB7000\] {
     --tw-bg-opacity: 1 !important;
     background-color: rgb(187 112 0 / var(--tw-bg-opacity)) !important
 }
+.tw-bg-cover {
+    background-size: cover !important
+}
+.tw-bg-center {
+    background-position: center !important
+}
 .tw-object-contain {
     -o-object-fit: contain !important;
        object-fit: contain !important
+}
+.tw-object-cover {
+    -o-object-fit: cover !important;
+       object-fit: cover !important
 }
 .tw-py-5 {
     padding-top: 1.25rem !important;
@@ -319,6 +304,9 @@
 .tw-tracking-wide {
     letter-spacing: 0.025em !important
 }
+.tw-tracking-\[\.5rem\] {
+    letter-spacing: .5rem !important
+}
 .tw-text-\[\#005CBB\] {
     --tw-text-opacity: 1 !important;
     color: rgb(0 92 187 / var(--tw-text-opacity)) !important
@@ -358,27 +346,20 @@
     --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color) !important;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important
 }
-.tw-shadow-sm {
-    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
-    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color) !important;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important
-}
 
+/*
 .nav-link {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity))
+    @apply tw-text-white;
 }
 
 .nav-link .active {
-    font-weight: 700;
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity))
+    @apply tw-text-white tw-font-bold;
 }
 
 .nav-link:hover {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity))
+    !*@apply tw-text-white;*!
 }
+*/
 
 @media (min-width: 768px) {
     .md\:tw-h-36 {
