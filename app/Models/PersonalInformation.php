@@ -14,7 +14,7 @@ class PersonalInformation extends Model
 
     public function getPersonalInformationUrlAttribute()
     {
-        return Storage::url('public/personal_information/photo' . $this->personal_information);
+        return Storage::url('public/personal_information/photos' . $this->photo);
     }
 
     public function profession(){

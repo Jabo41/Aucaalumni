@@ -204,7 +204,7 @@
             <div>
                 <a href="#" class="nav_logo  py-4 d-flex justify-content-center ">
                     <div
-                        style="background-image: url({{asset('assets/img/profile.png')}})"
+                        style="background-image: url({{$information->personal_information_url}})"
                         class="rounded-circle tw-object-cover tw-h-32 tw-w-32 tw-bg-center tw-bg-cover border border-3 border-white ">
                     </div>
                 </a>
@@ -260,12 +260,13 @@
         </nav>
         <div class="py-4">
             <div class="container">
+                @include('partials.frontend._alerts')
                 <div class="px-4">
                     <div class="d-flex  flex-row justify-content-between mb-4">
                         <div class="text-muted">Go back <span class="text-primary fw-semibold ">home</span></div>
                     </div>
                     <div class="d-flex flex-column gap-2 mb-4">
-                        <div class="fw-bold">MUGISHA Christian</div>
+                        <div class="fw-bold">{{$information->full_names}}</div>
                         <div class="text-primary fst-italic fw-bold">Bachelors in networking</div>
                         <div class="d-flex flex-row gap-3 text-muted text-normal fst-italic">
                             <span>2015-2020</span>
@@ -307,27 +308,27 @@
                                 class="d-flex flex-column flex-md-row flex-grow-1  gap-3 justify-content-between align-items-center p-2 bg-light">
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Full Names</em>
-                                    <div class="fw-semibold tw-text-xs">MUGISHA Christian</div>
+                                    <div class="fw-semibold tw-text-xs">{{$information->full_names}}</div>
+                                </div>
+                                <div class="">
+                                    <em class="tw-text-gray-400 tw-text-sm fw-semibold">Email</em>
+                                    <div class="fw-semibold tw-text-xs">{{$information->email}}</div>
                                 </div>
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Phone Number</em>
-                                    <div class="fw-semibold tw-text-xs">+250 788888888</div>
-                                </div>
-                                <div class="">
-                                    <em class="tw-text-gray-400 tw-text-sm fw-semibold">Phone Number</em>
-                                    <div class="fw-semibold tw-text-xs">+250 788888888</div>
+                                    <div class="fw-semibold tw-text-xs">{{$information->phone_number}}</div>
                                 </div>
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Address</em>
-                                    <div class="fw-semibold tw-text-xs">KN 3333 Ave Kigali</div>
+                                    <div class="fw-semibold tw-text-xs">{{$information->address}}</div>
                                 </div>
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Age(years)</em>
-                                    <div class="fw-semibold tw-text-xs">30</div>
+                                    <div class="fw-semibold tw-text-xs">{{now()->diffInYears($information->dob)}}</div>
                                 </div>
                             </div>
                             <div class="tw-h-full p-3 bg-primary">
-                                <a href="{{route('registration.profile.edit',[$information[0]->id])}}">
+                                <a href="{{route('registration.profile.edit',[optional($information)->id])}}">
                                     <img src="{{asset('assets/auca/imgs/edit.svg')}}" class="tw-h-4"/>
                                 </a>
                             </div>
