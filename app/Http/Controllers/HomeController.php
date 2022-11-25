@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certification;
+use App\Models\WorkExperience;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,11 +27,23 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
     public function work()
     {
-        return view('work_exp');
+
+        $works = WorkExperience::query()->where('user_id','=',auth()->id())
+            ->latest()->get();
+        return view('work_exp', [
+            'works' => $works
+        ]);
     }
-    public  function certificate(){
-        return view('certification');
+
+    public function certificate()
+    {
+        $certifications = Certification::query()->where('user_id','=',auth()->id())
+            ->latest()->get();
+        return view('certification', [
+            'certifications' => $certifications
+        ]);
     }
 }

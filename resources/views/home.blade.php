@@ -2,13 +2,14 @@
 
 @section('content')
     <div class="container">
-        <form action="{{route('registration.personal.information.store')}}" method="post" id="submissionForm" class="submissionForm" enctype="multipart/form-data">
+        <form action="{{route('registration.personal.information.store')}}" method="post" id="submissionForm"
+              class="submissionForm" enctype="multipart/form-data">
             @csrf
             <div class="row pt-5 justify-content-center">
                 <div class="col-lg-6">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">a.</label>
-                        <div class="col-6">
+                        <div class="col-sm-10">
                             <div id="filePhoto"
                                  class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-cursor-pointer mb-4">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -19,35 +20,46 @@
                                 </svg>
                                 <em class="text-muted ms-2">Add your Photo</em>
                             </div>
-                            <div class="col-sm-10 mb-4">
-                                <input type="file" class="file d-none col-5" name="photo" id="photo" placeholder="Add your Photo"/>
-                            </div>
-
+                            <input type="file" class="file d-none col-5" name="photo" id="photo"/>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">b.</label>
+                        <div class="col-sm-10 mb-4">
+                            <input type="text" class="bg-light tw-text-left form-control border-0" name="full_names"
+                                   placeholder="Full Names"/>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row col-9">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">c.</label>
+                        <div class="col-sm-10 mb-4">
+                            <input type="date" class="bg-light tw-text-left form-control border-0" name="dob"
+                                   placeholder="Date of Birth"/>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row col-9">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">d.</label>
                         <div class="col-sm-10 mb-4">
                             <input type="text" class="bg-light tw-text-left form-control border-0" name="phone_number"
                                    placeholder="Phone Number"/>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">c.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">e.</label>
                         <div class="col-sm-10 mb-4">
                             <input type="text" class="bg-light tw-text-left form-control border-0" name="email"
                                    placeholder="Email"/>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">d.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">f.</label>
                         <div class="col-sm-10 mb-4">
                             <input type="text" class="bg-light tw-text-left form-control border-0 " name="faculty"
                                    placeholder="Faculty"/>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">e.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
                         <div class="col-sm-10 mb-4">
                             <span class="">Bio</span>
                             <textarea class="bg-light tw-text-left form-control" name="bio"></textarea>
@@ -56,15 +68,16 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-9 row">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">f.</label>
+                    <div class="d-flex flex-row col-9">
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">h.</label>
                         <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0" name="current_employer"
+                            <input type="text" class="bg-light tw-text-left form-control border-0"
+                                   name="current_employer"
                                    placeholder="Current Employer"/>
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">i.</label>
                         <div class="col-sm-10 mb-4">
                             <select class="form-select text-muted bg-light border-0" name="self_employed">
                                 <option>Self employed</option>
@@ -74,7 +87,7 @@
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">j.</label>
                         <div class="col-sm-10 mb-4">
                             <select class="form-select text-muted bg-light border-0" name="profession_id">
                                 <option>Profession</option>
@@ -85,7 +98,7 @@
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">k.</label>
                         <div class="col-sm-10 mb-4">
                             <select class="form-select text-muted bg-light border-0" name="latest_education_level">
                                 <option>Latest Education</option>
@@ -96,17 +109,20 @@
                         </div>
                     </div>
                     <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">j.</label>
+                        <label for="colFormLabel" class="col-sm-2 col-form-label">l.</label>
                         <div class="col-sm-10 mb-4">
                             <input type="text" class="bg-light tw-text-left form-control border-0" name="address"
                                    placeholder="Location, Address, Street Number"/>
                         </div>
                     </div>
-                    <div class="d-flex text-center col-8 flex-column mt-2">
-
-                        <button class="btn btn btn-primary btn-lg shadow tw-tracking-wider mt-10  border-3">Save information</button>
-                        <a href="#" class=" mt-3 text-decoration-none text-muted  fw-bold"> click here to <span class="text-primary">review</span></a>
+                    <div class="d-flex flex-row col-9">
+                        <div class="col-sm-10 mb-4 offset-sm-2">
+                            <button class="btn btn btn-primary w-100 btn-lg shadow tw-tracking-wider mt-10  border-3">Save
+                                information
+                            </button>
+                        </div>
                     </div>
+
 
                 </div>
             </div>
@@ -122,7 +138,7 @@
 
     <script>
 
-        document.querySelector('#filePhoto').addEventListener('click',function(e){
+        document.querySelector('#filePhoto').addEventListener('click', function (e) {
             document.querySelector('#photo').click();
         });
     </script>
