@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certification;
+use App\Models\PersonalInformation;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $info= PersonalInformation::query()->where('user_id','=',auth()->id())->first();
+        if($info)
+            return  redirect()->route('registration.alumni.profile');
         return view('home');
     }
 
