@@ -5,10 +5,11 @@
         <form action="{{route('registration.personal.information.store')}}" method="post" id="submissionForm"
               class="submissionForm" enctype="multipart/form-data">
             @csrf
-            <div class="row pt-5 justify-content-center">
+            <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <div class="d-flex col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">a.</label>
+
+                    <div class="mb-3 col-8 m-5 mt-1">
+{{--                        <label for="colFormLabel" class="col-form-label">Faculty</label>--}}
                         <div class="col-sm-10">
                             <div id="filePhoto"
                                  class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-cursor-pointer mb-4">
@@ -23,99 +24,76 @@
                             <input type="file" class="file d-none col-5" name="photo" id="photo"/>
                         </div>
                     </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">b.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0" name="full_names"
-                                   placeholder="Full Names"/>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">c.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="date" class="bg-light tw-text-left form-control border-0" name="dob"
-                                   placeholder="Date of Birth"/>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">d.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0" name="phone_number"
-                                   placeholder="Phone Number"/>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">e.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0" name="email"
-                                   placeholder="Email"/>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">f.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0 " name="faculty"
-                                   placeholder="Faculty"/>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">g.</label>
-                        <div class="col-sm-10 mb-4">
-                            <span class="">Bio</span>
-                            <textarea class="bg-light tw-text-left form-control" name="bio"></textarea>
-                        </div>
 
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Full Names</label>
+                        <input type="text" class="form-control border-0 bg-light" name="full_names">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Date of Birth</label>
+                        <input type="date" class="form-control border-0 bg-light" name="dob">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Phone Number</label>
+                        <input type="text" class="form-control border-0 bg-light" name="phone_number">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Email</label>
+                        <input type="email" class="form-control border-0 bg-light" name="email">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Faculty</label>
+                        <input type="email" class="form-control border-0 bg-light" name="faculty">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Bio</label>
+                        <textarea class="bg-light tw-text-left form-control" name="bio"></textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">h.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0"
-                                   name="current_employer"
-                                   placeholder="Current Employer"/>
-                        </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Current Employer</label>
+                        <input type="email" class="form-control border-0 bg-light" name="current_employer">
                     </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">i.</label>
-                        <div class="col-sm-10 mb-4">
-                            <select class="form-select text-muted bg-light border-0" name="self_employed">
-                                <option>Self employed</option>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Self employed</label>
+                        <select class="form-select text-muted bg-light border-0" name="current_employer">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
                     </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">j.</label>
-                        <div class="col-sm-10 mb-4">
-                            <select class="form-select text-muted bg-light border-0" name="profession_id">
-                                <option>Profession</option>
-                                @foreach(App\Models\Profession::all() as $profession)
-                                    <option value="{{$profession->id}}">{{$profession->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Profession</label>
+                        <select class="form-select text-muted bg-light border-0" name="profession_id">
+                            @foreach(App\Models\Profession::all() as $profession)
+                                <option value="{{$profession->id}}">{{$profession->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">k.</label>
-                        <div class="col-sm-10 mb-4">
-                            <select class="form-select text-muted bg-light border-0" name="latest_education_level">
-                                <option>Latest Education</option>
-                                <option value="bachelor’s_degree">Bachelor’s Degree (Bcs)</option>
-                                <option value="masters_degree">Masters Degree</option>
-                                <option value="phd">PhD</option>
-                            </select>
-                        </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Latest education level</label>
+                        <select class="form-select text-muted bg-light border-0" name="latest_education_level">
+                            <option value="bachelor’s_degree">Bachelor’s Degree (Bcs)</option>
+                            <option value="masters_degree">Masters Degree</option>
+                            <option value="phd">PhD</option>
+                        </select>
                     </div>
-                    <div class="d-flex flex-row col-9">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">l.</label>
-                        <div class="col-sm-10 mb-4">
-                            <input type="text" class="bg-light tw-text-left form-control border-0" name="address"
-                                   placeholder="Location, Address, Street Number"/>
-                        </div>
+
+                    <div class="mb-6 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Address</label>
+                        <input type="email" class="form-control border-0 bg-light" name="address">
                     </div>
-                    <div class="d-flex flex-row col-9">
+
+                    <div class="mb-3 col-6 m-5 mt-1">
                         <div class="col-sm-10 mb-4 offset-sm-2">
                             <button class="btn btn btn-primary w-100 btn-lg shadow tw-tracking-wider mt-10  border-3">Save
                                 information

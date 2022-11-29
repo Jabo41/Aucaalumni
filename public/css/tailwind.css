@@ -131,9 +131,6 @@
 .tw-h-20 {
     height: 5rem !important
 }
-.tw-h-1 {
-    height: 0.25rem !important
-}
 .tw-h-full {
     height: 100% !important
 }
@@ -149,6 +146,9 @@
 .tw-h-4 {
     height: 1rem !important
 }
+.tw-h-6 {
+    height: 1.5rem !important
+}
 .tw-w-full {
     width: 100% !important
 }
@@ -160,6 +160,9 @@
 }
 .tw-w-32 {
     width: 8rem !important
+}
+.tw-w-6 {
+    width: 1.5rem !important
 }
 .tw-cursor-pointer {
     cursor: pointer !important
@@ -335,6 +338,10 @@
     --tw-text-opacity: 1 !important;
     color: rgb(156 163 175 / var(--tw-text-opacity)) !important
 }
+.tw-text-white {
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important
+}
 .tw-underline {
     text-decoration-line: underline !important
 }
@@ -360,6 +367,11 @@
     !*@apply tw-text-white;*!
 }
 */
+
+.hover\:tw-text-gray-300:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(209 213 219 / var(--tw-text-opacity)) !important
+}
 
 @media (min-width: 768px) {
     .md\:tw-h-36 {
