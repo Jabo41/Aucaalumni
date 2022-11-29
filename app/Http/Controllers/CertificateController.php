@@ -11,14 +11,17 @@ class CertificateController extends Controller
     public function store(CertificateRequest $request)
     {
         $request->validated();
+        $dir = 'public/certificate/photos';
+        $path = $request->file('image')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $certificate = new Certification();
-        $certificate->image = $request->image;
         $certificate->certificate_name = $request->certificate_name;
         $certificate->year = $request->year;
         $certificate->type = $request->type;
         $certificate->description = $request->description;
         $certificate ->user_id = auth()->id();
+        $certificate->image=$photo;
 //        dd($request->all());
         $certificate->save();
         return redirect()->back()->with('success','Work Certificate Stored Successfully');
@@ -27,14 +30,17 @@ class CertificateController extends Controller
     public function update(CertificateRequest $request){
 
         $request->validated();
+        $dir = 'public/certificate/photos';
+        $path = $request->file('image')->store($dir);
+        $photo= str_replace($dir,'',$path);
 
         $certificate = Certification::FindOrFail($request->input('WorkId'));
-        $certificate->image = $request->image;
         $certificate->certificate_name = $request->certificate_name;
         $certificate->year = $request->year;
         $certificate->type = $request->type;
         $certificate->description = $request->description;
         $certificate ->user_id = auth()->id();
+        $certificate->image=$photo;
         dd($request->all());
         $certificate->save();
         return redirect()->back()->with('success','Work Certificate Updated Successfully');

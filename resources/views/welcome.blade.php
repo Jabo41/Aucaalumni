@@ -22,7 +22,7 @@
 <!-- header -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white tw-shadow py-3">
     <div class="container">
-        <a class="navbar-brand tw-flex tw-items-center" href="#">
+        <a class="navbar-brand tw-flex tw-items-center" href="{{route('welcome')}}">
             <img src="{{ asset("assets/img/logo.png") }}" class="tw-h-20" alt="Logo"/>
             <span class="tw-ml-2 tw-text-xs tw-text-[#005CBB] tw-font-normal">
                     ADVENTIST UNIVERSITY <br>
@@ -75,57 +75,54 @@
 
 <!-- navbar -->
 
-<div class="nav-links tw-bg-[#F7F7F7] tw-py-5">
+
+
+<div class="nav-links tw-bg-[#F7F7F7]  tw-py-5">
     <div class="container">
-        <ul class="nav justify-content-between">
-            <li class="nav-item tw-flex tw-flex-column flex-column tw-items-center">
-                <a class="nav-link  active" href="#">
-                    Alumni Home
-                </a>
-                <span class="w-50 tw-h-1"></span>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link tw-text-gray-500" href="#event">
-                    Events
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link tw-text-gray-500" href="#news">
-                    Latest News
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link tw-text-gray-500" href="#program">
-                    Programs
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link tw-text-gray-500" href="#social_activities">
-                    Social Activities
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link tw-text-gray-500" href="#opportunities">
-                    Opportunities
-                </a>
-            </li>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
 
-        </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav justify-content-between gap-lg-5">
+                        <li class="nav-item">
+                            <a class="nav-link tw-text-gray-500" aria-current="page" href="#home">Alumni Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tw-text-gray-500" href="#event">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tw-text-gray-500" href="#news">Latest News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tw-text-gray-500" href="#program">Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tw-text-gray-500" href="#social_activities">Social Activities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tw-text-gray-500" href="#opportunities">Opportunities</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <div class="tw-grid md:tw-grid-cols-2 tw-mt-10">
-            <div>
-                <h3 class="tw-text-[#005CBB]">Become a member</h3>
-                <p class="tw-my-10 tw-text-gray-600 tw-text-sm tw-leading-loose tw-tracking-wide">
-                    AUCA Alumni is the best institution in central <br>
-                    Africa AUCA Alumni is the best institution <br>
-                    in central AfricaAUCA <a href="" class="tw-no-underline">Alumni is the best</a>
-                </p>
 
-                <a href="" class="btn tw-rounded-lg tw-bg-[#005CBB] text-white md:tw-w-72 tw-w-full tw-py-3">
-                    Apply Today
-                </a>
+        <section id="home" class="home">
+            <div class="tw-grid md:tw-grid-cols-2 tw-mt-10">
+                <div>
+                    <h3 class="tw-text-[#005CBB]">Become a member</h3>
+                    <p class="tw-my-10 tw-text-gray-600 tw-text-sm tw-leading-loose tw-tracking-wide">
+                        Become an international center of academic learning with global impact. <br>
+                        Provide Christ-centered wholistic quality education to prepare for service in this world, and in the life to come. <br>
+                        {{--                    <a href="" class="tw-no-underline">Alumni is the best</a>--}}
+                    </p>
 
-                <div class="tw-mt-10 tw-space-x-4 tw-text-xs tw-text-gray-500">
+                    <a href="https://auca.ac.rw/online-registration/" class="btn tw-rounded-lg tw-bg-[#005CBB] text-white md:tw-w-72 tw-w-full tw-py-3">
+                        Apply Today
+                    </a>
+
+                    <div class="tw-mt-10 tw-space-x-4 tw-text-xs tw-text-gray-500">
                         <span>
                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -134,25 +131,26 @@
                                     fill="#005CBB"/>
                             </svg>
 
-                            0780-123-456
+                            +250 724 796 998
                         </span>
-                    <span>
-                            <svg width="21" height="22" viewBox="0 0 21 22" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M21 10.3139C21 16.0101 16.2986 20.6278 10.5 20.6278C9.46004 20.6294 8.42439 20.4778 7.41956 20.177C6.65306 20.6131 4.893 21.45 1.932 21.9952C1.6695 22.0423 1.47 21.7358 1.57369 21.4618C2.03831 20.23 2.45831 18.5886 2.58431 17.0916C0.9765 15.2793 0 12.9071 0 10.3139C0 4.61769 4.70137 0 10.5 0C16.2986 0 21 4.61769 21 10.3139ZM6.5625 10.3139C6.5625 9.92314 6.42422 9.54837 6.17808 9.27205C5.93194 8.99573 5.5981 8.8405 5.25 8.8405C4.9019 8.8405 4.56806 8.99573 4.32192 9.27205C4.07578 9.54837 3.9375 9.92314 3.9375 10.3139C3.9375 10.7047 4.07578 11.0795 4.32192 11.3558C4.56806 11.6321 4.9019 11.7873 5.25 11.7873C5.5981 11.7873 5.93194 11.6321 6.17808 11.3558C6.42422 11.0795 6.5625 10.7047 6.5625 10.3139ZM11.8125 10.3139C11.8125 9.92314 11.6742 9.54837 11.4281 9.27205C11.1819 8.99573 10.8481 8.8405 10.5 8.8405C10.1519 8.8405 9.81806 8.99573 9.57192 9.27205C9.32578 9.54837 9.1875 9.92314 9.1875 10.3139C9.1875 10.7047 9.32578 11.0795 9.57192 11.3558C9.81806 11.6321 10.1519 11.7873 10.5 11.7873C10.8481 11.7873 11.1819 11.6321 11.4281 11.3558C11.6742 11.0795 11.8125 10.7047 11.8125 10.3139ZM15.75 11.7873C16.0981 11.7873 16.4319 11.6321 16.6781 11.3558C16.9242 11.0795 17.0625 10.7047 17.0625 10.3139C17.0625 9.92314 16.9242 9.54837 16.6781 9.27205C16.4319 8.99573 16.0981 8.8405 15.75 8.8405C15.4019 8.8405 15.0681 8.99573 14.8219 9.27205C14.5758 9.54837 14.4375 9.92314 14.4375 10.3139C14.4375 10.7047 14.5758 11.0795 14.8219 11.3558C15.0681 11.6321 15.4019 11.7873 15.75 11.7873Z"
-                                    fill="#005CBB"/>
-                            </svg>
+                        {{--                    <span>--}}
+                        {{--                            <svg width="21" height="22" viewBox="0 0 21 22" fill="none"--}}
+                        {{--                                 xmlns="http://www.w3.org/2000/svg">--}}
+                        {{--                                <path--}}
+                        {{--                                    d="M21 10.3139C21 16.0101 16.2986 20.6278 10.5 20.6278C9.46004 20.6294 8.42439 20.4778 7.41956 20.177C6.65306 20.6131 4.893 21.45 1.932 21.9952C1.6695 22.0423 1.47 21.7358 1.57369 21.4618C2.03831 20.23 2.45831 18.5886 2.58431 17.0916C0.9765 15.2793 0 12.9071 0 10.3139C0 4.61769 4.70137 0 10.5 0C16.2986 0 21 4.61769 21 10.3139ZM6.5625 10.3139C6.5625 9.92314 6.42422 9.54837 6.17808 9.27205C5.93194 8.99573 5.5981 8.8405 5.25 8.8405C4.9019 8.8405 4.56806 8.99573 4.32192 9.27205C4.07578 9.54837 3.9375 9.92314 3.9375 10.3139C3.9375 10.7047 4.07578 11.0795 4.32192 11.3558C4.56806 11.6321 4.9019 11.7873 5.25 11.7873C5.5981 11.7873 5.93194 11.6321 6.17808 11.3558C6.42422 11.0795 6.5625 10.7047 6.5625 10.3139ZM11.8125 10.3139C11.8125 9.92314 11.6742 9.54837 11.4281 9.27205C11.1819 8.99573 10.8481 8.8405 10.5 8.8405C10.1519 8.8405 9.81806 8.99573 9.57192 9.27205C9.32578 9.54837 9.1875 9.92314 9.1875 10.3139C9.1875 10.7047 9.32578 11.0795 9.57192 11.3558C9.81806 11.6321 10.1519 11.7873 10.5 11.7873C10.8481 11.7873 11.1819 11.6321 11.4281 11.3558C11.6742 11.0795 11.8125 10.7047 11.8125 10.3139ZM15.75 11.7873C16.0981 11.7873 16.4319 11.6321 16.6781 11.3558C16.9242 11.0795 17.0625 10.7047 17.0625 10.3139C17.0625 9.92314 16.9242 9.54837 16.6781 9.27205C16.4319 8.99573 16.0981 8.8405 15.75 8.8405C15.4019 8.8405 15.0681 8.99573 14.8219 9.27205C14.5758 9.54837 14.4375 9.92314 14.4375 10.3139C14.4375 10.7047 14.5758 11.0795 14.8219 11.3558C15.0681 11.6321 15.4019 11.7873 15.75 11.7873Z"--}}
+                        {{--                                    fill="#005CBB"/>--}}
+                        {{--                            </svg>--}}
 
-                            Chat
-                        </span>
+                        {{--                            Chat--}}
+                        {{--                        </span>--}}
+                    </div>
+                </div>
+                <div
+                    style="background-image: url({{ asset("assets/img/lady_back.jpeg") }});background-repeat: no-repeat;background-position: center;background-size: cover">
+                    <img src="{{ asset("assets/img/lady.png") }}" alt="Lady" class="tw-w-full tw-object-contain"/>
                 </div>
             </div>
-            <div
-                style="background-image: url({{ asset("assets/img/lady_back.jpeg") }});background-repeat: no-repeat;background-position: center;background-size: cover">
-                <img src="{{ asset("assets/img/lady.png") }}" alt="Lady" class="tw-w-full tw-object-contain"/>
-            </div>
-        </div>
+        </section>
 
 
     </div>
@@ -355,82 +353,82 @@
 <!--  opportunities  -->
 
 <section id="opportunities">
-<div class="tw-bg-[#F8F8F8] tw-py-5">
-    <div class="">
+    <div class="tw-bg-[#F8F8F8] tw-py-5">
+        <div class="">
 
-        <div class="tw-mt-10 mb-5">
-            <h3 class="tw-text-[#000000] tw-tracking-wide font-weight-bold text-center tw-flex justify-content-center align-items-center position-relative tw-text-4xl">
-                <span>OPPORTUNI</span>
-                <span class="py-1 pl-2  tw-bg-[#005CBB] tw-bottom-0 tw-block pr-4 text-white">
+            <div class="tw-mt-10 mb-5">
+                <h3 class="tw-text-[#000000] tw-tracking-wide font-weight-bold text-center tw-flex justify-content-center align-items-center position-relative tw-text-4xl">
+                    <span>OPPORTUNI</span>
+                    <span class="py-1 pl-2  tw-bg-[#005CBB] tw-bottom-0 tw-block pr-4 text-white">
                         TIES
                     </span>
-            </h3>
-        </div>
-        <div class="list-group list-group-flush">
-            @foreach($opportunity as $item)
-                <div class="list-group-item card bg-light mb-3 rounded-0">
-                    <div class="container">
-                        <div class="row no-gutters ">
-                            <div class="col-md-4">
-                                <img class="tw-w-full" src="{{$item->opportunities_url}}" alt="Home coming">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body py-md-0 px-0 mx-md-4  tw-h-full">
-                                    <div class="tw-w-full md:tw-w-72 mb-4">
-                                        <h3 class="card-title">{{$item->title}}</h3>
-                                        <p class="card-text tw-text-sm mt-4">
-                                            {{$item->description}}
-                                            <a href="" class="tw-no-underline">Alumni is the best</a>
-                                        </p>
-                                    </div>
+                </h3>
+            </div>
+            <div class="list-group list-group-flush">
+                @foreach($opportunity as $item)
+                    <div class="list-group-item card bg-light mb-3 rounded-0">
+                        <div class="container">
+                            <div class="row no-gutters ">
+                                <div class="col-md-4">
+                                    <img class="tw-w-full" src="{{$item->opportunities_url}}" alt="Home coming">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body py-md-0 px-0 mx-md-4  tw-h-full">
+                                        <div class="tw-w-full md:tw-w-72 mb-4">
+                                            <h3 class="card-title">{{$item->title}}</h3>
+                                            <p class="card-text tw-text-sm mt-4">
+                                                {{$item->description}}
+                                                <a href="" class="tw-no-underline">Alumni is the best</a>
+                                            </p>
+                                        </div>
 
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <small class="text-muted small mb-0">{{$item->date}}</small>
-                                        <button class="btn tw-bg-[#D69F12] rounded-0 mb-1 ml-5 text-white">
-                                            Apply
-                                        </button>
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <small class="text-muted small mb-0">{{$item->date}}</small>
+                                            <button class="btn tw-bg-[#D69F12] rounded-0 mb-1 ml-5 text-white">
+                                                Apply
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center pagination-sm">
+                    <li class="page-item disabled">
+                        <a class="page-link  tw-bg-transparent border-0 px-3 text-muted tw-font-semibold">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item ">
+                        <a class="page-link  tw-bg-transparent border-0 px-3  text-dark tw-font-semibold" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">5</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link tw-bg-transparent border-0 px-3 text-dark tw-font-semibold" href="#">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
-
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center pagination-sm">
-                <li class="page-item disabled">
-                    <a class="page-link  tw-bg-transparent border-0 px-3 text-muted tw-font-semibold">
-                        <i class="bi bi-chevron-left"></i>
-                    </a>
-                </li>
-                <li class="page-item ">
-                    <a class="page-link  tw-bg-transparent border-0 px-3  text-dark tw-font-semibold" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link tw-bg-transparent border-0 px-3 text-dark tw-font-semibold" href="#">
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
     </div>
-</div>
 </section>
 
 <!-- footer -->
@@ -518,6 +516,14 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
+
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".navbar-fixed-top");
+            $nav.toggleClass('bg-white', $(this).scrollTop() > $nav.height());
+        });
+    });
+
     //   upcoming events -->
     $('.events').slick({
         infinite: true,
@@ -553,7 +559,7 @@
         ]
     });
 
-    //   upcoming events -->
+    //   programs -->
     $('.programs').slick({
         infinite: true,
         slidesToShow: 3,

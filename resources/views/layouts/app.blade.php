@@ -200,7 +200,7 @@
 <body id="body-pd">
 
 <div class="d-flex min-vh-100">
-    <div class="l-navbar h-100 nav-show" id="nav-bar">
+    <div class="l-navbar min-vh-100 nav-show" id="nav-bar">
         <nav class="nav">
             <div>
                 <a href="#" class="nav_logo border-bottom border-white py-4 d-flex justify-content-center">
@@ -208,13 +208,31 @@
                         src="{{asset('assets/auca/imgs/logo.svg')}}"/>
                 </a>
                 <div class="nav_list">
-                    <a href="{{route('registration.personal.information')}}" class="nav_link"> <img
-                            src="{{asset('assets/auca/imgs/p_info.svg')}}"> <span
-                            class="nav_name">Personal information</span> </a>
-                    <a href="{{route('registration.work.experience')}}" class="nav_link"> <img
-                            src="{{asset('assets/auca/work.svg')}}"> <span class="nav_name">Work Experience</span> </a>
-                    <a href="{{route('registration.certification')}}" class="nav_link"> <img
-                            src="{{asset('assets/auca/imgs/cert.svg')}}"> <span class="nav_name">Certifications</span>
+                    <a href="{{route('registration.personal.information')}}" class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="tw-w-6 tw-h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span
+                            class="nav_name ">Personal information</span> </a>
+                    <a href="{{route('registration.work.experience')}}" class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="tw-w-6 tw-h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+                        </svg>
+
+                        <span class="nav_name">Work Experience</span>
+                    </a>
+                    <a href="{{route('registration.certification')}}" class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="tw-w-6 tw-h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/>
+                        </svg>
+
+                        <span class="nav_name">Certifications</span>
                     </a>
                 </div>
             </div>
@@ -257,7 +275,7 @@
                 </div>
             </div>
         </nav>
-        <div class="py-4">
+        <div class="">
             @yield('content')
         </div>
     </div>
@@ -313,6 +331,7 @@
     });
 </script>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @yield('scripts')
 </body>
 </html>
