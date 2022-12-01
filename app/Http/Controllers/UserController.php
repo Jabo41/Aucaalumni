@@ -22,6 +22,7 @@ class UserController extends Controller
         $user->email=$request->email;
         $user->phone_number=$request->phone_number;
         $user->is_staff='1';
+        $user->student_id='1';
         $user->password=bcrypt('password');
         $user->save();
         return redirect()->back()->with('success','User created successfully');
@@ -35,6 +36,7 @@ class UserController extends Controller
         $user->email=$request->email;
         $user->phone_number=$request->phone_number;
         $user->is_staff='1';
+        $user->student_id='1';
         $user->password=bcrypt('password');
         $user->save();
         return redirect()->back()->with('success','User updated successfully');
