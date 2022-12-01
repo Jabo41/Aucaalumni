@@ -19,4 +19,5 @@ class WelcomeController extends Controller
         $opportunity = Opportunity::all();
         return view('welcome',compact('events','news','programs','activities','opportunity'));
     }
+
 }

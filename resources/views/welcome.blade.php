@@ -173,11 +173,11 @@
 
                     <div class="card rounded-xl mx-2 mx-md-2 mx-lg-3 mx-xl-5">
                         <div class="card-body p-2">
-                            <img src="{{$event->up_coming_event_url}}" class="img-fluid rounded-xl w-100" alt=""/>
+                            <img src="{{$event->up_coming_event_url}}" class="img-fluid rounded-xl w-100 tw-h-32 tw-object-cover" alt=""/>
                             <div class="card-text">
                                 <p class="px-3 my-2 mb-0 font-weight-bold  tw-tracking-wide">
                                     {{$event->description}}
-                                    <a href="" class="tw-no-underline">Alumni is the best</a>
+{{--                                    <a href="" class="tw-no-underline">Alumni is the best</a>--}}
                                 </p>
                                 <p class="px-3 text-muted small mb-0">
                                     {{$event->date}}
@@ -277,13 +277,15 @@
 
                                     {{$item->description}}
                                 </small>
-                                <a href="#" style="bottom:0;right:0"
-                                   class="px-3 small text-right text-warning my-2 border-left py-0 rounded-0 ml-2 position-absolute">
-                                    <br> Apply
-                                    Now</a>
+
                             </div>
 
                         </div>
+                        <a href="https://auca.ac.rw/online-registration/" target="_blank"
+                           class="px-3 small btn-outline-warning btn btn-sm">
+                            Apply
+                            Now
+                        </a>
                     </div>
 
                 @endforeach
@@ -385,9 +387,13 @@
 
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <small class="text-muted small mb-0">{{$item->date}}</small>
+                                            <a href="https://auca.ac.rw/online-registration/" target="_blank">
                                             <button class="btn tw-bg-[#D69F12] rounded-0 mb-1 ml-5 text-white">
-                                                Apply
+
+                                                     Apply
+
                                             </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

@@ -10,6 +10,12 @@ class PersonalInformation extends Model
 {
     use HasFactory;
 
+    protected $casts =[
+        'start_date' =>"datetime",
+        'end_date' =>"datetime",
+
+    ];
+
     protected $appends = ['personal_information_url'];
 
     public function getPersonalInformationUrlAttribute()
