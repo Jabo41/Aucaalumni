@@ -34,19 +34,26 @@
     <div class="col-md-6  px-0">
         <div class="card bg-white shadow-none rounded-0 tw-border-none h-100 w-100">
             <div class="card-body   xl:tw-px-20 tw-px-10">
-                <form action="{{ route('register') }}" method="post" autocomplete="off">
+                <form action="{{ route('register') }}" method="post" autocomplete="off" class="submitForm">
                     @csrf
                     <div class="xl:tw-w-2/3">
                         <h5 class="mt-5 mb-3 fw-bolder tw-leading-loose tw-tracking-wider">
                             Create an account as an AUCA
                             Alumni
                         </h5>
-                        <div class="mb-2 d-flex justify-content-between align-items-center">
-                            <input type="search" class="bg-light tw-text-left tw-rounded-lg form-control border-0"
-                                   id="search_student" name="student_id"
-                                   placeholder="Enter student ID Number"/>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <input type="search" class="bg-light tw-text-left tw-rounded-lg form-control border-0"
+                                       id="search_student" name="student_id"
+                                       placeholder="Enter student ID Number"/>
+                                @error('student_id')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <button type="button" id="btnSearch"
-                                    class="btn tw-bg-[#BB7000]  tw-rounded-lg text-white px-3 m-2 d-inline-flex align-items-center">
+                                    class="btn tw-bg-[#BB7000] align-self-start tw-rounded-lg text-white px-3 ms-2 d-inline-flex align-items-center">
                                 <span class="me-1 sm">Verify</span>
                                 <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -56,9 +63,11 @@
                             </button>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('first_name') is-invalid @enderror"
+                            <input type="text"
+                                   class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('first_name') is-invalid @enderror"
                                    name="first_name" id="first_name"
-                                   placeholder="First Name" value="{{ old('first_name') }}" readonly  autocomplete="first_name" autofocus/>
+                                   placeholder="First Name" value="{{ old('first_name') }}" readonly
+                                   autocomplete="first_name" autofocus/>
 
                             @error('first_name')
                             <span class="invalid-feedback" role="alert">
@@ -68,8 +77,11 @@
 
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('last_name') is-invalid @enderror" id="last_name"
-                                   name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" readonly  autocomplete="last_name" autofocus/>
+                            <input type="text"
+                                   class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('last_name') is-invalid @enderror"
+                                   id="last_name"
+                                   name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" readonly
+                                   autocomplete="last_name" autofocus/>
 
                             @error('last_name')
                             <span class="invalid-feedback" role="alert">
@@ -79,9 +91,11 @@
 
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('phone_number') is-invalid @enderror"
+                            <input type="text"
+                                   class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('phone_number') is-invalid @enderror"
                                    name="phone_number"
-                                   placeholder="Phone Number" value="{{ old('phone_number') }}"  autocomplete="phone_number" autofocus/>
+                                   placeholder="Phone Number" value="{{ old('phone_number') }}"
+                                   autocomplete="phone_number" autofocus/>
 
                             @error('phone_number')
                             <span class="invalid-feedback" role="alert">
@@ -91,8 +105,10 @@
 
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('email') is-invalid @enderror"
-                                   name="email" placeholder="Username or email" value="{{ old('email') }}"  autocomplete="email">
+                            <input type="text"
+                                   class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('email') is-invalid @enderror"
+                                   name="email" placeholder="Email" value="{{ old('email') }}"
+                                   autocomplete="email">
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -105,7 +121,8 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-md-6">
-                            <input type="password" class="bg-light tw-text-left form-control border-0 @error('password') is-invalid @enderror"
+                            <input type="password"
+                                   class="bg-light tw-text-left form-control border-0 @error('password') is-invalid @enderror"
                                    placeholder="Password"
                                    name="password"/>
                             @error('password')
@@ -116,10 +133,10 @@
 
                         </div>
                         <div class="col-md-6">
-{{--                            <label for="password-confirm"></label>--}}
-                            <input  type="password" class="bg-light tw-text-left tw-rounded-lg form-control border-0"
+                            {{--                            <label for="password-confirm"></label>--}}
+                            <input type="password" class="bg-light tw-text-left tw-rounded-lg form-control border-0"
                                    name="password_confirmation" id="password-confirm"
-                                   placeholder="Confirm Password"  autocomplete="new-password"/>
+                                   placeholder="Confirm Password" autocomplete="new-password"/>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -158,8 +175,13 @@
     </div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+{{--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>--}}
+
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest(\App\Http\Requests\ValidateRegisterForm::class,'.submitForm') !!}
 
 <script>
 
@@ -179,51 +201,7 @@
             })
         });
     })
-    // $( function() {
-    //     var availableTags = [
-    //         "ActionScript",
-    //         "AppleScript",
-    //         "Asp",
-    //         "BASIC",
-    //         "C",
-    //         "C++",
-    //         "Clojure",
-    //         "COBOL",
-    //         "ColdFusion",
-    //         "Erlang",
-    //         "Fortran",
-    //         "Groovy",
-    //         "Haskell",
-    //         "Java",
-    //         "JavaScript",
-    //         "Lisp",
-    //         "Perl",
-    //         "PHP",
-    //         "Python",
-    //         "Ruby",
-    //         "Scala",
-    //         "Scheme"
-    //     ];
 
-    //     $( "#search_student" ).autocomplete({
-    //         source: availableTags
-    //     });
-    // } );
-
-    {{--    <script>--}}
-    {{--        var availableTags = [];--}}
-    {{--        $.ajax({--}}
-    {{--        method:"GET",--}}
-    {{--        url:"student-list",--}}
-    {{--        success: function (response){--}}
-
-    {{--    }--}}
-    {{--    });--}}
-    {{--        $( "#search_student" ).autocomplete({--}}
-    {{--        source: availableTags--}}
-    {{--    });--}}
-
-    {{--</script>--}}
 </script>
 
 </body>

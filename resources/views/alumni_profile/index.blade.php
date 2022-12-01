@@ -284,11 +284,11 @@
                         </a>
                     </div>
                     <div class="d-flex flex-column gap-2 mb-4">
-                        <div class="fw-bold">{{$information->full_names}}</div>
+                        <div class="fw-bold">{{auth()->user()->name}}</div>
                         <div class="text-primary fst-italic fw-bold">Bachelors in networking</div>
                         <div class="d-flex flex-row gap-3 text-muted text-normal fst-italic">
-                            <span>2015-2020</span>
-                            <span class="tw-font-semibold">Grade:A</span>
+                            <span>{{$information->start_date->format('Y')}}-{{$information->end_date->format('Y')}}</span>
+{{--                            <span class="tw-font-semibold">Grade:A</span>--}}
                         </div>
                         <div class="d-flex flex-row align-items-center gap-1">
                             @for($i=0;$i<4;$i++)
@@ -326,15 +326,15 @@
                                 class="d-flex flex-column flex-md-row flex-grow-1  gap-3 justify-content-between align-items-center p-2 bg-light">
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Full Names</em>
-                                    <div class="fw-semibold tw-text-xs">{{$information->full_names}}</div>
+                                    <div class="fw-semibold tw-text-xs">{{auth()->user()->name}}</div>
                                 </div>
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Email</em>
-                                    <div class="fw-semibold tw-text-xs">{{$information->email}}</div>
+                                    <div class="fw-semibold tw-text-xs">{{auth()->user()->email}}</div>
                                 </div>
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Phone Number</em>
-                                    <div class="fw-semibold tw-text-xs">{{$information->phone_number}}</div>
+                                    <div class="fw-semibold tw-text-xs">{{auth()->user()->phone_number}}</div>
                                 </div>
                                 <div class="">
                                     <em class="tw-text-gray-400 tw-text-sm fw-semibold">Address</em>

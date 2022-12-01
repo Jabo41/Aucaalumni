@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidateRegisterForm;
 use App\Models\Student;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,7 +56,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'student_id' => ['required', 'integer'],
+            'student_id' => ['required', 'integer', 'unique:users'],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],
@@ -69,8 +73,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::
-        create([
+        return User::create([
             'student_id' => $data['student_id'],
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -83,11 +86,34 @@ class RegisterController extends Controller
 
     public function filter()
     {
-        $s= Student::query()->where('id_number', '=', request('id_number'))->first();
-        if($s){
+        $s = Student::query()->where('id_number', '=', request('id_number'))->first();
+        if ($s) {
             return response()->json($s);
         }
-        return  response()->json('Error, Unable to find Student with that given ID number',404);
+        return response()->json('Error, Unable to find Student with that given ID number', 404);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function register(ValidateRegisterForm $request)
+    {
+//        $this->validator($request->all())->validate();
+        $data = $request->validated();
+        event(new Registered($user = $this->create($data)));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
     }
 
 

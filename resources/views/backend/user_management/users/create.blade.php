@@ -69,7 +69,7 @@
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
-{{--                                <th>Action</th>--}}
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -83,23 +83,23 @@
                                     <td>{{$item->phone_number}}</td>
                                     <td>
 
-{{--                                        <div class="dropdown">--}}
-{{--                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"--}}
-{{--                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"--}}
-{{--                                                    aria-expanded="false">--}}
-{{--                                                Action--}}
-{{--                                            </button>--}}
-{{--                                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">--}}
-{{--                                                <a href="#" data-id="{{$item->id}}"--}}
-{{--                                                   data-first="{{$item->first_name}}"--}}
-{{--                                                   data-last="{{$item->last_name}}"--}}
-{{--                                                   data-email="{{$item->email}}"--}}
-{{--                                                   data-phone="{{$item->phone_number}}"--}}
-{{--                                                   class="dropdown-item js-edit">Edit</a>--}}
-{{--                                                <a href="{{route('user.delete',$item->id)}}"--}}
-{{--                                                   class="dropdown-item js-delete">Delete</a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                Action
+                                            </button>
+                                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                                <a href="#" data-id="{{$item->id}}"
+                                                   data-first="{{$item->first_name}}"
+                                                   data-last="{{$item->last_name}}"
+                                                   data-email="{{$item->email}}"
+                                                   data-phone="{{$item->phone_number}}"
+                                                   class="dropdown-item js-edit">Edit</a>
+                                                <a href="{{route('user.delete',$item->id)}}"
+                                                   class="dropdown-item js-delete">Delete</a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

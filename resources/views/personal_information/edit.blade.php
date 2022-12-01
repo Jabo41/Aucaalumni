@@ -30,8 +30,13 @@
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Full Names</label>
-                        <input type="text" class="form-control border-0 bg-light" name="full_names" value="{{$information->full_names}}">
+                        <label for="colFormLabel" class="col-form-label">First Name</label>
+                        <input type="text" class="form-control border-0 bg-light" name="first_name" value="{{auth()->user()->first_name}}">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Last Name</label>
+                        <input type="text" class="form-control border-0 bg-light" name="last_name" value="{{auth()->user()->last_name}}">
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
@@ -41,12 +46,12 @@
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Phone Number</label>
-                        <input type="text" class="form-control border-0 bg-light" name="phone_number" value="{{$information->phone_number}}">
+                        <input type="text" class="form-control border-0 bg-light" name="phone_number" value="{{auth()->user()->phone_number}}">
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Email</label>
-                        <input type="email" class="form-control border-0 bg-light" name="email" value="{{$information->email}}">
+                        <input type="email" class="form-control border-0 bg-light" name="email" value="{{auth()->user()->email}}">
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">

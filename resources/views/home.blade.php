@@ -25,10 +25,10 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Full Names</label>
-                        <input type="text" class="form-control border-0 bg-light" name="full_names">
-                    </div>
+{{--                    <div class="mb-3 col-7 m-5 mt-1">--}}
+{{--                        <label for="colFormLabel" class="col-form-label">Full Names</label>--}}
+{{--                        <input type="text" class="form-control border-0 bg-light" name="full_names">--}}
+{{--                    </div>--}}
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Date of Birth</label>
@@ -36,19 +36,47 @@
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Phone Number</label>
-                        <input type="text" class="form-control border-0 bg-light" name="phone_number">
+                        <label for="colFormLabel" class="col-form-label">Address</label>
+                        <input type="email" class="form-control border-0 bg-light" name="address">
                     </div>
 
-                    <div class="mb-3 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Email</label>
-                        <input type="email" class="form-control border-0 bg-light" name="email">
-                    </div>
+{{--                    <div class="mb-3 col-7 m-5 mt-1">--}}
+{{--                        <label for="colFormLabel" class="col-form-label">Phone Number</label>--}}
+{{--                        <input type="text" class="form-control border-0 bg-light" name="phone_number">--}}
+{{--                    </div>--}}
+
+{{--                    <div class="mb-3 col-7 m-5 mt-1">--}}
+{{--                        <label for="colFormLabel" class="col-form-label">Email</label>--}}
+{{--                        <input type="email" class="form-control border-0 bg-light" name="email">--}}
+{{--                    </div>--}}
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Faculty</label>
                         <input type="email" class="form-control border-0 bg-light" name="faculty">
                     </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <div class="row ">
+                            <div class="col-lg-6">
+                                <div class="mb-3 mt-1">
+                                    <label for="startDate" class="form-label">Start Date</label>
+                                    <input type="date"
+                                           class="bg-light tw-text-left form-control border-0"
+                                           name="start_date"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+
+                                <div class="mb-3 mt-1">
+                                    <label for="endDate" class="form-label">End Date</label>
+                                    <input type="date"
+                                           class="bg-light tw-text-left form-control border-0"
+                                           name="end_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Bio</label>
@@ -79,7 +107,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-3 col-7 m-5 mt-1">
+                    <div class="mb-6 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Latest education level</label>
                         <select class="form-select text-muted bg-light border-0" name="latest_education_level">
                             <option value="bachelor’s_degree">Bachelor’s Degree (Bcs)</option>
@@ -88,10 +116,8 @@
                         </select>
                     </div>
 
-                    <div class="mb-6 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Address</label>
-                        <input type="email" class="form-control border-0 bg-light" name="address">
-                    </div>
+
+
 
                     <div class="mb-3 col-6 m-5 mt-1">
                         <div class="col-sm-10 mb-4 offset-sm-2">
