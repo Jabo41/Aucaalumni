@@ -58,7 +58,7 @@
                         <div class="mb-3">
                             <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('first_name') is-invalid @enderror"
                                    name="first_name" id="first_name"
-                                   placeholder="First Name" value="{{ old('first_name') }}"  autocomplete="first_name" autofocus/>
+                                   placeholder="First Name" value="{{ old('first_name') }}" readonly  autocomplete="first_name" autofocus/>
 
                             @error('first_name')
                             <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="mb-3">
                             <input type="text" class="bg-light tw-text-left tw-rounded-lg form-control border-0 @error('last_name') is-invalid @enderror" id="last_name"
-                                   name="last_name" placeholder="Last Name" value="{{ old('last_name') }}"  autocomplete="last_name" autofocus/>
+                                   name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" readonly  autocomplete="last_name" autofocus/>
 
                             @error('last_name')
                             <span class="invalid-feedback" role="alert">
