@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset("css/tailwind.css") }}">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
     <title>Auca Alumni | Home</title>
+    <link rel="shortcut icon" type="image" href="">
 </head>
 
 <body class="bg-white">
