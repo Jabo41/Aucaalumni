@@ -68,7 +68,7 @@
                                 <th>ID Number</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Action</th>
+{{--                                <th>Action</th>--}}
                             </tr>
                             </thead>
                             <tbody>
@@ -79,25 +79,25 @@
                                     <td>{{$item->id_number}}</td>
                                     <td>{{$item->first_name}}</td>
                                     <td>{{$item->last_name}}</td>
-                                    <td>
+{{--                                    <td>--}}
 
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                                                <a href="#" data-id="{{$item->id}}"
-                                                   data-id-number="{{$item->id_number}}"
-                                                   data-first-name="{{$item->first_name}}"
-                                                   data-last-name="{{$item->last_name}}"
-                                                   class="dropdown-item js-edit">Edit</a>
-                                                <a href="{{route('student.delete',$item->id)}}"
-                                                   class="dropdown-item js-delete">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
+{{--                                        <div class="dropdown">--}}
+{{--                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"--}}
+{{--                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"--}}
+{{--                                                    aria-expanded="false">--}}
+{{--                                                Action--}}
+{{--                                            </button>--}}
+{{--                                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">--}}
+{{--                                                <a href="#" data-id="{{$item->id}}"--}}
+{{--                                                   data-id-number="{{$item->id_number}}"--}}
+{{--                                                   data-first-name="{{$item->first_name}}"--}}
+{{--                                                   data-last-name="{{$item->last_name}}"--}}
+{{--                                                   class="dropdown-item js-edit">Edit</a>--}}
+{{--                                                <a href="{{route('student.delete',$item->id)}}"--}}
+{{--                                                   class="dropdown-item js-delete">Delete</a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </td>--}}
                                 </tr>
                             @endforeach
 

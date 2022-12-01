@@ -202,7 +202,7 @@
     <div class="l-navbar h-100 nav-show" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="#" class="nav_logo border-bottom border-white py-4 d-flex justify-content-center">
+                <a href="{{route('welcome')}}" class="nav_logo border-bottom border-white py-4 d-flex justify-content-center">
                     <img
                         src="{{asset('assets/auca/imgs/logo.svg')}}"/>
                 </a>
