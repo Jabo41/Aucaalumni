@@ -12,15 +12,18 @@
                     <div class="mb-3 col-8 m-5 mt-1">
                         {{--                        <label for="colFormLabel" class="col-form-label">Faculty</label>--}}
                         <div class="col-sm-10">
-                            <div id="filePhoto"
-                                 class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-cursor-pointer mb-4">
+
+                            <div style="background-image: url({{ $information->personal_information_url }})" id="filePhoto" title="Add your Photo"
+                                 data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                 class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-32 tw-cursor-pointer mb-4 tw-bg-cover tw-bg-no-repeat">
+
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
                                         fill="#A6A6A6"/>
                                 </svg>
-                                <em class="text-muted ms-2">Add your Photo</em>
+                                {{--                                <em class="text-muted ms-2" id="photoName">Add your Photo</em>--}}
                             </div>
                             <input type="file" class="file d-none col-5" name="photo" id="photo"/>
                         </div>
@@ -129,6 +132,23 @@
 
         document.querySelector('#filePhoto').addEventListener('click', function (e) {
             document.querySelector('#photo').click();
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#filePhoto').css("background-image", "url(" + e.target.result + ")");
+                    // $('#imagePreview').attr('src', e.target.result).removeClass('d-none');
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#photo').on('change', function (e) {
+            readURL(this);
         });
     </script>
 @endsection

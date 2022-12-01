@@ -208,7 +208,8 @@
                         src="{{asset('assets/auca/imgs/logo.svg')}}"/>
                 </a>
                 <div class="nav_list">
-                    <a href="{{route('registration.personal.information')}}" class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
+                    <a href="{{route('registration.personal.information')}}"
+                       class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="tw-w-6 tw-h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -216,7 +217,8 @@
                         </svg>
                         <span
                             class="nav_name ">Personal information</span> </a>
-                    <a href="{{route('registration.work.experience')}}" class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
+                    <a href="{{route('registration.work.experience')}}"
+                       class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="tw-w-6 tw-h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -225,7 +227,8 @@
 
                         <span class="nav_name">Work Experience</span>
                     </a>
-                    <a href="{{route('registration.certification')}}" class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
+                    <a href="{{route('registration.certification')}}"
+                       class="nav_link tw-text-white hover:tw-text-gray-300 tw-text-truncate">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="tw-w-6 tw-h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -255,21 +258,24 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-md-0 me-5 pe-5">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                {{ auth()->user()->name }}
-                                <img src="{{ asset("assets/img/avatar.svg") }}" style="height: 30px;" alt=""/>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="{{route('registration.alumni.profile')}}">Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"
-                                   onclick="document.getElementById('logout-form').submit()">Logout</a>
-                                <form action="{{route('logout')}}" style="display: none" method="post" id="logout-form">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    {{ auth()->user()->name }}
+                                    <img src="{{ asset("assets/img/avatar.svg") }}" style="height: 30px;" alt=""/>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="{{route('registration.alumni.profile')}}">Profile</a>
+                                    <a class="dropdown-item" href="javascript:void(0)"
+                                       onclick="document.getElementById('logout-form').submit()">Logout</a>
+                                    <form action="{{route('logout')}}" style="display: none" method="post" id="logout-form">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endauth
+
                     </ul>
 
                 </div>
@@ -332,6 +338,10 @@
 </script>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 @yield('scripts')
 </body>
 </html>
