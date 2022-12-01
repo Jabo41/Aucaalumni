@@ -287,7 +287,7 @@
                         <div class="fw-bold">{{auth()->user()->name}}</div>
                         <div class="text-primary fst-italic fw-bold">Bachelors in networking</div>
                         <div class="d-flex flex-row gap-3 text-muted text-normal fst-italic">
-                            <span>{{$information->start_date->format('Y')}}-{{$information->end_date->format('Y')}}</span>
+                            <span>{{optional($information->start_date)->format('Y')}}-{{optional($information->end_date)->format('Y')}}</span>
 {{--                            <span class="tw-font-semibold">Grade:A</span>--}}
                         </div>
                         <div class="d-flex flex-row align-items-center gap-1">
