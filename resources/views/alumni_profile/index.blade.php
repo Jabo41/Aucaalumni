@@ -279,7 +279,9 @@
                 @include('partials.frontend._alerts')
                 <div class="px-4">
                     <div class="d-flex  flex-row justify-content-between mb-4">
-                        <div class="text-muted">Go back <span class="text-primary fw-semibold ">home</span></div>
+                        <a href="{{route('welcome')}}">
+                            <div class="text-muted">Go back <span class="text-primary fw-semibold ">home</span></div>
+                        </a>
                     </div>
                     <div class="d-flex flex-column gap-2 mb-4">
                         <div class="fw-bold">{{$information->full_names}}</div>

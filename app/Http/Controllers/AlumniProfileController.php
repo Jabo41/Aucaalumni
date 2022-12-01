@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PersonalInformation;
+use Faker\Core\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlumniProfileController extends Controller
 {
@@ -25,12 +27,10 @@ class AlumniProfileController extends Controller
 
     public function update(Request $request,$id){
 
-        $dir = 'public/personal_information/photos';
-        $path = $request->file('photo')->store($dir);
-        $photo= str_replace($dir,'',$path);
+
 
         $information = PersonalInformation::find($id);
-        $information ->photo=$photo;
+
         $information->email=$request->email;
         $information->faculty=$request->faculty;
         $information->phone_number=$request->phone_number;
@@ -43,6 +43,17 @@ class AlumniProfileController extends Controller
         $information->full_names=$request->full_names;
         $information->dob=$request->dob;
         $information->user_id=auth()->id();
+        if ($request->hasFile('photo'))
+        {
+            $destination = 'public/personal_information/photos/'.$information->photo;
+            if(Storage::exists($destination)){
+                Storage::delete($destination);
+            }
+            $dir = 'public/personal_information/photos';
+            $path = $request->file('photo')->store($dir);
+            $photo= str_replace($dir,'',$path);
+            $information ->photo=$photo;
+        }
 //        dd($request->all());
         $information->save();
         return redirect('/registration-process/profile')->with('success','Personal Information Updated Successfully');

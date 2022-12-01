@@ -118,7 +118,7 @@
                         {{--                    <a href="" class="tw-no-underline">Alumni is the best</a>--}}
                     </p>
 
-                    <a href="https://auca.ac.rw/online-registration/" class="btn tw-rounded-lg tw-bg-[#005CBB] text-white md:tw-w-72 tw-w-full tw-py-3">
+                    <a href="https://auca.ac.rw/online-registration/" target="_blank" class="btn tw-rounded-lg tw-bg-[#005CBB] text-white md:tw-w-72 tw-w-full tw-py-3">
                         Apply Today
                     </a>
 

@@ -43,6 +43,7 @@
                                        data-id="{{$item->id}}"
                                        data-name="{{$item->certificate_name}}"
                                        data-year="{{$item->year}}"
+                                       data-image="{{url($item->certificate_url)}}"
                                        data-type="{{$item->type}}"
                                        data-description="{{$item->description}}"
                                        class="btn btn-primary js-edit"><span><i class="bi bi-pencil-square"></i></span></a>
@@ -121,13 +122,21 @@
 
                         <div class="row mb-4  mt-3">
                             <div class="col-lg-3 ">
-                                <div id="filePhoto"
-                                     class="border shadow bg-primary text-hover-light rounded-3 d-flex justify-content-center align-items-center h-100 tw-cursor-pointer mb-4">
-                                    <span><i class="bi bi-plus text-white"></i></span>
-                                    <em  class="text-white ms-2">Add a Certificate</em>
+                                <div id="filePhoto" title="Add your Certificate Photo"
+                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                     class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
+
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
+                                            fill="#A6A6A6"/>
+                                    </svg>
                                 </div>
-                                <input type="file" class="file d-none col-5 photo" name="image" id="photo" placeholder="Add your Photo"/>
+                                <input type="file" class="file d-none col-5 photo" name="image" id="photo" />
                             </div>
+
+
 
                             <div class="col-lg-3">
                                 <input type="text" class="bg-light tw-text-left form-control border-0 mb-4"
@@ -182,12 +191,18 @@
 
                         <div class="row mb-4  mt-3">
                             <div class="col-lg-3 ">
-                                <div id="filePhoto"
-                                     class="border shadow bg-primary text-hover-light rounded-3 d-flex justify-content-center align-items-center h-100 tw-cursor-pointer mb-4">
-                                    <span><i class="bi bi-plus text-white"></i></span>
-                                    <em  class="text-white ms-2">Add a Certificate</em>
+                                <div  id="editFilePhoto" title="Add your Certificate Photo"
+                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                      class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
+
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
+                                            fill="#A6A6A6"/>
+                                    </svg>
                                 </div>
-                                <input type="file" class="file d-none col-5 photo" name="image" id="photo" placeholder="Add your Photo"/>
+                                <input type="file" class="file d-none col-5 photo" name="image" id="edit-photos" />
                             </div>
 
                             <div class="col-lg-3">
@@ -232,8 +247,30 @@
     <script>
         document.querySelector('#filePhoto').addEventListener('click',function(e){
             document.querySelector('#photo').click();
-            //
-            // $('.photo').trigger('click');
+        });
+
+        document.querySelector('#editFilePhoto').addEventListener('click',function(e){
+            document.querySelector('#edit-photos').click();
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+
+                    $('#filePhoto').css("background-image", "url(" + e.target.result + ")");
+                    $('#editFilePhoto').css("background-image", "url(" + e.target.result + ")");
+                    // $('#imagePreview').attr('src', e.target.result).removeClass('d-none');
+                }
+
+                reader.readAsDataURL(input.files[0]);
+                console.log(input.files[0])
+            }
+        }
+
+        $('#photo, #edit-photos').on('change', function (e) {
+            readURL(this);
         });
     </script>
 
@@ -253,6 +290,8 @@
             $("#WorkId").val($(this).data('id'));
             $("#edit_certificate_name").val($(this).data('name'));
             $("#edit_year").val($(this).data('year'));
+            $("#edit_image").val($(this).data('image'));
+            $('#editFilePhoto').css("background-image", "url(" + $(this).data('image') + ")");
             $("#edit_type").val($(this).data('type'));
             $("#edit_description").val($(this).data('description'));
             $('#submissionFormEdit').attr('action', url);

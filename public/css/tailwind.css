@@ -140,14 +140,17 @@
 .tw-h-10 {
     height: 2.5rem !important
 }
-.tw-h-32 {
-    height: 8rem !important
+.tw-h-6 {
+    height: 1.5rem !important
 }
 .tw-h-4 {
     height: 1rem !important
 }
-.tw-h-6 {
-    height: 1.5rem !important
+.tw-w-36 {
+    width: 9rem !important
+}
+.tw-w-32 {
+    width: 8rem !important
 }
 .tw-w-full {
     width: 100% !important
@@ -157,9 +160,6 @@
 }
 .tw-w-10 {
     width: 2.5rem !important
-}
-.tw-w-32 {
-    width: 8rem !important
 }
 .tw-w-6 {
     width: 1.5rem !important
@@ -243,16 +243,18 @@
 .tw-bg-cover {
     background-size: cover !important
 }
+.tw-bg-contain {
+    background-size: contain !important
+}
 .tw-bg-center {
     background-position: center !important
+}
+.tw-bg-no-repeat {
+    background-repeat: no-repeat !important
 }
 .tw-object-contain {
     -o-object-fit: contain !important;
        object-fit: contain !important
-}
-.tw-object-cover {
-    -o-object-fit: cover !important;
-       object-fit: cover !important
 }
 .tw-py-5 {
     padding-top: 1.25rem !important;
