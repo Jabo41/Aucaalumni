@@ -60,11 +60,35 @@
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Bio</label>
-                        <textarea class="bg-light tw-text-left form-control" name="bio">{{$information->bio}}</textarea>
+                        <label for="colFormLabel" class="col-form-label">Department</label>
+                        <input type="email" class="form-control border-0 bg-light" name="department" value="{{$information->department}}">
                     </div>
+
+
                 </div>
                 <div class="col-lg-6">
+
+                    <div class="mb-3 col-7 m-5 mt-1">
+                        <div class="row ">
+                            <div class="col-lg-6">
+                                <div class="mb-3 mt-1">
+                                    <label for="startDate" class="form-label">Start Date </label>
+                                    <input type="date"
+                                           class="bg-light tw-text-left form-control border-0"
+                                           name="start_date" max="{{now()->toDateString()}}" value="{{optional($information->start_date)->format('Y-m-d')}}"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+
+                                <div class="mb-3 mt-1">
+                                    <label for="endDate" class="form-label">End Date</label>
+                                    <input type="date"
+                                           class="bg-light tw-text-left form-control border-0"
+                                           name="end_date" max="{{now()->toDateString()}}" value="{{optional($information->end_date)->format('Y-m-d')}}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Current Employer</label>
@@ -107,9 +131,14 @@
                         </select>
                     </div>
 
-                    <div class="mb-6 col-7 m-5 mt-1">
+                    <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Address</label>
                         <input type="email" class="form-control border-0 bg-light" name="address" value="{{$information->address}}">
+                    </div>
+
+                    <div class="mb-6 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Bio</label>
+                        <textarea class="bg-light tw-text-left form-control" name="bio">{{$information->bio}}</textarea>
                     </div>
 
                     <div class="mb-3 col-6 m-5 mt-1">

@@ -26,6 +26,7 @@ class PersonalInformationController extends Controller
         $information->latest_education_level=$request->latest_education_level;
         $information->address=$request->address;
         $information->dob=$request->dob;
+        $information->department=$request->department;
         $information->user_id=auth()->id();
 //        dd($request->all());
         $information->save();

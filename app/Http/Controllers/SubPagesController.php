@@ -13,4 +13,8 @@ class SubPagesController extends Controller
     public function socialActivity(){
         return view('sub_pages.social_activity.index');
     }
+
+    public function UpComingEvent(){
+        return view('sub_pages.up_coming_events.index');
+    }
 }

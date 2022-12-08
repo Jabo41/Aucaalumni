@@ -32,7 +32,6 @@
                             <td>{{++$key}}</td>
 {{--                            <td>{{ $item->image }}</td>--}}
                             <td><img src="{{$item->certificate_url}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
-                            <td>{{ $item->certificate_name }}</td>
                             <td>{{ $item->year }}</td>
                             <td>{{ $item->type }}</td>
                             <td>{{ $item->description }}</td>
@@ -41,7 +40,6 @@
                                 <div class="btn-group btn-group-sm">
                                     <a href="#" data-company="{{$item->image}}" data-url="{{ route('registration.certification.update') }}"
                                        data-id="{{$item->id}}"
-                                       data-name="{{$item->certificate_name}}"
                                        data-year="{{$item->year}}"
                                        data-image="{{url($item->certificate_url)}}"
                                        data-type="{{$item->type}}"
@@ -119,9 +117,8 @@
                 <form action="{{route('registration.certification.store')}}" method="post" class="submitForm" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body px-lg-5">
-
-                        <div class="row mb-4  mt-3">
-                            <div class="col-lg-3 ">
+                        <div class="row justify-content-center mt-3 mb-3">
+                            <div class="col-lg-6 ">
                                 <div id="filePhoto" title="Add your Certificate Photo"
                                      data-bs-toggle="tooltip" data-bs-placement="bottom"
                                      class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
@@ -135,36 +132,39 @@
                                 </div>
                                 <input type="file" class="file d-none col-5 photo" name="image" id="photo" />
                             </div>
-
-
-
-                            <div class="col-lg-3">
-                                <input type="text" class="bg-light tw-text-left form-control border-0 mb-4"
-                                       name="certificate_name"
-                                       placeholder="Certificate Name"/>
-                                <div class="form-group  text-muted">
-
-                                    <textarea class="form-control bg-light border-0" placeholder="Description" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
-                                </div>
+                            <div class="col-lg-6">
 
                             </div>
-                            <div class="col-lg-3">
-                                <input type="number" class="bg-light tw-text-left form-control border-0 mb-4"
-                                       name="year"
-                                       placeholder="Year"/>
+
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <label for="CertificateName" class="form-label">Certificate Name</label>
+                                <input type="text" class="bg-light tw-text-left form-control border-0" name="certificate_name"/>
                             </div>
-                            <div class="col-lg-3">
-                                <select class="bg-light tw-text-left form-control border-0 mb-4" name="type">
-                                    <option>Type</option>
+                            <div class="col-lg-6">
+                                <label for="Year" class="form-label">Year</label>
+                                <input type="number" class="bg-light tw-text-left form-control border-0 mb-4" name="year"/>
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="">
+                                <label for="JobTitle" class="form-label">Type</label>
+                                <select class="bg-light tw-text-left form-control border-0 mb-4" name="type" >
+                                    <option>--select type--</option>
                                     <option value="Certificate">Certificate</option>
                                     <option value="Training">Training</option>
-
                                 </select>
-
                             </div>
                         </div>
-
+                        <div class="form-group ">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
+                                      rows="3"></textarea>
+                        </div>
                     </div>
+
                     <div class="modal-footer border-top-0 px-lg-5">
                         <button type="submit" class="btn btn-primary">Save information</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -184,15 +184,14 @@
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('registration.certification.update')}}" method="post" id="submissionFormEdit" class="submitForm" enctype="multipart/form-data">
+                <form action="{{route('registration.certification.update')}}" method="post" id="submissionFormEdit" class="submitFormEdit" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" value="0"  id="WorkId" name="WorkId">
                     <div class="modal-body px-lg-5">
-
-                        <div class="row mb-4  mt-3">
-                            <div class="col-lg-3 ">
+                        <div class="row justify-content-center mt-3 mb-3">
+                            <div class="col-lg-6 ">
                                 <div  id="editFilePhoto" title="Add your Certificate Photo"
-                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                      data-bs-toggle="tooltip" data-bs-placement="bottom"
                                       class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
 
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -204,36 +203,41 @@
                                 </div>
                                 <input type="file" class="file d-none col-5 photo" name="image" id="edit-photos" />
                             </div>
-
-                            <div class="col-lg-3">
-                                <input type="text" class="bg-light tw-text-left form-control border-0 mb-4"
-                                       name="certificate_name" id="edit_certificate_name"
-                                       placeholder="Certificate Name"/>
-                                <div class="form-group  text-muted">
-
-                                    <textarea class="form-control bg-light border-0" placeholder="Description" id="edit_description" name="description" rows="3"></textarea>
-                                </div>
+                            <div class="col-lg-6">
 
                             </div>
-                            <div class="col-lg-3">
-                                <input type="number" class="bg-light tw-text-left form-control border-0 mb-4"
-                                       name="year" id="edit_year"
-                                       placeholder="Year"/>
+
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <label for="CertificateName" class="form-label">Certificate Name</label>
+                                <input type="text" class="bg-light tw-text-left form-control border-0" name="certificate_name" id="edit_certificate_name"/>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
+                                <label for="Year" class="form-label">Year</label>
+                                <input type="number" class="bg-light tw-text-left form-control border-0 mb-4" name="year" id="edit_year"/>
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="">
+                                <label for="JobTitle" class="form-label">Type</label>
                                 <select class="bg-light tw-text-left form-control border-0 mb-4" name="type" id="edit_type">
-                                    <option>Type</option>
+                                    <option>--select type--</option>
                                     <option value="Certificate">Certificate</option>
                                     <option value="Training">Training</option>
-
                                 </select>
-
                             </div>
                         </div>
-
+                        <div class="form-group ">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="edit_description"
+                                      rows="3"></textarea>
+                        </div>
                     </div>
+
                     <div class="modal-footer border-top-0 px-lg-5">
-                        <button type="submit" class="btn btn-primary">Save information</button>
+                        <button type="submit" class="btn btn-primary">Update information</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
@@ -277,6 +281,7 @@
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest(\App\Http\Requests\CertificateRequest::class,'.submitForm') !!}
+    {!! JsValidator::formRequest(\App\Http\Requests\EditCertificateRequest::class,'.submitFormEdit') !!}
     <script>
         $('.submissionForm').validate();
 

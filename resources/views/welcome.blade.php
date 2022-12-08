@@ -45,7 +45,7 @@
                             <img src="{{ asset("assets/img/avatar.svg") }}" style="height: 30px;" alt=""/>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{route('registration.alumni.profile')}}">Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();document.getElementById('logoutForm').submit();">Logout</a>
                             <form action="{{ route('logout') }}" id="logoutForm" method="post">
@@ -182,7 +182,7 @@
                                 <p class="px-3 text-muted small mb-0">
                                     {{$event->date}}
                                 </p>
-                                <a href="" class="text-center d-block text-warning my-2">Read more</a>
+                                <a href="{{route('up.coming.event.details',$event->id)}}" class="text-center d-block text-warning my-2">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -192,13 +192,12 @@
             </div>
 
 
+
         </div>
 
 
-        <img src="./assets/img/circle_left.png" class="img-fluid d-none d-md-block position-absolute img-event-left"
-             alt=""/>
-        <img src="./assets/img/circle_right.png" class="img-fluid d-none d-md-block position-absolute img-event-right"
-             alt=""/>
+        <img src="./assets/img/circle_left.png" class="img-fluid d-none d-md-block position-absolute img-event-left" alt=""/>
+        <img src="./assets/img/circle_right.png" class="img-fluid d-none d-md-block position-absolute img-event-right" alt=""/>
 
     </div>
 </section>
@@ -227,7 +226,7 @@
                         </p>
                         <div class="d-flex w-100 tw-text-sm">
                             <a href="" class="tw-no-underline">{{$item->date}}</a> &nbsp &nbsp &nbsp &nbsp &nbsp
-                            <a href="" class="ml-5 font-weight-bold tw-no-underline">Read more</a>
+                            <a href="{{route('latest.news.details',$item->id)}}" class="ml-5 font-weight-bold tw-no-underline">Read more</a>
                         </div>
                         <p class="tw-text-sm text-muted mt-4">
                             <i class="bi bi-eye"></i>
@@ -246,25 +245,16 @@
     </div>
 </section>
 
-<!-- programs -->
-
+<!--program-->
 <section id="program">
     <div class=" position-relative overflow-hidden">
-
         <div class="container">
-            <!-- <button class="btn text-white pr-5 rounded-0 bg-primary text-left" style="margin-left: 120px;">
-            Programs
-        </button> -->
-
             <a href="" class="btn tw-rounded-none bg-primary btn-lg text-white tw-pr-10 mx-md-5 mx-2 px-5"
                style="margin-left: 120px;">
                 Programs
             </a>
-
             <div class="programs mt-5 mb-5">
-
                 @foreach($programs as $item)
-
                     <div class="card border-0 rounded-0 me-5">
                         <div class="d-flex align-items-center  justify-content-center" style="background-image:
                      linear-gradient(180deg, rgba(8, 1, 46, 0.5) 0%, rgba(103, 97, 179, 0.5) 100%) ,
@@ -279,29 +269,92 @@
                                 </small>
 
                             </div>
-
                         </div>
-                        <a href="https://auca.ac.rw/online-registration/" target="_blank"
+                        <a href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal"
                            class="px-3 small btn-outline-warning btn btn-sm">
                             Apply
                             Now
                         </a>
                     </div>
-
                 @endforeach
-
             </div>
-
-
         </div>
-
-
-        <img src="{{ asset("assets/img/circle_left.png") }}"
-             class="img-fluid d-none d-md-block position-absolute img-event-left" alt=""/>
-        <img src="{{ asset("assets/img/circle_right.png") }}"
-             class="img-fluid d-none d-md-block position-absolute img-event-right" alt=""/>
-
+        <img src="{{ asset("assets/img/circle_left.png") }}" class="img-fluid d-none d-md-block position-absolute img-event-left" alt=""/>
+        <img src="{{ asset("assets/img/circle_right.png") }}" class="img-fluid d-none d-md-block position-absolute img-event-right" alt=""/>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pt-lg-5 px-lg-5 border-bottom-0">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">
+                        Program Attendance
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{route('program.attendance.store')}}" method="post" class="submitForm">
+                    @csrf
+                    <div class="modal-body px-lg-5">
+
+                        <div class="append" id="append">
+                            <div class="row justify-content-center mt-3 mb-3">
+
+                                <div class="col-lg-6">
+                                    <label for="company" class="form-label">Names</label>
+                                    <input type="text" class="bg-light tw-text-left form-control border-0"
+                                           name="names" id="company"
+                                    />
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="Employer" class="form-label">Email</label>
+                                    <input type="email" class="bg-light tw-text-left form-control border-0"
+                                           name="email"
+                                    />
+                                </div>
+
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-lg-6">
+                                    <label for="JobTitle" class="form-label">Phone Number</label>
+                                    <input type="text" class="bg-light tw-text-left form-control border-0"
+                                           name="phone_number"
+                                    />
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group  text-muted">
+                                                <label for="startDate" class="form-label">Start Date</label>
+                                                <input type="date"
+                                                       class="bg-light tw-text-left form-control border-0"
+                                                       name="start_date"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+
+                                            <div class="form-group  text-muted">
+                                                <label for="endDate" class="form-label">End Date</label>
+                                                <input type="date"
+                                                       class="bg-light tw-text-left form-control border-0"
+                                                       name="end_date"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer border-top-0 px-lg-5">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 <!-- social activities -->
@@ -328,14 +381,14 @@
                                         <h5 class="card-title">{{$item->title}}</h5>
                                         <p class="card-text tw-text-sm">
                                             {{$item->description}}
-                                            <a href="" class="tw-no-underline">Alumni is the best</a>
+{{--                                            <a href="" class="tw-no-underline">Alumni is the best</a>--}}
                                         </p>
                                     </div>
 
                                     <p class="card-text tw-text-xs mb-0">
                                         <span class="text-muted">{{$item->date}}</span>
                                         <a class="px-3 small text-right tw-text-[#D69F12] my-2  mb-0 position-relative ml-5"
-                                           href="">
+                                           href="{{route('social.activity.details',$item->id)}}">
                                             Read more
                                         </a>
                                     </p>
@@ -350,8 +403,6 @@
 
     </div>
 </section>
-
-
 
 <!--  opportunities  -->
 
