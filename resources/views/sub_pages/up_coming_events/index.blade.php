@@ -25,10 +25,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 ">
-                        <img src="{{$details->latest_news_url}}" class="img-fluid h-100">
+                        <img src="{{$details->up_coming_event_url}}" class="img-fluid h-100">
                     </div>
                     <div class="col-md-7 ">
-                        <h5 class="fw-bold fs-4">2021 Best jabooooo performers were awarded</h5>
+                        <h5 class="fw-bold fs-4">{{$details->date}}</h5>
                         <p class="small fw-bold">AUCA Alumni is the best institution
                             in central Africa AUCA Alumni is
                             central AfricaAUCA Alumni is the best AUCA Alumni is the best institution

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CertificateRequest;
+use App\Http\Requests\EditCertificateRequest;
 use App\Http\Requests\WorkExperienceRequest;
 use App\Models\Certification;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +29,7 @@ class CertificateController extends Controller
         return redirect()->back()->with('success','Work Certificate Stored Successfully');
     }
 
-    public function update(CertificateRequest $request){
+    public function update(EditCertificateRequest $request){
 
         $certificate = Certification::FindOrFail($request->input('WorkId'));
         $certificate->certificate_name = $request->certificate_name;

@@ -21,9 +21,18 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
+Route::get('latest-news/details/{id}',[App\Http\Controllers\WelcomeController::class,'latestNews'])->name('latest.news.details');
+Route::get('social-activity/detail/{id}',[App\Http\Controllers\WelcomeController::class,'socialActivity'])->name('social.activity.details');
+Route::get('up-coming-event/detail/{id}',[App\Http\Controllers\WelcomeController::class,'UpComingEvent'])->name('up.coming.event.details');
+
 //subpages
 Route::get('/latest_news',[App\Http\Controllers\SubPagesController::class,'latestNews'])->name('latest.news');
 Route::get('/social_activity',[App\Http\Controllers\SubPagesController::class,'socialActivity'])->name('latest.news');
+Route::get('/up_coming_event',[App\Http\Controllers\SubPagesController::class,'UpComingEvent'])->name('latest.news');
+
+//program attendance
+Route::post('/program-attendance',[App\Http\Controllers\ProgramAttendanceController::class,'store'])->name('program.attendance.store');
+
 
 Route::prefix('registration-process')->name('registration.')->group(function () {
 
@@ -49,6 +58,15 @@ Route::prefix('registration-process')->name('registration.')->group(function () 
     Route::get('/profile',[App\Http\Controllers\AlumniProfileController::class,'profile'])->name('alumni.profile');
     Route::get('/profile/edit/{id}',[App\Http\Controllers\AlumniProfileController::class,'edit'])->name('profile.edit');
     Route::put('/profile/update/{id}',[App\Http\Controllers\AlumniProfileController::class,'update'])->name('profile.update');
+
+    //all alumni
+    Route::get('all-alumni',[App\Http\Controllers\AllAlumniController::class,'index'])->name('all.alumni.members');
+
+    //opportunities
+    Route::get('/opportunities',[App\Http\Controllers\ApplyOpportunityController::class, 'index'])->name('apply.opportunity.index');
+    Route::post('/opportunity/store',[App\Http\Controllers\ApplyOpportunityController::class, 'store'])->name('apply.opportunity.store');
+    Route::post('/opportunity/update',[App\Http\Controllers\ApplyOpportunityController::class, 'update'])->name('apply.opportunity.update');
+    Route::get('/opportunity/delete/{id}',[App\Http\Controllers\ApplyOpportunityController::class, 'delete'])->name('apply.opportunity.delete');
 });
 
 

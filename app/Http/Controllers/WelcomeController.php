@@ -20,4 +20,20 @@ class WelcomeController extends Controller
         return view('welcome',compact('events','news','programs','activities','opportunity'));
     }
 
+
+    public function latestNews($id){
+        $details = LatestNew::find($id);
+        return view('sub_pages.latest_news.index',compact('details'));
+    }
+
+    public function socialActivity($id){
+        $details = SocialActivity::find($id);
+        return view('sub_pages.social_activity.index',compact('details'));
+    }
+
+    public function UpComingEvent($id){
+        $details = UpComingEvent::find($id);
+        return view('sub_pages.up_coming_events.index',compact('details'));
+    }
+
 }

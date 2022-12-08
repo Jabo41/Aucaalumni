@@ -32,7 +32,7 @@
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Date of Birth</label>
-                        <input type="date" class="form-control border-0 bg-light" name="dob">
+                        <input type="date" class="form-control border-0 bg-light" name="dob" max="{{now()->toDateString()}}">
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
@@ -56,13 +56,18 @@
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Department</label>
+                        <input type="email" class="form-control border-0 bg-light" name="department">
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
                         <div class="row ">
                             <div class="col-lg-6">
                                 <div class="mb-3 mt-1">
                                     <label for="startDate" class="form-label">Start Date</label>
                                     <input type="date"
                                            class="bg-light tw-text-left form-control border-0"
-                                           name="start_date"/>
+                                           name="start_date" max="{{now()->toDateString()}}"/>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -71,17 +76,14 @@
                                     <label for="endDate" class="form-label">End Date</label>
                                     <input type="date"
                                            class="bg-light tw-text-left form-control border-0"
-                                           name="end_date"/>
+                                           name="end_date" max="{{now()->toDateString()}}"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="mb-3 col-7 m-5 mt-1">
-                        <label for="colFormLabel" class="col-form-label">Bio</label>
-                        <textarea class="bg-light tw-text-left form-control" name="bio"></textarea>
-                    </div>
+
                 </div>
                 <div class="col-lg-6">
 
@@ -107,7 +109,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-6 col-7 m-5 mt-1">
+                    <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Latest education level</label>
                         <select class="form-select text-muted bg-light border-0" name="latest_education_level">
                             <option value="bachelor’s_degree">Bachelor’s Degree (Bcs)</option>
@@ -116,6 +118,10 @@
                         </select>
                     </div>
 
+                    <div class="mb-6 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label">Bio</label>
+                        <textarea class="bg-light tw-text-left form-control" name="bio"></textarea>
+                    </div>
 
 
 

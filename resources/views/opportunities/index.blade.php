@@ -5,11 +5,11 @@
 
         @include('partials.frontend._alerts')
 
-        <h5 class="fw-bold mt-5">Fill Work Name here</h5>
+        <h5 class="fw-bold mt-5">Opportunities</h5>
 
         <button type="button" class="btn btn btn-outline-primary fw-bold text-[#1866B6] col-3 border-3"
                 data-bs-toggle="modal" data-bs-target="#exampleModal"><span><i class="bi bi-plus"></i></span>
-            Add experience
+            Add opportunity
         </button>
 
         <div class="card my-4">
@@ -18,35 +18,37 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Company</th>
-                        <th>Employer</th>
-                        <th>Job Title</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
+                        <th>Opportunity Cover Photo</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Description</th>
                         <th>Options</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($works as $key=> $item)
+                    @foreach($opportunities as $item)
                         <tr>
-                            <td>{{++$key}}</td>
-                            <td>{{ $item->company }}</td>
-                            <td>{{ $item->employer }}</td>
-                            <td>{{ $item->job_title }}</td>
-                            <td>{{ $item->start_date }}</td>
-                            <td>{{ $item->end_date }}</td>
+                            <td>1</td>
+                            <td>
+                                <img src="{{$item->opportunities_url}}" width="50px" height="50px" alt="no_image"
+                                     class="img-fluid img-thumbnail"/>
+                            </td>
+                            <td>{{$item->title}}</td>
+                            <td>{{$item->date}}</td>
+                            <td>{{$item->description}}</td>
 
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="#" data-company="{{$item->company}}" data-date=""
+                                    <a href="#" data-company="{{$item->photo}}"
+                                       data-url="{{ route('registration.apply.opportunity.update') }}"
                                        data-id="{{$item->id}}"
-                                       data-employer="{{$item->employer}}"
-                                       data-title="{{$item->job_title}}"
-                                       data-start="{{$item->start_date}}"
-                                       data-end="{{$item->end_date}}"
-                                       data-description="{{$item->job_description}}"
+                                       data-title="{{$item->title}}"
+                                       data-date="{{$item->date}}"
+                                       data-image="{{url($item->opportunities_url)}}"
+                                       data-description="{{$item->description}}"
                                        class="btn btn-primary js-edit"><span><i class="bi bi-pencil-square"></i></span></a>
-                                    <a href="{{route('registration.work.experience.delete',$item->id)}}" class="btn btn-danger js-delete"><span><i class="bi bi-trash"></i></span></a>
+                                    <a href="{{route('registration.apply.opportunity.delete',$item->id)}}"
+                                       class="btn btn-danger js-delete"><span><i class="bi bi-trash"></i></span></a>
                                 </div>
                             </td>
 
@@ -111,71 +113,56 @@
             <div class="modal-content">
                 <div class="modal-header pt-lg-5 px-lg-5 border-bottom-0">
                     <h1 class="modal-title fs-5 " id="exampleModalLabel">
-                        Work Experience
+                        Opportunity
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('registration.work.experience.store')}}" method="post" class="submitForm">
+                <form action="{{route('registration.apply.opportunity.store')}}" method="post" class="submitForm"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body px-lg-5">
+                        <div class="row justify-content-center mt-3 mb-3">
+                            <div class="col-lg-6 ">
+                                <div id="filePhoto" title="Add your Cover Photo Here"
+                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                     class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
 
-                        <div class="append" id="append">
-                            <div class="row justify-content-center mt-3 mb-3">
-
-                                <div class="col-lg-6">
-                                    <label for="company" class="form-label">Company</label>
-                                    <input type="text" class="bg-light tw-text-left form-control border-0"
-                                           name="company" id="company"
-                                    />
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
+                                            fill="#A6A6A6"/>
+                                    </svg>
                                 </div>
-                                <div class="col-lg-6">
-                                    <label for="Employer" class="form-label">Employer</label>
-                                    <input type="text" class="bg-light tw-text-left form-control border-0"
-                                           name="employer"
-                                    />
-                                </div>
+                                <input type="file" class="file d-none col-5 photo" name="photo" id="photo"/>
+                            </div>
+                            <div class="col-lg-6">
 
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-6">
-                                    <label for="JobTitle" class="form-label">Job title</label>
-                                    <input type="text" class="bg-light tw-text-left form-control border-0"
-                                           name="job_title"
-                                    />
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group  text-muted">
-                                                <label for="startDate" class="form-label">Start Date</label>
-                                                <input type="date"
-                                                       class="bg-light tw-text-left form-control border-0"
-                                                       name="start_date"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
 
-                                            <div class="form-group  text-muted">
-                                                <label for="endDate" class="form-label">End Date</label>
-                                                <input type="date"
-                                                       class="bg-light tw-text-left form-control border-0"
-                                                       name="end_date"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <label for="Title" class="form-label">Title</label>
+                                <input type="text" class="bg-light tw-text-left form-control border-0" name="title"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="Year" class="form-label">Date</label>
+                                <input type="date" class="bg-light tw-text-left form-control border-0 mb-4"
+                                       name="date"/>
+                            </div>
 
-                            </div>
-                            <div class="form-group text-muted">
-                                <label>Job Description</label>
-                                <textarea class="form-control" name="job_description" id="exampleFormControlTextarea1"
-                                          rows="3"></textarea>
-                            </div>
                         </div>
 
+                        <div class="form-group ">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
+                                      rows="3"></textarea>
+                        </div>
                     </div>
+
                     <div class="modal-footer border-top-0 px-lg-5">
-                        <button type="submit" class="btn btn-primary">Save information</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
@@ -189,73 +176,58 @@
             <div class="modal-content">
                 <div class="modal-header pt-lg-5 px-lg-5 border-bottom-0">
                     <h1 class="modal-title fs-5 " id="exampleModalLabel">
-                        Work Experience
+                        Opportunity
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{route('registration.work.experience.update')}}" method="post" id="submissionFormEdit" class="submitForm">
+                <form action="{{route('registration.apply.opportunity.update')}}" method="post" id="submissionFormEdit"
+                      class="submitFormEdit" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" value="0"  id="WorkId" name="WorkId">
+                    <input type="hidden" value="0" id="OpportunityId" name="OpportunityId">
                     <div class="modal-body px-lg-5">
+                        <div class="row justify-content-center mt-3 mb-3">
+                            <div class="col-lg-6 ">
+                                <div id="editFilePhoto" title="Add Cover Photo Here"
+                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                     class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
 
-                        <div class="append" id="append">
-                            <div class="row justify-content-center mt-3">
-
-                                <div class="col-lg-6">
-                                    <label for="company" class="form-label">Company</label>
-                                    <input type="text" class="bg-light tw-text-left form-control border-0"
-                                           name="company" id="edit_company"
-                                           placeholder="Company"/>
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
+                                            fill="#A6A6A6"/>
+                                    </svg>
                                 </div>
-                                <div class="col-lg-6">
-                                    <label for="Employer" class="form-label">Employer</label>
-                                    <input type="text" class="bg-light tw-text-left form-control border-0"
-                                           name="employer" id="edit_employer"
-                                           placeholder="Employer"/>
-                                </div>
-
+                                <input type="file" class="file d-none col-5 photo" name="photo" id="edit-photos"/>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <label for="JobTitle" class="form-label">Job title</label>
-                                    <input type="text" class="bg-light tw-text-left form-control border-0"
-                                           name="job_title" id="edit_job_title"
-                                           placeholder="Job title"/>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group  text-muted">
-                                                <label for="startDate" class="form-label">Start ate</label>
-                                                <input type="date"
-                                                       class="bg-light tw-text-left form-control border-0"
-                                                       name="start_date" id="edit_start_date"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-
-                                            <div class="form-group  text-muted">
-                                                <label for="endDate" class="form-label">End ate</label>
-                                                <input type="date"
-                                                       class="bg-light tw-text-left form-control border-0"
-                                                       name="end_date" id="edit_end_date"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-lg-6">
 
                             </div>
 
-                            <div class="form-group text-muted">
-                                <label>Job Description</label>
-                                <textarea class="form-control" name="job_description" id="edit_job_description"
-                                          rows="3"></textarea>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <label for="Title" class="form-label">Title</label>
+                                <input type="text" class="bg-light tw-text-left form-control border-0" name="title"
+                                       id="edit_title"/>
                             </div>
+                            <div class="col-lg-6">
+                                <label for="Year" class="form-label">Date</label>
+                                <input type="date" class="bg-light tw-text-left form-control border-0 mb-4" name="date"
+                                       id="edit_date"/>
+                            </div>
+
                         </div>
 
+                        <div class="form-group ">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" id="edit_description"
+                                      rows="3"></textarea>
+                        </div>
                     </div>
+
                     <div class="modal-footer border-top-0 px-lg-5">
-                        <button type="submit" class="btn btn-primary">Save information</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
@@ -266,9 +238,40 @@
 
 @section('scripts')
 
+    <script>
+        document.querySelector('#filePhoto').addEventListener('click', function (e) {
+            document.querySelector('#photo').click();
+        });
+
+        document.querySelector('#editFilePhoto').addEventListener('click', function (e) {
+            document.querySelector('#edit-photos').click();
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+
+                    $('#filePhoto').css("background-image", "url(" + e.target.result + ")");
+                    $('#editFilePhoto').css("background-image", "url(" + e.target.result + ")");
+                    // $('#imagePreview').attr('src', e.target.result).removeClass('d-none');
+                }
+
+                reader.readAsDataURL(input.files[0]);
+                console.log(input.files[0])
+            }
+        }
+
+        $('#photo, #edit-photos').on('change', function (e) {
+            readURL(this);
+        });
+    </script>
+
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest(\App\Http\Requests\WorkExperienceRequest::class,'.submitForm') !!}
+    {!! JsValidator::formRequest(\App\Http\Requests\ApplyOpportunityRequest::class,'.submitForm') !!}
+    {!! JsValidator::formRequest(\App\Http\Requests\EditApplyOpportunityRequest::class,'.submitFormEdit') !!}
     <script>
         $('.submissionForm').validate();
 
@@ -280,12 +283,12 @@
             console.log($(this).data('description'));
             var url = $(this).data('url');
             $("#WorkId").val($(this).data('id'));
-            $("#edit_company").val($(this).data('company'));
-            $("#edit_employer").val($(this).data('employer'));
-            $("#edit_job_title").val($(this).data('title'));
-            $("#edit_start_date").val($(this).data('start'));
-            $("#edit_end_date").val($(this).data('end'));
-            $("#edit_job_description").val($(this).data('description'));
+            $("#edit_certificate_name").val($(this).data('title'));
+            $("#edit_year").val($(this).data('date'));
+            $("#edit_image").val($(this).data('image'));
+            $('#editFilePhoto').css("background-image", "url(" + $(this).data('image') + ")");
+            // $("#edit_type").val($(this).data('image'));
+            $("#edit_description").val($(this).data('description'));
             $('#submissionFormEdit').attr('action', url);
         });
         $(document).on('click', '.js-delete', function (e) {
@@ -316,3 +319,5 @@
     </script>
 
 @endsection
+
+
