@@ -16,4 +16,14 @@ class Opportunity extends Model
         return Storage::url('public/opportunities/photos' .$this->photo);
     }
 
+    public function getStatusColorAttribute()
+    {
+        $colors = [
+            'Pending' => 'warning',
+            'Approved' => 'success',
+            'Rejected' => 'danger',
+        ];
+        return $colors[$this->status] ?? 'secondary';
+    }
+
 }

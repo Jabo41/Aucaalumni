@@ -24,12 +24,23 @@ class ValidateRegisterForm extends FormRequest
     public function rules()
     {
         return [
-            'student_id' => ['required', 'integer', 'unique:users'],
+            'student_id' => [
+                'required', 'integer', 'unique:users,student_id', 'digits_between:5,6',
+                'exists:students,id_number'
+            ],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'student_id.unique' => 'This student id has already registered',
+            'student_id.exists' => 'Invalid student id provided.',
         ];
     }
 }

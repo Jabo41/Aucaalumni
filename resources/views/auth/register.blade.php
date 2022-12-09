@@ -196,7 +196,7 @@
                     $('#first_name').val(response.first_name);
                     $('#last_name').val(response.last_name);
                 }, error: function () {
-                    alert('Unable to find Student with that given ID number');
+                    // alert('Unable to find Student with that given ID number');
                 }
             })
         });

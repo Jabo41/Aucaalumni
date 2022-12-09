@@ -1,62 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container p-5 pt-0">
+    <div class="container px-md-5 pt-0">
 
         @include('partials.frontend._alerts')
 
-        <h5 class="fw-bold mt-5">Opportunities</h5>
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold mb-0">Opportunities</h5>
 
-        <button type="button" class="btn btn btn-outline-primary fw-bold text-[#1866B6] col-3 border-3"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"><span><i class="bi bi-plus"></i></span>
-            Add opportunity
-        </button>
+            <button type="button" class="btn btn btn-primary fw-bold text-[#1866B6] rounded-3" id="addBtn"
+                {{--data-bs-toggle="modal" data-bs-target="#addModal"--}}
+            >
+                <i class="bi bi-plus"></i>
+                Add opportunity
+            </button>
+        </div>
 
-        <div class="card my-4">
-            <div class="card-body">
-                <table class="table">
-                    <thead>
+        <div class="table-responsive rounded-3 border mt-4">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-uppercase text-muted">Cover Image</th>
+                    <th class="text-uppercase text-muted">Title</th>
+                    <th class="text-uppercase text-muted">Date</th>
+                    <th class="text-uppercase text-muted">Status</th>
+                    <th class="text-uppercase text-muted">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($opportunities as $item)
                     <tr>
-                        <th>#</th>
-                        <th>Opportunity Cover Photo</th>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Options</th>
+                        <td>
+                            <img src="{{$item->opportunities_url}}" alt="no_image"
+                                 class="img-fluid img-thumbnail rounded-circle tw-h-10 tw-w-10"/>
+                        </td>
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->date}}</td>
+                        <td>{{$item->status}}</td>
+
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a href="#" data-company="{{$item->photo}}"
+                                   data-url="{{ route('registration.apply.opportunity.update') }}"
+                                   data-id="{{$item->id}}"
+                                   data-title="{{$item->title}}"
+                                   data-date="{{$item->date}}"
+                                   data-image="{{url($item->opportunities_url)}}"
+                                   data-description="{{$item->description}}"
+                                   class="btn btn-primary js-edit rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                            class="bi bi-pencil-square"></i></span></a>
+                                <a href="{{route('registration.apply.opportunity.delete',$item->id)}}"
+                                   class="btn btn-danger js-delete rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                            class="bi bi-trash"></i></span></a>
+                            </div>
+                        </td>
+
                     </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($opportunities as $item)
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="{{$item->opportunities_url}}" width="50px" height="50px" alt="no_image"
-                                     class="img-fluid img-thumbnail"/>
-                            </td>
-                            <td>{{$item->title}}</td>
-                            <td>{{$item->date}}</td>
-                            <td>{{$item->description}}</td>
-
-                            <td>
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" data-company="{{$item->photo}}"
-                                       data-url="{{ route('registration.apply.opportunity.update') }}"
-                                       data-id="{{$item->id}}"
-                                       data-title="{{$item->title}}"
-                                       data-date="{{$item->date}}"
-                                       data-image="{{url($item->opportunities_url)}}"
-                                       data-description="{{$item->description}}"
-                                       class="btn btn-primary js-edit"><span><i class="bi bi-pencil-square"></i></span></a>
-                                    <a href="{{route('registration.apply.opportunity.delete',$item->id)}}"
-                                       class="btn btn-danger js-delete"><span><i class="bi bi-trash"></i></span></a>
-                                </div>
-                            </td>
-
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+                @endforeach
+                </tbody>
+            </table>
         </div>
 
 
@@ -107,145 +109,69 @@
     </div>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header pt-lg-5 px-lg-5 border-bottom-0">
-                    <h1 class="modal-title fs-5 " id="exampleModalLabel">
-                        Opportunity
-                    </h1>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Opportunity</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{route('registration.apply.opportunity.store')}}" method="post" class="submitForm"
                       enctype="multipart/form-data">
                     @csrf
-                    <div class="modal-body px-lg-5">
-                        <div class="row justify-content-center mt-3 mb-3">
-                            <div class="col-lg-6 ">
-                                <div id="filePhoto" title="Add your Cover Photo Here"
-                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                     class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
+                    <input type="hidden" name="id" value="0" id="id">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <div id="filePhoto" title="Add your Cover Photo Here"
+                                 data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                 class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
 
-                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
-                                            fill="#A6A6A6"/>
-                                    </svg>
-                                </div>
-                                <input type="file" class="file d-none col-5 photo" name="photo" id="photo"/>
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
+                                        fill="#A6A6A6"/>
+                                </svg>
                             </div>
-                            <div class="col-lg-6">
-
-                            </div>
-
+                            <input type="file" class="file d-none col-5 photo" name="photo" id="photo"/>
                         </div>
-                        <div class="row mb-2">
-                            <div class="col-lg-6">
-                                <label for="Title" class="form-label">Title</label>
-                                <input type="text" class="bg-light tw-text-left form-control border-0" name="title"/>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="Year" class="form-label">Date</label>
-                                <input type="date" class="bg-light tw-text-left form-control border-0 mb-4"
-                                       name="date"/>
-                            </div>
-
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="bg-light tw-text-left form-control border-0" name="title"
+                                   id="title"/>
                         </div>
-
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" id="date" class="bg-light tw-text-left form-control border-0 mb-4"
+                                   name="date"/>
+                        </div>
                         <div class="form-group ">
-                            <label>Description</label>
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" id="description"
                                       rows="3"></textarea>
                         </div>
                     </div>
-
-                    <div class="modal-footer border-top-0 px-lg-5">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Modal Update-->
-    <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header pt-lg-5 px-lg-5 border-bottom-0">
-                    <h1 class="modal-title fs-5 " id="exampleModalLabel">
-                        Opportunity
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{route('registration.apply.opportunity.update')}}" method="post" id="submissionFormEdit"
-                      class="submitFormEdit" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" value="0" id="OpportunityId" name="OpportunityId">
-                    <div class="modal-body px-lg-5">
-                        <div class="row justify-content-center mt-3 mb-3">
-                            <div class="col-lg-6 ">
-                                <div id="editFilePhoto" title="Add Cover Photo Here"
-                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                     class="border rounded-3 d-flex justify-content-center align-items-center tw-h-24 tw-w-36 tw-cursor-pointer mb-4 tw-bg-contain tw-bg-no-repeat tw-bg-center">
-
-                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.32 21.16V14.28H0.56V7.56H7.32V0.679998H14.28V7.56H21.04V14.28H14.28V21.16H7.32Z"
-                                            fill="#A6A6A6"/>
-                                    </svg>
-                                </div>
-                                <input type="file" class="file d-none col-5 photo" name="photo" id="edit-photos"/>
-                            </div>
-                            <div class="col-lg-6">
-
-                            </div>
-
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-lg-6">
-                                <label for="Title" class="form-label">Title</label>
-                                <input type="text" class="bg-light tw-text-left form-control border-0" name="title"
-                                       id="edit_title"/>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="Year" class="form-label">Date</label>
-                                <input type="date" class="bg-light tw-text-left form-control border-0 mb-4" name="date"
-                                       id="edit_date"/>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group ">
-                            <label>Description</label>
-                            <textarea class="form-control" name="description" id="edit_description"
-                                      rows="3"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer border-top-0 px-lg-5">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('scripts')
-
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest(\App\Http\Requests\ApplyOpportunityRequest::class,'.submitForm') !!}
+    {!! JsValidator::formRequest(\App\Http\Requests\EditApplyOpportunityRequest::class,'.submitFormEdit') !!}
     <script>
         document.querySelector('#filePhoto').addEventListener('click', function (e) {
             document.querySelector('#photo').click();
         });
 
-        document.querySelector('#editFilePhoto').addEventListener('click', function (e) {
-            document.querySelector('#edit-photos').click();
-        });
 
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -254,7 +180,7 @@
                 reader.onload = function (e) {
 
                     $('#filePhoto').css("background-image", "url(" + e.target.result + ")");
-                    $('#editFilePhoto').css("background-image", "url(" + e.target.result + ")");
+                    // $('#editFilePhoto').css("background-image", "url(" + e.target.result + ")");
                     // $('#imagePreview').attr('src', e.target.result).removeClass('d-none');
                 }
 
@@ -266,30 +192,20 @@
         $('#photo, #edit-photos').on('change', function (e) {
             readURL(this);
         });
-    </script>
 
-    <!-- Laravel Javascript Validation -->
-    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest(\App\Http\Requests\ApplyOpportunityRequest::class,'.submitForm') !!}
-    {!! JsValidator::formRequest(\App\Http\Requests\EditApplyOpportunityRequest::class,'.submitFormEdit') !!}
-    <script>
         $('.submissionForm').validate();
 
         $(document).on('click', '.js-edit', function (e) {
             e.preventDefault();
-            $("#modalUpdate").modal('show');
-            console.log($(this).data('id'));
-            console.log($(this).data('name'));
-            console.log($(this).data('description'));
             var url = $(this).data('url');
-            $("#WorkId").val($(this).data('id'));
-            $("#edit_certificate_name").val($(this).data('title'));
-            $("#edit_year").val($(this).data('date'));
+            $("#id").val($(this).data('id'));
+            $("#title").val($(this).data('title'));
+            $("#date").val($(this).data('date'));
             $("#edit_image").val($(this).data('image'));
-            $('#editFilePhoto').css("background-image", "url(" + $(this).data('image') + ")");
-            // $("#edit_type").val($(this).data('image'));
-            $("#edit_description").val($(this).data('description'));
-            $('#submissionFormEdit').attr('action', url);
+            $('#filePhoto').css("background-image", "url(" + $(this).data('image') + ")");
+            $("#description").val($(this).data('description'));
+
+            $("#addModal").modal('show');
         });
         $(document).on('click', '.js-delete', function (e) {
             e.preventDefault();
@@ -312,8 +228,13 @@
             });
         });
 
-        $('#exampleModal').on('hidden.bs.modal', function (e) {
-            $('#WorkId').val(0);
+        $('#addModal').on('hidden.bs.modal', function (e) {
+            $('#id').val(0);
+        });
+
+        $('#addBtn').on('click', function () {
+            console.log("Hello");
+            $('#addModal').modal('show');
         });
 
     </script>

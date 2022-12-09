@@ -396,6 +396,11 @@
     color: rgb(209 213 219 / var(--tw-text-opacity)) !important
 }
 
+.hover\:tw-text-blue-300:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(147 197 253 / var(--tw-text-opacity)) !important
+}
+
 @media (min-width: 768px) {
     .md\:tw-h-36 {
         height: 9rem !important

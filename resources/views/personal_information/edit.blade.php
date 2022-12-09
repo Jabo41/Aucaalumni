@@ -56,7 +56,14 @@
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Faculty</label>
-                        <input type="email" class="form-control border-0 bg-light" name="faculty" value="{{$information->faculty}}">
+                        <select class="form-select text-muted bg-light border-0" name="faculty">
+                            @foreach(App\Models\Faculty::all() as $faculty)
+                                <option value="{{$faculty->id}}"
+                                        @if($faculty->id==$information->faculty)selected @endif>{{$faculty->name}}</option>
+                            @endforeach
+
+
+                        </select>
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">

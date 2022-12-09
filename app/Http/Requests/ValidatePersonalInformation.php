@@ -36,6 +36,9 @@ class ValidatePersonalInformation extends FormRequest
             'address'=>'required',
             'full_names'=>'required',
             'dob'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+            'country_id'=>'required',
         ];
     }
 }

@@ -68,6 +68,7 @@
                                 <th>Image</th>
                                 <th>Title</th>
                                 <th>Date</th>
+                                <th>Status</th>
                                 <th>Description</th>
                                 <th>Action</th>
                             </tr>
@@ -80,6 +81,9 @@
                                     <td><img src="{{$item->opportunities_url}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
                                     <td>{{$item->title}}</td>
                                     <td>{{$item->date}}</td>
+                                    <td>
+                                        <span class="badge badge-{{$item->status_color}}">{{$item->status}}</span>
+                                    </td>
                                     <td>{{$item->description}}</td>
                                     <td>
 
@@ -98,6 +102,9 @@
                                                    class="dropdown-item js-edit">Edit</a>
                                                 <a href="{{route('opportunity.delete',$item->id)}}"
                                                    class="dropdown-item js-delete">Delete</a>
+                                                <a href="#"
+                                                   class="dropdown-item js-approval" data-toggle="modal"
+                                                   data-target="#modalApprove" data-id="{{$item->id}}">Approve</a>
                                             </div>
                                         </div>
                                     </td>
@@ -116,6 +123,8 @@
         <!--end::Container-->
     </div>
 
+
+    <!--modalAdd-->
     <div class="modal fade" id="exampleModalLong" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdrop" aria-hidden="true">
         <div class="modal-dialog">
@@ -163,9 +172,7 @@
         </div>
     </div>
 
-
-
-
+    <!--modalUpdate-->
     <div class="modal fade" id="modalUpdate" data-backdrop="static" tabindex="-1" role="dialog"
          aria-labelledby="staticBackdrop" aria-hidden="true">
         <div class="modal-dialog">
@@ -214,6 +221,50 @@
         </div>
     </div>
 
+    <!--modalApprove-->
+    <div class="modal fade" id="modalApprove" data-backdrop="static" tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="{{route('opportunity.history.store')}}" method="post" id="submissionFormApprove" class="submissionFormApprove" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" id="opportunity_id" name="OpportunityId">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Opportunity Approval</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            <select type="text" name="status" id="status" class="form-control">
+                                <option value="">---Select---</option>
+                                <option value="Approved">Approve</option>
+                                <option value="Rejected">Reject</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Comment">Comment</label>
+                            <textarea type="text" id="comment" name="comment" class="form-control" required></textarea>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- /.modal-content -->
+        </div>
+    </div>
 
 @endsection
 
@@ -222,6 +273,7 @@
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest(\App\Http\Requests\ValidateOpportunities::class,'.submissionForm') !!}
+    {!! JsValidator::formRequest(\App\Http\Requests\StoreOpportunityHistoryRequest::class,'.submissionFormApprove') !!}
     <script>
 
         $(document).ready(function() {
@@ -236,6 +288,7 @@
             console.log($(this).data('name'));
             var url = $(this).data('url');
             $("#OpportunityId").val($(this).data('id'));
+            $("#opportunity_id").val($(this).data('id'));
             $("#edit_photo").val($(this).data('photo'));
             $("#edit_title").val($(this).data('title'));
             $("#edit_date").val($(this).data('date'));
@@ -268,6 +321,12 @@
         $('#exampleModal').on('hidden.bs.modal', function (e) {
             $('#OpportunityId').val(0);
         });
+
+        $(document).on('click', '.js-approval', function(e){
+            e.preventDefault();
+
+            $('#opportunity_id').val($(this).data('id'))
+        })
 
     </script>
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PersonalInformationController extends Controller
 {
-    public function store(Request $request){
+    public function store(ValidatePersonalInformation $request){
 
         $dir = 'public/personal_information/photos';
         $path = $request->file('photo')->store($dir);

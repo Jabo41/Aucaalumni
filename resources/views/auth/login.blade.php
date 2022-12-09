@@ -33,7 +33,7 @@
     <div class="col-md-6  px-0">
         <div class="card bg-white shadow-none rounded-0 tw-border-none h-100 w-100">
             <div class="card-body py-5  xl:tw-px-20 tw-px-10">
-                <a href="{{route('welcome')}}" class="btn btn-light rounded text-muted px-4">
+                <a href="{{route('welcome')}}" class="btn btn-outline-primary rounded  px-4">
                     Home
                 </a>
                 <div class="xl:tw-w-2/3">
@@ -44,7 +44,7 @@
                     <form method="POST" action="{{ route('login') }}" autocomplete="off">
                         @csrf
                         <div class="mb-4">
-                            <input type="email" name="email" class="bg-light tw-text-left @error('email') is-invalid @enderror form-control border-0 px-4 py-2" placeholder="User email"/>
+                            <input type="email" name="email" class="bg-light tw-text-left @error('email') is-invalid @enderror form-control border-0 px-4 py-2" placeholder="User email" required/>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <input type="password" name="password" class="bg-light tw-text-left @error('password') is-invalid @enderror form-control border-0 px-4 py-2" placeholder="Password"/>
+                            <input type="password" name="password" class="bg-light tw-text-left @error('password') is-invalid @enderror form-control border-0 px-4 py-2" placeholder="Password" required/>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

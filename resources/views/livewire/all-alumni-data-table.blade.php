@@ -40,7 +40,7 @@
                         </td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->user->phone_number }}</td>
-                        <td>{{ $item->myFaculty->name }}</td>
+                        <td>{{ optional($item->myFaculty)->name }}</td>
                         <td>{{ $item->address }}</td>
                     </tr>
                 @endforeach
