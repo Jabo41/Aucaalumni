@@ -67,6 +67,10 @@ Route::prefix('registration-process')->name('registration.')->group(function () 
     Route::post('/opportunity/store',[App\Http\Controllers\ApplyOpportunityController::class, 'store'])->name('apply.opportunity.store');
     Route::post('/opportunity/update',[App\Http\Controllers\ApplyOpportunityController::class, 'update'])->name('apply.opportunity.update');
     Route::get('/opportunity/delete/{id}',[App\Http\Controllers\ApplyOpportunityController::class, 'delete'])->name('apply.opportunity.delete');
+
+
+    Route::post('/send-invitation',[\App\Http\Controllers\AlumniProfileController::class,'inviteMember'])->name('alumni-profile.invite-member');
+
 });
 
 
@@ -107,6 +111,9 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
     Route::post('/opportunity/update',[App\Http\Controllers\OpportunitiesController::class,'update'])->name("opportunity.update");
     Route::get('/opportunity/delete/{id}',[App\Http\Controllers\OpportunitiesController::class,'destroy'])->name("opportunity.delete");
 
+    //Approve Opportunity
+    Route::post('/opportunity-history',[App\Http\Controllers\OpportunityHistoryController::class,'store'])->name('opportunity.history.store');
+
     //User
     Route::get('/users',[App\Http\Controllers\UserController::class,'index'])->name("users");
     Route::post('/user/store',[App\Http\Controllers\UserController::class,'store'])->name("user.store");
@@ -124,5 +131,11 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
     Route::post('/profession/store',[App\Http\Controllers\ProfessionController::class,'store'])->name("profession.store");
     Route::post('/profession/update',[App\Http\Controllers\ProfessionController::class,'update'])->name("profession.update");
     Route::get('/profession/delete/{id}',[App\Http\Controllers\ProfessionController::class,'destroy'])->name("profession.delete");
+
+    //faculty
+    Route::get('/faculties',[App\Http\Controllers\FacultyController::class,'index'])->name("faculty.index");
+    Route::post('/faculty/store',[App\Http\Controllers\FacultyController::class,'store'])->name("faculty.store");
+    Route::post('/faculty/update',[App\Http\Controllers\FacultyController::class,'update'])->name("faculty.update");
+    Route::get('/faculty/delete/{id}',[App\Http\Controllers\FacultyController::class,'destroy'])->name("faculty.delete");
 });
 

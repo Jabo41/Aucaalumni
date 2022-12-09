@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-5 ">
                         <img src="{{$details->social_activities_url}}" class="img-fluid">
-                        <div class="d-flex flex-row py-2 gap-3 align-items-center"><h3>Kwibuka</h3><span
+                        <div class="d-flex flex-row py-2 gap-3 align-items-center"><h3>{{$details->title}}</h3><span
                                 class="small text-muted">june 16<sup>th</sup>,2021</span></div>
                         <p class="text-justify">Kwibuka26: Rwandans commemorate the 1994 Genocide Against the Tutsi
                             Kigali, 7 April 2020 – Rwandans started on Tuesday the 26th Commemoration of the 1994

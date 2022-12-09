@@ -16,7 +16,7 @@ class WelcomeController extends Controller
         $news = LatestNew::all();
         $programs = Program::all();
         $activities = SocialActivity::all();
-        $opportunity = Opportunity::all();
+        $opportunity = Opportunity::query()->where('status','=','Approved')->get();
         return view('welcome',compact('events','news','programs','activities','opportunity'));
     }
 

@@ -11,28 +11,38 @@ use Illuminate\Support\Facades\Storage;
 
 class ApplyOpportunityController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $opportunities = Opportunity::query()->where('user_id','=',auth()->id())->get();
-        return view('opportunities.index',compact('opportunities'));
+        $opportunities = Opportunity::query()->where('user_id', '=', auth()->id())->get();
+        return view('opportunities.index', compact('opportunities'));
     }
 
-    public function store(ApplyOpportunityRequest $request){
+    public function store(ApplyOpportunityRequest $request)
+    {
 
         $request->validated();
-        $dir = 'public/opportunities/photos';
-        $path = $request->file('photo')->store($dir);
-        $photo= str_replace($dir,'',$path);
+        $id = $request->input('id');
+        if ($id > 0) {
+            $applyOpportunity = Opportunity::query()->find($id);
+        } else {
+            $applyOpportunity = new Opportunity();
+        }
+        if ($request->hasFile('photo')) {
+            $dir = 'public/opportunities/photos';
+            $path = $request->file('photo')->store($dir);
+            $photo = str_replace($dir, '', $path);
+            $applyOpportunity->photo = $photo;
+        }
 
-        $applyOpportunity = new Opportunity();
-        $applyOpportunity->title=$request->title;
-        $applyOpportunity->date=$request->date;
-        $applyOpportunity->description=$request->description;
-        $applyOpportunity->photo=$photo;
-        $applyOpportunity ->user_id = auth()->id();
-//        dd($request->all());
+        $applyOpportunity->title = $request->title;
+        $applyOpportunity->date = $request->date;
+        $applyOpportunity->description = $request->description;
+
+        $applyOpportunity->user_id = auth()->id();
+        $applyOpportunity->status = 'Draft';
         $applyOpportunity->save();
-        return redirect()->back()->with('success','Opportunity Stored Successfully');
+        return redirect()->back()->with('success', 'Opportunity Stored Successfully');
     }
 
     public function update(EditApplyOpportunityRequest $request)
@@ -42,7 +52,7 @@ class ApplyOpportunityController extends Controller
         $opportunity->title = $request->title;
         $opportunity->date = $request->date;
         $opportunity->description = $request->description;
-        $opportunity ->user_id = auth()->id();
+        $opportunity->user_id = auth()->id();
 
         if ($request->hasFile('photo')) {
             $destination = 'public/opportunities/photos' . $opportunity->photo;
@@ -58,7 +68,8 @@ class ApplyOpportunityController extends Controller
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
         $opportunity = Opportunity::find($id);
         $opportunity->delete();

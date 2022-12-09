@@ -219,13 +219,10 @@
                     <div class="col-md-6 position-relative border-right">
                         <h4 class="font-weight-bolder tw-text-lg">{{$item->title}}</h4>
                         <p class="tw-font-semibold mt-4 tw-text-xs">
-                            AUCA Alumni is the best institution <br>
-                            in central Africa AUCA Alumni is <br>
-                            central AfricaAUCA
-                            <a href="" class="tw-no-underline">Alumni is the best </a>
+                            A{{$item->description}}
                         </p>
                         <div class="d-flex w-100 tw-text-sm">
-                            <a href="" class="tw-no-underline">{{$item->date}}</a> &nbsp &nbsp &nbsp &nbsp &nbsp
+                            <span class="tw-no-underline text-muted">{{$item->date}}</span> &nbsp &nbsp &nbsp &nbsp &nbsp
                             <a href="{{route('latest.news.details',$item->id)}}" class="ml-5 font-weight-bold tw-no-underline">Read more</a>
                         </div>
                         <p class="tw-text-sm text-muted mt-4">

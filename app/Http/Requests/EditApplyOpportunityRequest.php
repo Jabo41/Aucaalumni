@@ -24,10 +24,10 @@ class EditApplyOpportunityRequest extends FormRequest
     public function rules()
     {
         return [
-//            'photo'=>'required',
-            'title'=>'required',
-            'date'=>'required',
-            'description'=>'required',
+            'photo' => ['required_if:id,0'],
+            'title' => 'required',
+            'date' => 'required',
+            'description' => 'required',
         ];
     }
 }

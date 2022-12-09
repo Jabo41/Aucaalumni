@@ -24,6 +24,7 @@ class OpportunitiesController extends Controller
         $opportunity->title=$request->title;
         $opportunity->date=$request->date;
         $opportunity->description=$request->description;
+        $opportunity->status='Approved';
         $opportunity->photo=$photo;
         $opportunity->save();
         return redirect()->back()->with('success','Opportunity created successfully');

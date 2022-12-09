@@ -24,7 +24,7 @@ class ApplyOpportunityRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required',
+            'photo'=>'required_if:id,0',
             'title'=>'required',
             'date'=>'required',
             'description'=>'required',

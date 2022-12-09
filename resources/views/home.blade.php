@@ -36,6 +36,16 @@
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
+                        <label for="colFormLabel" class="col-form-label ">Country</label>
+{{--                        <input type="text" class="form-control border-0 bg-light" name="country_id"/>--}}
+                        <select class="form-select text-muted bg-light border-0 selectpicker select2" name="country_id">
+                            @foreach(App\Models\Country::all() as $faculty)
+                                <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Address</label>
                         <input type="email" class="form-control border-0 bg-light" name="address">
                     </div>
@@ -52,13 +62,23 @@
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Faculty</label>
-                        <input type="email" class="form-control border-0 bg-light" name="faculty">
+                        <select class="form-select text-muted bg-light border-0" name="faculty">
+                            @foreach(App\Models\Faculty::all() as $faculty)
+                                <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Department</label>
                         <input type="email" class="form-control border-0 bg-light" name="department">
                     </div>
+
+
+
+
+                </div>
+                <div class="col-lg-6">
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <div class="row ">
@@ -81,11 +101,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-                </div>
-                <div class="col-lg-6">
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Current Employer</label>
@@ -143,7 +158,8 @@
 
 @section('scripts')
     <!-- Laravel Javascript Validation -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest(\App\Http\Requests\ValidatePersonalInformation::class,'.submissionForm') !!}
 
@@ -168,6 +184,13 @@
 
         $('#photo').on('change', function (e) {
             readURL(this);
+        });
+
+        $(document).ready(function() {
+            $('.select2').select2({
+                tags:true,
+                templateResult: formatState,
+            });
         });
     </script>
 @endsection
