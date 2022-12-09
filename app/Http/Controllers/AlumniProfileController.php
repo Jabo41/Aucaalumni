@@ -81,12 +81,12 @@ class AlumniProfileController extends Controller
 
         $email = \request('email');
 
-        if($email==auth()->user()->email){
+        if ($email == auth()->user()->email) {
             return back()
                 ->with('error', "Email provided is yours.");
         }
 
-        Mail::to($email)->send(new MemberInvited());
+        Mail::to($email)->send(new MemberInvited(auth()->user()));
 
         return back()
             ->with('success', "Invitation Sent Successfully");
