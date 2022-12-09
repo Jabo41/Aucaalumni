@@ -11,14 +11,16 @@ class MemberInvited extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    public $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -29,7 +31,7 @@ class MemberInvited extends Mailable implements ShouldQueue
     public function build()
     {
         return $this->markdown('emails.members.invited', [
-            'url' => route('register')
-        ]);
+            'url' => route('register'),
+        ])->subject('Join AUCA Alumni Community  ');
     }
 }

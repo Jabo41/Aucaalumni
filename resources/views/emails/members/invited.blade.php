@@ -1,11 +1,12 @@
 @component('mail::message')
 # Hello
 
-You are invited to join AUCA alumni members platform, you click the link below to join us.
+{{$user->name}} invites you to join AUCA alumni community , click to the link below to join.
 
 @component('mail::button', ['url' => $url])
-Join Us
+Click Here
 @endcomponent
+In case you are having trouble clicking the link you can copy and paste this link in the browser. {{ $url }}
 
 Thanks,<br>
 {{ config('app.name') }}
