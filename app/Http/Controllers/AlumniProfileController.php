@@ -47,6 +47,8 @@ class AlumniProfileController extends Controller
 //        $information->faculty=$request->faculty;
         $information->dob = $request->dob;
         $information->department = $request->department;
+        $information->start_date = $request->start_date;
+        $information->end_date = $request->end_date;
         $information->user_id = auth()->id();
         if ($request->hasFile('photo')) {
             $destination = 'public/personal_information/photos/' . $information->photo;

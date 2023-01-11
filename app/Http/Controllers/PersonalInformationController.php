@@ -9,12 +9,14 @@ use Illuminate\Http\Request;
 class PersonalInformationController extends Controller
 {
     public function store(ValidatePersonalInformation $request){
+//        dd($request->all());
 
         $dir = 'public/personal_information/photos';
         $path = $request->file('photo')->store($dir);
         $photo= str_replace($dir,'',$path);
 
         $information = new PersonalInformation();
+//        return $information;
         $information ->photo=$photo;
         $information->start_date=$request->start_date;
         $information->faculty=$request->faculty;

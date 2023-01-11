@@ -13,10 +13,10 @@ class WelcomeController extends Controller
 {
     public function welcome(){
         $events = UpComingEvent::all();
-        $news = LatestNew::all();
+        $news = LatestNew::query()->orderBy('id','DESC')->simplePaginate(2);
         $programs = Program::all();
         $activities = SocialActivity::all();
-        $opportunity = Opportunity::query()->where('status','=','Approved')->get();
+        $opportunity = Opportunity::query()->where('status','=','Approved')->paginate(2);
         return view('welcome',compact('events','news','programs','activities','opportunity'));
     }
 

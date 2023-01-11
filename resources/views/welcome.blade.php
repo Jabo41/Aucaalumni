@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset("css/tailwind.css") }}">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
     <title>Auca Alumni | Home</title>
-    <link rel="shortcut icon" type="image" href="">
+    <link rel="shortcut icon" type="image" href="{{asset('download.png')}}" class="rounded-circle">
 </head>
 
 <body class="bg-white">
@@ -77,7 +77,6 @@
 <!-- navbar -->
 
 
-
 <div class="nav-links tw-bg-[#F7F7F7]  tw-py-5">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-light">
@@ -115,11 +114,13 @@
                     <h3 class="tw-text-[#005CBB]">Become a member</h3>
                     <p class="tw-my-10 tw-text-gray-600 tw-text-sm tw-leading-loose tw-tracking-wide">
                         Become an international center of academic learning with global impact. <br>
-                        Provide Christ-centered wholistic quality education to prepare for service in this world, and in the life to come. <br>
+                        Provide Christ-centered wholistic quality education to prepare for service in this world, and in
+                        the life to come. <br>
                         {{--                    <a href="" class="tw-no-underline">Alumni is the best</a>--}}
                     </p>
 
-                    <a href="https://auca.ac.rw/online-registration/" target="_blank" class="btn tw-rounded-lg tw-bg-[#005CBB] text-white md:tw-w-72 tw-w-full tw-py-3">
+                    <a href="https://auca.ac.rw/online-registration/" target="_blank"
+                       class="btn tw-rounded-lg tw-bg-[#005CBB] text-white md:tw-w-72 tw-w-full tw-py-3">
                         Apply Today
                     </a>
 
@@ -162,7 +163,7 @@
 <section id="event" class="event">
     <div class="tw-bg-[#005CBB]  tw-py-10 position-relative overflow-hidden">
 
-        <div class="container">
+        <div class="container  position-relative tw-z-10">
             <a href="" class="btn tw-rounded-none bg-white btn-lg tw-text-[#005DBB] tw-pr-10 mx-md-5 mx-2">
                 Upcoming Events
             </a>
@@ -171,18 +172,21 @@
 
                 @foreach($events as $event)
 
-                    <div class="card rounded-xl mx-2 mx-md-2 mx-lg-3 mx-xl-5">
-                        <div class="card-body p-2">
-                            <img src="{{$event->up_coming_event_url}}" class="img-fluid rounded-xl w-100 tw-h-32 tw-object-cover" alt=""/>
+                    <div class="card rounded-0 mx-2 mx-md-2 mx-lg-3 mx-xl-5 ">
+                        <div class="card-body p-2 ">
+                            <img src="{{$event->up_coming_event_url}}"
+                                 class="img-fluid rounded-0 w-100 tw-h-32 tw-object-cover" alt=""/>
                             <div class="card-text">
                                 <p class="px-3 my-2 mb-0 font-weight-bold  tw-tracking-wide">
                                     {{$event->description}}
-{{--                                    <a href="" class="tw-no-underline">Alumni is the best</a>--}}
+                                    {{--                                    <a href="" class="tw-no-underline">Alumni is the best</a>--}}
                                 </p>
                                 <p class="px-3 text-muted small mb-0">
                                     {{$event->date}}
                                 </p>
-                                <a href="{{route('up.coming.event.details',$event->id)}}" class="text-center d-block text-warning my-2">Read more</a>
+                                <a href="{{route('up.coming.event.details',$event->id)}}"
+                                   class="text-center d-block text-warning my-2 ">Read
+                                    more</a>
                             </div>
                         </div>
                     </div>
@@ -192,12 +196,13 @@
             </div>
 
 
-
         </div>
 
 
-        <img src="./assets/img/circle_left.png" class="img-fluid d-none d-md-block position-absolute img-event-left" alt=""/>
-        <img src="./assets/img/circle_right.png" class="img-fluid d-none d-md-block position-absolute img-event-right" alt=""/>
+        <img src="./assets/img/circle_left.png"
+             class="img-fluid d-none d-md-block position-absolute img-event-left" alt=""/>
+        <img src="./assets/img/circle_right.png"
+             class="img-fluid d-none d-md-block position-absolute img-event-right" alt=""/>
 
     </div>
 </section>
@@ -222,14 +227,17 @@
                             A{{$item->description}}
                         </p>
                         <div class="d-flex w-100 tw-text-sm">
-                            <span class="tw-no-underline text-muted">{{$item->date}}</span> &nbsp &nbsp &nbsp &nbsp &nbsp
-                            <a href="{{route('latest.news.details',$item->id)}}" class="ml-5 font-weight-bold tw-no-underline">Read more</a>
+                            <span class="tw-no-underline text-muted">{{$item->date}}</span> &nbsp &nbsp &nbsp &nbsp
+                            &nbsp
+                            <a href="{{route('latest.news.details',$item->id)}}"
+                               class="ml-5 font-weight-bold tw-no-underline">Read more</a>
                         </div>
                         <p class="tw-text-sm text-muted mt-4">
                             <i class="bi bi-eye"></i>
                             2,830
                         </p>
-                        <img src="{{$item->latest_news_url}}" class="img-fluid position-absolute shadow d-none d-lg-block"
+                        <img src="{{$item->latest_news_url}}"
+                             class="img-fluid position-absolute shadow d-none d-lg-block"
                              style="width: 150px;height:250px;object-fit: cover;object-position: top;top: -70px;right: 20px;"
                              alt="">
                     </div>
@@ -237,6 +245,11 @@
                 @endforeach
 
             </div>
+            <div class="d-flex justify-content-center mt-4">
+                {{ $news->links() }}
+            </div>
+            {{--            {!! $news->links() !!}--}}
+            {{--            {{ $news->links() }}--}}
 
         </div>
     </div>
@@ -267,7 +280,7 @@
 
                             </div>
                         </div>
-                        <a href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
                            class="px-3 small btn-outline-warning btn btn-sm">
                             Apply
                             Now
@@ -276,8 +289,7 @@
                 @endforeach
             </div>
         </div>
-        <img src="{{ asset("assets/img/circle_left.png") }}" class="img-fluid d-none d-md-block position-absolute img-event-left" alt=""/>
-        <img src="{{ asset("assets/img/circle_right.png") }}" class="img-fluid d-none d-md-block position-absolute img-event-right" alt=""/>
+
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -378,7 +390,7 @@
                                         <h5 class="card-title">{{$item->title}}</h5>
                                         <p class="card-text tw-text-sm">
                                             {{$item->description}}
-{{--                                            <a href="" class="tw-no-underline">Alumni is the best</a>--}}
+                                            {{--                                            <a href="" class="tw-no-underline">Alumni is the best</a>--}}
                                         </p>
                                     </div>
 
@@ -416,6 +428,7 @@
                 </h3>
             </div>
             <div class="list-group list-group-flush">
+
                 @foreach($opportunity as $item)
                     <div class="list-group-item card bg-light mb-3 rounded-0">
                         <div class="container">
@@ -436,11 +449,11 @@
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <small class="text-muted small mb-0">{{$item->date}}</small>
                                             <a href="https://auca.ac.rw/online-registration/" target="_blank">
-                                            <button class="btn tw-bg-[#D69F12] rounded-0 mb-1 ml-5 text-white">
+                                                <button class="btn tw-bg-[#D69F12] rounded-0 mb-1 ml-5 text-white">
 
-                                                     Apply
+                                                    Apply
 
-                                            </button>
+                                                </button>
                                             </a>
                                         </div>
                                     </div>
@@ -452,35 +465,9 @@
             </div>
 
 
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center pagination-sm">
-                    <li class="page-item disabled">
-                        <a class="page-link  tw-bg-transparent border-0 px-3 text-muted tw-font-semibold">
-                            <i class="bi bi-chevron-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item ">
-                        <a class="page-link  tw-bg-transparent border-0 px-3  text-dark tw-font-semibold" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link tw-bg-transparent border-0 px-3 text-muted tw-font-semibold" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link tw-bg-transparent border-0 px-3 text-dark tw-font-semibold" href="#">
-                            <i class="bi bi-chevron-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="d-flex justify-content-center">
+                {{ $opportunity->links() }}
+            </div>
 
         </div>
     </div>

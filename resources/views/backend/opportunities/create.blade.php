@@ -87,6 +87,8 @@
                                     <td>{{$item->description}}</td>
                                     <td>
 
+                                        @if($item->status == 'Pending')
+
                                         <div class="dropdown">
                                             <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
                                                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -94,19 +96,32 @@
                                                 Action
                                             </button>
                                             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                                                <a href="#" data-id="{{$item->id}}"
-                                                   data-image="{{$item->photo}}"
-                                                   data-title="{{$item->title}}"
-                                                   data-date="{{$item->date}}"
-                                                   data-description="{{$item->description}}"
-                                                   class="dropdown-item js-edit">Edit</a>
-                                                <a href="{{route('opportunity.delete',$item->id)}}"
-                                                   class="dropdown-item js-delete">Delete</a>
+{{--                                                <a href="#" data-id="{{$item->id}}"></a>--}}
+
                                                 <a href="#"
                                                    class="dropdown-item js-approval" data-toggle="modal"
                                                    data-target="#modalApprove" data-id="{{$item->id}}">Approve</a>
                                             </div>
                                         </div>
+                                        @else
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                                    <a href="#" data-id="{{$item->id}}"
+                                                       data-image="{{$item->photo}}"
+                                                       data-title="{{$item->title}}"
+                                                       data-date="{{$item->date}}"
+                                                       data-description="{{$item->description}}"
+                                                       class="dropdown-item js-edit">Edit</a>
+                                                    <a href="{{route('opportunity.delete',$item->id)}}"
+                                                       class="dropdown-item js-delete">Delete</a>
+                                                </div>
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

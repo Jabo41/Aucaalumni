@@ -5,25 +5,31 @@
 
         @include('partials.frontend._alerts')
 
-        <h5 class="fw-bold mt-5">Fill Work Name here</h5>
 
-        <button type="button" class="btn btn btn-outline-primary fw-bold text-[#1866B6] col-3 border-3"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"><span><i class="bi bi-plus"></i></span>
-            Add experience
-        </button>
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold mb-0">Fill Work Name here</h5>
+
+            <button type="button" class="btn btn btn-primary fw-bold text-[#1866B6] rounded-3"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+            >
+                <i class="bi bi-plus"></i>
+                Add experience
+            </button>
+        </div>
+
 
         <div class="card my-4">
             <div class="card-body">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Company</th>
-                        <th>Employer</th>
-                        <th>Job Title</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Options</th>
+                        <th class="text-muted">#</th>
+                        <th class="text-muted text-uppercase">Company</th>
+                        <th class="text-muted text-uppercase">Employer</th>
+                        <th class="text-muted text-uppercase">Job Title</th>
+                        <th class="text-muted text-uppercase">Start Date</th>
+                        <th class="text-muted text-uppercase">End Date</th>
+                        <th class="text-muted text-uppercase">Options</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,7 +43,7 @@
                             <td>{{ $item->end_date }}</td>
 
                             <td>
-                                <div class="btn-group btn-group-sm">
+                                <div class="d-flex gap-2">
                                     <a href="#" data-company="{{$item->company}}" data-date=""
                                        data-id="{{$item->id}}"
                                        data-employer="{{$item->employer}}"
@@ -45,8 +51,11 @@
                                        data-start="{{$item->start_date}}"
                                        data-end="{{$item->end_date}}"
                                        data-description="{{$item->job_description}}"
-                                       class="btn btn-primary js-edit"><span><i class="bi bi-pencil-square"></i></span></a>
-                                    <a href="{{route('registration.work.experience.delete',$item->id)}}" class="btn btn-danger js-delete"><span><i class="bi bi-trash"></i></span></a>
+                                       class="btn btn-primary js-edit rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                                class="bi bi-pencil-square"></i></span></a>
+                                    <a href="{{route('registration.work.experience.delete',$item->id)}}"  class="btn btn-danger js-delete rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                                class="bi bi-trash"></i></span>
+                                    </a>
                                 </div>
                             </td>
 
