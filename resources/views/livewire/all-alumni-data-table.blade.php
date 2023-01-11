@@ -32,11 +32,15 @@
                 <tbody>
                 @foreach($students as $item)
                     <tr>
+{{--                        <td>--}}
+{{--                            <div--}}
+{{--                                class="rounded-circle d-flex justify-content-center align-items-center tw-w-6 tw-h-6 tw-bg-blue-100 tw-p-4 tw-text-xs text-primary fw-bold">--}}
+{{--                                <span>{{ \Illuminate\Support\Str::of($item->user->name)->substr(0,2) }}</span>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
                         <td>
-                            <div
-                                class="rounded-circle d-flex justify-content-center align-items-center tw-w-6 tw-h-6 tw-bg-blue-100 tw-p-4 tw-text-xs text-primary fw-bold">
-                                <span>{{ \Illuminate\Support\Str::of($item->user->name)->substr(0,2) }}</span>
-                            </div>
+                            <img src="{{$item->personal_information_url}}" alt="no_image"
+                                 class="img-fluid img-thumbnail rounded-circle tw-h-10 tw-w-10"/>
                         </td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->user->phone_number }}</td>

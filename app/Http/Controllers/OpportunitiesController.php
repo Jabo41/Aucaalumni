@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class OpportunitiesController extends Controller
 {
     public function index(){
-        $opportunities = Opportunity::query()->orderBy('id','DESC')->get();
+        $opportunities = Opportunity::query()
+            ->whereIn('status',['Approved','Pending'])
+            ->orderBy('id','DESC')->get();
         return view('backend.opportunities.create',compact('opportunities'));
     }
 

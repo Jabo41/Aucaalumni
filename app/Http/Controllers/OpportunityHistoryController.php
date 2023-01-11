@@ -7,6 +7,8 @@ use App\Models\Opportunity;
 use App\Models\OpportunityHistory;
 use App\Http\Requests\StoreOpportunityHistoryRequest;
 use App\Http\Requests\UpdateOpportunityHistoryRequest;
+use http\Env\Request;
+use Illuminate\Support\Facades\DB;
 
 class OpportunityHistoryController extends Controller
 {
@@ -33,31 +35,30 @@ class OpportunityHistoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOpportunityHistoryRequest  $request
+     * @param \App\Http\Requests\StoreOpportunityHistoryRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOpportunityHistoryRequest $request)
     {
-//        dd($request->all());
-        $request->validated();
         $opportunity = new OpportunityHistory();
-        $opportunity -> user_id = auth()->id();
-        $opportunity->status = $request ->status;
-        $opportunity->comment = $request ->comment;
-        $opportunity -> opportunity_id= $request ->OpportunityId;
+        $opportunity->user_id = auth()->id();
+        $opportunity->status = $request->status;
+        $opportunity->comment = $request->comment;
+        $opportunity->opportunity_id = $request->OpportunityId;
+//        return $opportunity;
         $opportunity->save();
 
-        $opp = new Opportunity();
-        $opp -> status = 'Approve';
-        $opp->update();
-        dd($request->all());
+        if ($request->input('status')== 'Approved')
+        $opp = Opportunity::find($request->OpportunityId)->update(['status' => 'Approved']);
+        else
+            $opp = Opportunity::find($request->OpportunityId)->update(['status' => 'Rejected']);
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OpportunityHistory  $opportunityHistory
+     * @param \App\Models\OpportunityHistory $opportunityHistory
      * @return \Illuminate\Http\Response
      */
     public function show(OpportunityHistory $opportunityHistory)
@@ -68,7 +69,7 @@ class OpportunityHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\OpportunityHistory  $opportunityHistory
+     * @param \App\Models\OpportunityHistory $opportunityHistory
      * @return \Illuminate\Http\Response
      */
     public function edit(OpportunityHistory $opportunityHistory)
@@ -79,8 +80,8 @@ class OpportunityHistoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOpportunityHistoryRequest  $request
-     * @param  \App\Models\OpportunityHistory  $opportunityHistory
+     * @param \App\Http\Requests\UpdateOpportunityHistoryRequest $request
+     * @param \App\Models\OpportunityHistory $opportunityHistory
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateOpportunityHistoryRequest $request, OpportunityHistory $opportunityHistory)
@@ -91,11 +92,28 @@ class OpportunityHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OpportunityHistory  $opportunityHistory
+     * @param \App\Models\OpportunityHistory $opportunityHistory
      * @return \Illuminate\Http\Response
      */
     public function destroy(OpportunityHistory $opportunityHistory)
     {
         //
+    }
+
+    public function submit(Opportunity $opportunity)
+    {
+        DB::beginTransaction();
+
+        $submit = new OpportunityHistory();
+        $submit->user_id = auth()->id();
+        $submit->status = 'Submitted';
+        $submit->comment = 'ok';
+        $submit->opportunity_id = $opportunity->id;
+        $submit->save();
+
+        $opportunity->update(['status' => 'Pending']);
+
+        DB::commit();
+        return redirect()->back()->with(['success' => 'Opportunity Submitted Successfully']);
     }
 }

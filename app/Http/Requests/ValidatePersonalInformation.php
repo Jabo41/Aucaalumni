@@ -25,16 +25,13 @@ class ValidatePersonalInformation extends FormRequest
     {
         return [
             'photo'=>'required',
-            'email'=>'required',
             'faculty'=>'required',
-            'phone_number'=>'required',
             'bio'=>'required',
             'current_employer'=>'required',
             'self_employed'=>'required',
-            'profession'=>'required',
+            'profession_id'=>'required',
             'latest_education_level'=>'required',
             'address'=>'required',
-            'full_names'=>'required',
             'dob'=>'required',
             'start_date'=>'required',
             'end_date'=>'required',

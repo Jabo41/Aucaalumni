@@ -33,7 +33,7 @@
     @yield('css')
     <link rel="shortcut icon" href="#" />
     <title></title>
-    {{--    <link rel="shortcut icon" href="{{asset('media/ihuzo-logo.png')}}" />--}}
+        <link rel="shortcut icon" href="{{asset('backend/assets/img/download.png')}}" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->

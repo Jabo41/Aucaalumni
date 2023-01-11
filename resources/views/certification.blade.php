@@ -5,25 +5,36 @@
 
         @include('partials.frontend._alerts')
 
-        <h5 class="fw-bold mt-5">Certification</h5>
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold mb-0">Certification</h5>
 
-        <button type="button" class="btn btn btn-outline-primary fw-bold text-[#1866B6] col-3 border-3"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"><span><i class="bi bi-plus"></i></span>
-            Add certificate
-        </button>
+            <button type="button" class="btn btn btn-primary fw-bold text-[#1866B6] rounded-3"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+            >
+                <i class="bi bi-plus"></i>
+                Add certificate
+            </button>
+        </div>
+
+{{--        <h5 class="fw-bold mt-5">Certification</h5>--}}
+
+{{--        <button type="button" class="btn btn btn-outline-primary fw-bold text-[#1866B6] col-3 border-3"--}}
+{{--                data-bs-toggle="modal" data-bs-target="#exampleModal"><span><i class="bi bi-plus"></i></span>--}}
+{{--            Add certificate--}}
+{{--        </button>--}}
 
         <div class="card my-4">
             <div class="card-body">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Certificate Photo</th>
-                        <th>Certificate Name</th>
-                        <th>Year</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                        <th>Options</th>
+                        <th class="text-muted">#</th>
+                        <th class="text-muted text-uppercase">Certificate Photo</th>
+                        <th class="text-muted text-uppercase">Certificate Name</th>
+                        <th class="text-muted text-uppercase">Year</th>
+                        <th class="text-muted text-uppercase">Type</th>
+                        <th class="text-muted text-uppercase">Description</th>
+                        <th class="text-muted text-uppercase">Options</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,20 +43,24 @@
                             <td>{{++$key}}</td>
 {{--                            <td>{{ $item->image }}</td>--}}
                             <td><img src="{{$item->certificate_url}}" width="50px" height="50px" alt="no_image" class="img-fluid img-thumbnail"></td>
+                            <td>{{$item->certificate_name}}</td>
                             <td>{{ $item->year }}</td>
                             <td>{{ $item->type }}</td>
                             <td>{{ $item->description }}</td>
 
                             <td>
-                                <div class="btn-group btn-group-sm">
+                                <div class="d-flex gap-2">
                                     <a href="#" data-company="{{$item->image}}" data-url="{{ route('registration.certification.update') }}"
                                        data-id="{{$item->id}}"
                                        data-year="{{$item->year}}"
                                        data-image="{{url($item->certificate_url)}}"
                                        data-type="{{$item->type}}"
                                        data-description="{{$item->description}}"
-                                       class="btn btn-primary js-edit"><span><i class="bi bi-pencil-square"></i></span></a>
-                                    <a href="{{route('registration.certification.delete',$item->id)}}" class="btn btn-danger js-delete"><span><i class="bi bi-trash"></i></span></a>
+                                       class="btn btn-primary js-edit rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                                class="bi bi-pencil-square"></i></span></a>
+
+                                    <a href="{{route('registration.certification.delete',$item->id)}}"  class="btn btn-danger js-delete rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                                class="bi bi-trash"></i></span></a>
                                 </div>
                             </td>
 

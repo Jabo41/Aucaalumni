@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    @if($errors->any())
+{{--        {{dd($errors)}}--}}
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger">
+                <li>{{$error}}</li>
+            </div>
+        @endforeach
+    @endif
     <div class="container">
         <form action="{{route('registration.personal.information.store')}}" method="post" id="submissionForm"
               class="submissionForm" enctype="multipart/form-data">
@@ -109,7 +117,7 @@
 
                     <div class="mb-3 col-7 m-5 mt-1">
                         <label for="colFormLabel" class="col-form-label">Self employed</label>
-                        <select class="form-select text-muted bg-light border-0" name="current_employer">
+                        <select class="form-select text-muted bg-light border-0" name="self_employed">
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>

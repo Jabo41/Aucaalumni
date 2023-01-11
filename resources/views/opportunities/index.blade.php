@@ -36,23 +36,34 @@
                         </td>
                         <td>{{$item->title}}</td>
                         <td>{{$item->date}}</td>
-                        <td>{{$item->status}}</td>
+                        <td>
+                            <span class="badge bg-{{$item->status_color}}">{{$item->status}}</span>
+                        </td>
 
                         <td>
-                            <div class="d-flex gap-2">
-                                <a href="#" data-company="{{$item->photo}}"
-                                   data-url="{{ route('registration.apply.opportunity.update') }}"
-                                   data-id="{{$item->id}}"
-                                   data-title="{{$item->title}}"
-                                   data-date="{{$item->date}}"
-                                   data-image="{{url($item->opportunities_url)}}"
-                                   data-description="{{$item->description}}"
-                                   class="btn btn-primary js-edit rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
-                                            class="bi bi-pencil-square"></i></span></a>
-                                <a href="{{route('registration.apply.opportunity.delete',$item->id)}}"
-                                   class="btn btn-danger js-delete rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
-                                            class="bi bi-trash"></i></span></a>
-                            </div>
+
+                            @if($item->status == 'Draft')
+                                <div class="d-flex gap-2">
+                                    <a href="#" data-company="{{$item->photo}}"
+                                       data-url="{{ route('registration.apply.opportunity.update') }}"
+                                       data-id="{{$item->id}}"
+                                       data-title="{{$item->title}}"
+                                       data-date="{{$item->date}}"
+                                       data-image="{{url($item->opportunities_url)}}"
+                                       data-description="{{$item->description}}"
+                                       class="btn btn-primary js-edit rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                                class="bi bi-pencil-square"></i></span></a>
+                                    <a href="{{route('registration.apply.opportunity.delete',$item->id)}}"
+                                       class="btn btn-danger js-delete rounded-circle tw-h-10 tw-w-10 d-flex justify-content-between align-items-center"><span><i
+                                                class="bi bi-trash"></i></span></a>
+                                    <a href="{{ route('registration.opportunity.history.submit',$item->id) }}"
+                                       class="btn btn-info tw-text-[#FFFFFF] tw-h-10 tw-w-18 d-flex justify-content-between align-items-center">
+                                        Submit</a>
+                                </div>
+                            @else
+                                N/A
+                            @endif
+
                         </td>
 
                     </tr>
@@ -160,6 +171,39 @@
         </div>
     </div>
 
+    <!-- Modal Submit-->
+    <div class="modal fade" id="modalSubmit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" method="post" id="submissionFormApprove"
+                      class="submissionFormApprove" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" id="opportunity_id" name="OpportunityId">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Submit Opportunity</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            <select type="text" name="status" id="status" class="form-control">
+                                <option value="">---Select---</option>
+                                <option value="Submitted">Submit</option>
+                                {{--                                <option value="Rejected">Reject</option>--}}
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('scripts')
@@ -236,6 +280,13 @@
             console.log("Hello");
             $('#addModal').modal('show');
         });
+
+        $(document).on('click', '.js-approval', function (e) {
+            e.preventDefault();
+
+            // alert('ok')
+            $('#opportunity_id').val($(this).data('id'))
+        })
 
     </script>
 

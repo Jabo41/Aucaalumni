@@ -10875,7 +10875,7 @@ textarea.form-control-lg {
   bottom: -180px;
   left: -50px;
   transform: rotate(-60deg);
-  z-index: 9;
+  z-index: 0 !important;
 }
 
 .img-event-right {

@@ -55,10 +55,11 @@
 }
 .img-event-left{
     height: 500px; bottom:-180px;left:-50px;transform: rotate(-60deg);
-    z-index: 9;
+    z-index: 0 !important;
 }
 .img-event-right{
-    height: 520px;width: 300px; bottom:0px;right:0px;object-fit: cover;transform: rotate(15deg);
+    height: 520px;width: 300px;
+    bottom:0px;right:0px;object-fit: cover;transform: rotate(15deg);
     z-index: 0 !important;
 }
 .slick-next{

@@ -33,7 +33,6 @@ Route::get('/up_coming_event',[App\Http\Controllers\SubPagesController::class,'U
 //program attendance
 Route::post('/program-attendance',[App\Http\Controllers\ProgramAttendanceController::class,'store'])->name('program.attendance.store');
 
-
 Route::prefix('registration-process')->name('registration.')->group(function () {
 
     //personal information
@@ -68,9 +67,15 @@ Route::prefix('registration-process')->name('registration.')->group(function () 
     Route::post('/opportunity/update',[App\Http\Controllers\ApplyOpportunityController::class, 'update'])->name('apply.opportunity.update');
     Route::get('/opportunity/delete/{id}',[App\Http\Controllers\ApplyOpportunityController::class, 'delete'])->name('apply.opportunity.delete');
 
+    //submit opportunities
+    Route::get('/opportunity/{opportunity}/history-submit',[App\Http\Controllers\OpportunityHistoryController::class,'submit'])
+        ->name('opportunity.history.submit');
 
+    //send email invitation
     Route::post('/send-invitation',[\App\Http\Controllers\AlumniProfileController::class,'inviteMember'])->name('alumni-profile.invite-member');
 
+    //executive committee
+    Route::get('/executive-committee',[App\Http\Controllers\ExecutiveCommitteeController::class,'index'])->name('executive.committee');
 });
 
 
@@ -113,6 +118,7 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
 
     //Approve Opportunity
     Route::post('/opportunity-history',[App\Http\Controllers\OpportunityHistoryController::class,'store'])->name('opportunity.history.store');
+
 
     //User
     Route::get('/users',[App\Http\Controllers\UserController::class,'index'])->name("users");

@@ -10,6 +10,8 @@ class Opportunity extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $appends = ['opportunities_url'];
 
     public function getopportunitiesUrlAttribute(){
@@ -22,6 +24,7 @@ class Opportunity extends Model
             'Pending' => 'warning',
             'Approved' => 'success',
             'Rejected' => 'danger',
+            'Draft' => 'secondary',
         ];
         return $colors[$this->status] ?? 'secondary';
     }
