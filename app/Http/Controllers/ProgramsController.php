@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidatePrograms;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class ProgramsController extends Controller
         return view('backend.programs.create',compact('programs'));
     }
 
-    public function store(Request $request){
+    public function store(ValidatePrograms $request){
 
         $dir = 'public/programs/photos';
         $path = $request->file('photo')->store($dir);
@@ -26,7 +27,7 @@ class ProgramsController extends Controller
         return redirect()->back()->with('success','Program created successfully');
     }
 
-    public function update(Request $request){
+    public function update(ValidatePrograms $request){
 
         $dir = 'public/programs/photos';
         $path = $request->file('photo')->store($dir);
