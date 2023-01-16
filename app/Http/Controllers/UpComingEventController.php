@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateSocialActivities;
+use App\Http\Requests\ValidateUpcomingEvent;
 use App\Models\UpComingEvent;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class UpComingEventController extends Controller
         return view('backend.upcoming_events.create',compact('events'));
     }
 
-    public function store(ValidateSocialActivities $request){
+    public function store(ValidateUpcomingEvent $request){
 
         $request->validated();
         $dir = 'public/up_coming_event/photos';
@@ -28,7 +29,7 @@ class UpComingEventController extends Controller
         return redirect()->back()->with('success','Event created successfully');
     }
 
-    public function update(ValidateSocialActivities $request){
+    public function update(ValidateUpcomingEvent $request){
 
         $request->validated();
         $dir = 'public/up_coming_event/photos';

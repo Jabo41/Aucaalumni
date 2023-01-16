@@ -24,10 +24,16 @@ class ValidateLatestNews extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required',
+            'photo'=>'required|mimes:jpeg,png,jpg,gif|image|size:1024',
             'title'=>'required',
             'date'=>'required',
             'description'=>'required',
+        ];
+    }
+    function messages()
+    {
+        return[
+          'photo.size'=>'Photo must not exceed 1MB'
         ];
     }
 }

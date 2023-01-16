@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateLatestNews;
 use App\Models\LatestNew;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class LatestNewsController extends Controller
         return view('backend.latest_news.create',compact('news'));
     }
 
-    public function store(Request $request){
+    public function store(ValidateLatestNews $request){
 
         $dir = 'public/latest_news/photos';
         $path = $request->file('photo')->store($dir);
@@ -27,7 +28,7 @@ class LatestNewsController extends Controller
         return redirect()->back()->with('success','Record created successfully');
     }
 
-    public function update(Request $request){
+    public function update(ValidateLatestNews $request){
 
         $dir = 'public/latest_news/photos';
         $path = $request->file('photo')->store($dir);

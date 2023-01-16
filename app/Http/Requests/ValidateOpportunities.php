@@ -24,10 +24,17 @@ class ValidateOpportunities extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required',
+            'photo'=>'required|mimes:jpeg,jpg,png,gif|image|size:1024',
             'title'=>'required',
             'date'=>'required',
             'description'=>'required',
+        ];
+    }
+
+    function messages()
+    {
+        return [
+          'photo.size'=>'Photo must not exceed 1MB'
         ];
     }
 }
