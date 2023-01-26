@@ -24,9 +24,20 @@ class ValidateStudent extends FormRequest
     public function rules()
     {
         return [
-            'id_number'=>['required','unique:students','string'],
+            'id_number' => [
+                'required', 'integer', 'unique:students,id_number', 'digits_between:5,6',
+                'exists:students,id_number'
+            ],
             'first_name'=>'required',
             'last_name'=>'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'id_number.unique' => 'This student id has already registered',
+            'id_number.exists' => 'Invalid student id provided.',
         ];
     }
 }

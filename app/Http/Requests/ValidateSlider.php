@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateUpcomingEvent extends FormRequest
+class ValidateSlider extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,7 @@ class ValidateUpcomingEvent extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required|max:1024|mimes:jpeg,png,jpg,gif',
-            'date'=>'required',
-            'description'=>'required',
-        ];
-    }
-
-    function messages()
-    {
-        return [
-            'photo.max'=>'Photo must not exceed 1MB'
+            'photo'=>'required'
         ];
     }
 }

@@ -143,5 +143,14 @@ Route::group(['prefix'=>'staff','middleware'=>['isStaff']],function (){
     Route::post('/faculty/store',[App\Http\Controllers\FacultyController::class,'store'])->name("faculty.store");
     Route::post('/faculty/update',[App\Http\Controllers\FacultyController::class,'update'])->name("faculty.update");
     Route::get('/faculty/delete/{id}',[App\Http\Controllers\FacultyController::class,'destroy'])->name("faculty.delete");
+
+    //slider
+    Route::get('/sliders',[App\Http\Controllers\SliderController::class,'index'])->name("slider.index");
+    Route::post('/slider/store',[App\Http\Controllers\SliderController::class,'store'])->name("slider.store");
+    Route::post('/slider/update',[App\Http\Controllers\SliderController::class,'update'])->name("slider.update");
+    Route::get('/slider/delete/{id}',[App\Http\Controllers\SliderController::class,'delete'])->name("slider.delete");
+
+    //profile
+    Route::get('/user/profile/{user_id}',[App\Http\Controllers\UserController::class,'profile'])->name('user.profile');
 });
 

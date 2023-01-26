@@ -24,7 +24,7 @@ class ValidateSocialActivities extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required|mimes:jpeg,png,jpg,gif|image|size:1024',
+            'photo'=>'required|max:1024|mimes:jpeg,png,jpg,gif',
             'date'=>'required',
             'description'=>'required',
         ];
@@ -33,7 +33,7 @@ class ValidateSocialActivities extends FormRequest
     function messages()
     {
         return [
-          'photo.size'=>'Photo must not exceed 1MB'
+          'photo.max'=>'Photo must not exceed 1MB'
         ];
     }
 }

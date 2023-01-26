@@ -48,4 +48,10 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back()->with('success','User deleted successfully');
     }
+
+    public function profile($UserId){
+
+        $user = User::find($UserId);
+        return view('backend.layouts.profile',compact('user'));
+    }
 }

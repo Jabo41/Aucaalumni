@@ -24,7 +24,7 @@ class ValidateOpportunities extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required|mimes:jpeg,jpg,png,gif|image|size:1024',
+            'photo'=>'required|max:1024|mimes:jpeg,png,jpg,gif',
             'title'=>'required',
             'date'=>'required',
             'description'=>'required',
@@ -34,7 +34,7 @@ class ValidateOpportunities extends FormRequest
     function messages()
     {
         return [
-          'photo.size'=>'Photo must not exceed 1MB'
+          'photo.max'=>'Photo must not exceed 1MB'
         ];
     }
 }

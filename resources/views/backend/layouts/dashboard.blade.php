@@ -76,7 +76,7 @@
 																</svg>
                                                                 <!--end::Svg Icon-->
 															</span>
-                                            <a href="#" class="text-warning font-weight-bold font-size-h6">Upcoming Events </a>
+                                            <a href="{{route('up.coming.events')}}" class="text-warning font-weight-bold font-size-h6">Upcoming Events </a>
                                                 <div class="font-weight-bold text-muted font-size-sm">
                                                     <span class="text-dark-75 font-size-h2 font-weight-bolder mr-2">{{App\Models\UpComingEvent::count()}}</span>
                                                     Total events
@@ -94,7 +94,7 @@
 																</svg>
                                                                 <!--end::Svg Icon-->
 															</span>
-                                            <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">System Users</a>
+                                            <a href="{{route('users')}}" class="text-primary font-weight-bold font-size-h6 mt-2">System Users</a>
                                             <div class="font-weight-bold text-muted font-size-sm">
                                                 <span class="text-dark-75 font-size-h2 font-weight-bolder mr-2">{{App\Models\User::count()}}</span>
                                                 Total users
@@ -116,7 +116,7 @@
 																</svg>
                                                                 <!--end::Svg Icon-->
 															</span>
-                                            <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Programs</a>
+                                            <a href="{{route('programs')}}" class="text-danger font-weight-bold font-size-h6 mt-2">Programs</a>
                                             <div class="font-weight-bold text-muted font-size-sm">
                                                 <span class="text-dark-75 font-size-h2 font-weight-bolder mr-2">{{App\Models\Program::count()}}</span>
                                                 Total Programs
@@ -137,7 +137,7 @@
                                                                 <!--end::Svg Icon-->
 
 															</span>
-                                            <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Social Activities</a>
+                                            <a href="{{route('social.activities')}}" class="text-success font-weight-bold font-size-h6 mt-2">Social Activities</a>
                                             <div class="font-weight-bold text-muted font-size-sm">
                                                 <span class="text-dark-75 font-size-h2 font-weight-bolder mr-2">{{App\Models\SocialActivity::count()}}</span>
                                                 Total Activities
@@ -166,15 +166,15 @@
                             <!--end::Header-->
                             <!--begin::Body-->
                             <div class="card-body pt-4">
-{{--                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">--}}
-{{--                                    <div class="carousel-inner">--}}
-{{--                                        @foreach($sliders as $slider)--}}
-{{--                                            <div class="carousel-item {{$loop->first ?"active":""}}">--}}
-{{--                                                <img class="d-block w-100"  src="{{asset('img/sliders/'.$slider->photo)}}" alt="First slide">--}}
-{{--                                            </div>--}}
-{{--                                        @endforeach--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach($sliders as $slider)
+                                            <div class="carousel-item {{$loop->first ?"active":""}}">
+                                                <img class="d-block w-100"  src="{{$slider->sliders_url}}" alt="First slide">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                                 <!--end: Items-->
                             </div>
                             <!--end: Card Body-->
@@ -296,7 +296,7 @@
                     <div class="col-lg-12">
                         <div class="card card-custom gutter-b">
                             <div class="card-body">
-                                <h5 class="card-title">Request Submitted Vs Requests Approved Vs Requests Rejected</h5>
+                                <h5 class="card-title">Opportunities Submitted Vs Opportunities Approved Vs Opportunities Rejected</h5>
 
                                 <!-- Pie Chart -->
                                 <div id="pieChart"></div>
