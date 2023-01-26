@@ -107,6 +107,19 @@
             </li>
 
             <li class="menu-section">
+                <h4 class="menu-text">Sliders</h4>
+                <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+            </li>
+            <li class="menu-item menu-item-submenu "
+                {{--                                <li class="menu-item menu-item-submenu {{ strpos(Request::fullUrl(), '/admin/settings/') ? 'menu-item-open' : '' }}"--}}
+                aria-haspopup="true" data-menu-toggle="hover">
+                <a href="{{route('slider.index')}}" class="menu-link menu-toggle">
+                    <i class="menu-icon fas fa-photo-video"></i>
+                    <span class="menu-text">Sliders</span>
+                </a>
+            </li>
+
+            <li class="menu-section">
                 <h4 class="menu-text">System Settings</h4>
                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
             </li>
