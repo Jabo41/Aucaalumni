@@ -242,8 +242,8 @@
         <!--begin::Nav-->
         <div class="navi navi-spacer-x-0 p-0">
             <!--begin::Item-->
-            <a href="#" class="navi-item">
-                {{--					<a href="{{ route('admin.users.profile', Auth::user()->id) }}" class="navi-item">--}}
+{{--            <a href="{{route('staff.user.profile',$user->user_id)}}" class="navi-item">--}}
+                					<a href="{{ route('user.profile', Auth::user()->id) }}" class="navi-item">
                 <div class="navi-link">
                     <div class="navi-text">
                         <div class="font-weight-bold">My Profile</div>
