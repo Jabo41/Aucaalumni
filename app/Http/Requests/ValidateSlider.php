@@ -24,7 +24,13 @@ class ValidateSlider extends FormRequest
     public function rules()
     {
         return [
-            'photo'=>'required'
+            'photo'=>'required|max:1024|mimes:jpeg,png,jpg,gif',
+        ];
+    }
+    function messages()
+    {
+        return [
+            'photo.max'=>'Photo must not exceed 1MB'
         ];
     }
 }
